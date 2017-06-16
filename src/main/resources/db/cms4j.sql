@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2017-06-16 15:53:09
+Date: 2017-06-16 18:11:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,6 +60,7 @@ INSERT INTO `sys_menu` VALUES ('4', '用户管理', '/user/index', 'xe62c', '1',
 INSERT INTO `sys_menu` VALUES ('5', '字典管理', '/dictionary/index', 'xe720', '1', '5');
 INSERT INTO `sys_menu` VALUES ('6', '菜单管理', '/menu/index', 'xe681', '1', '6');
 INSERT INTO `sys_menu` VALUES ('7', '系统监控', '/druid/index.html', 'xe725', '1', '2');
+INSERT INTO `sys_menu` VALUES ('8', '在线管理', '/user/online/index', 'xe62b', '1', '7');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -103,4 +104,4 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '系统管理员', 'suadmin', '2017-06-16 15:49:27', '0:0:0:0:0:0:0:1', '1', null);
+INSERT INTO `sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '系统管理员', 'suadmin', '2017-06-16 18:10:33', '0:0:0:0:0:0:0:1', '1', null);

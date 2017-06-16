@@ -11,10 +11,12 @@
 
     <select id="verifyUser" parameterType="DataMap" resultType="DataMap">
         SELECT
-            *
+        user.*,
+        role.ROLENAME AS ROLENAME
         FROM
-        SYS_USER
-        WHERE USERNAME = #{USERNAME} AND PASSWORD = #{PASSWORD}
+        SYS_USER user
+        LEFT JOIN SYS_ROLE role ON user.ROLE_ID = role.ROLE_ID
+        WHERE user.USERNAME = #{USERNAME} AND user.PASSWORD = #{PASSWORD}
     </select>
     <update id="editUserLoginRecord" parameterType="DataMap">
         UPDATE
