@@ -1,6 +1,7 @@
 package com.crm4j.base.system.user.service;
 
 import com.crm4j.base.dao.DaoSupport;
+import com.crm4j.base.system.user.online.service.SessionService;
 import com.crm4j.base.util.DataMap;
 import com.crm4j.base.util.MD5Util;
 import com.crm4j.base.util.Page;
@@ -23,6 +24,8 @@ public class UserService {
 
     @Autowired
     private DaoSupport daoSupport;
+    @Autowired
+    private SessionService sessionService;
 
     /**
      * 根据用户名获取数据
@@ -132,6 +135,7 @@ public class UserService {
         else
             daoSupport.update("UserMapper.editUser", dataMap);
 
+        sessionService.updateUserFromSession(dataMap.getString("USER_ID"));
         return 1;
     }
 }

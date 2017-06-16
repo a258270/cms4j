@@ -30,7 +30,7 @@
     <select id="getUsers" parameterType="Page" resultType="DataMap">
         SELECT
             user.*,
-            ROLE.ROLENAME AS ROLENAME
+            role.ROLENAME AS ROLENAME
         FROM
             SYS_USER user
         LEFT JOIN SYS_ROLE role ON user.ROLE_ID = role.ROLE_ID
@@ -93,10 +93,12 @@
     </insert>
     <select id="getUserById" parameterType="DataMap" resultType="DataMap">
         SELECT
-            *
+            user.*,
+            role.ROLENAME AS ROLENAME
         FROM
-            SYS_USER
-        WHERE USER_ID = #{USER_ID}
+            SYS_USER user
+        LEFT JOIN SYS_ROLE role ON user.ROLE_ID = role.ROLE_ID
+        WHERE user.USER_ID = #{USER_ID}
     </select>
     <update id="editUser" parameterType="DataMap">
         UPDATE

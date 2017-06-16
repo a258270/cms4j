@@ -1,5 +1,6 @@
 package com.crm4j.base.system.user.online.service;
 
+import com.crm4j.base.system.user.service.UserService;
 import com.crm4j.base.util.DataMap;
 import com.crm4j.base.util.Page;
 import com.crm4j.base.util.SessionUtil;
@@ -21,6 +22,8 @@ import java.util.List;
 public class SessionService {
     @Autowired
     private MemorySessionDAO memorySessionDAO;
+    @Autowired
+    private UserService userService;
 
     /**
      * 踢出用户
@@ -28,7 +31,7 @@ public class SessionService {
     public void kickUser(String userId) {
         Collection<Session> sessions = memorySessionDAO.getActiveSessions();
         for(Session session : sessions) {
-            DataMap user = SessionUtil.getCurUser();
+            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
             if(user == null)
                 continue;
             if(userId.equals(user.getString("USER_ID"))){
@@ -53,7 +56,7 @@ public class SessionService {
         List<DataMap> users = new ArrayList<DataMap>();
         List<DataMap> usersOut = new ArrayList<DataMap>();
         for(Session session : sessions) {
-            DataMap user = SessionUtil.getCurUser();
+            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
             if(user == null)
                 continue;
 
@@ -115,5 +118,20 @@ public class SessionService {
         }
 
         return usersOut;
+    }
+
+    public void updateUserFromSession(String userId) throws Exception {
+        Collection<Session> sessions = memorySessionDAO.getActiveSessions();
+
+        for(Session session : sessions) {
+            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
+            if(user == null)
+                continue;
+            if(userId.equals(user.getString("USER_ID"))){
+                user = userService.getUserById(user);
+                SessionUtil.addUser2Session(user);
+                break;
+            }
+        }
     }
 }
