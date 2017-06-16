@@ -33,7 +33,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             try {
                 if (request.getParameter("ajax") != null) {
                     out = response.getWriter();
-                    out.append(new InvokeResult().failure(Const.NOLOGIN_CODE, "请重新登陆").toString());
+                    out.append(new InvokeResult().failure(Const.NOLOGIN_CODE, "please relogin").toString());
                 } else {
                     response.sendRedirect(request.getContextPath() + Const.LOGIN);
                 }

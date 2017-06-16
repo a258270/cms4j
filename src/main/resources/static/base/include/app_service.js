@@ -50,10 +50,10 @@ var tableQuery = function (obj, params) {
         paramInUrl += "&" + name + "=" + params[name];
     }
     if(url.indexOf("?") == -1){
-        url += "?now=" + Math.random();
+        url += "?ajax=true&now=" + Math.random();
     }
     else{
-        url = url.substring(0, url.indexOf("?")) + "?now=" + Math.random();
+        url = url.substring(0, url.indexOf("?")) + "?ajax=true&now=" + Math.random();
     }
 
     url += paramInUrl;
