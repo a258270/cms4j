@@ -21,8 +21,8 @@
         </select>
         状态： <select class="select" style="width:150px;height: 31px;" size="1" id="STATUS">
         <option value="" selected>不限</option>
-        <option value="0">冻结</option>
-        <option value="1">正常</option>
+        <option value="false">冻结</option>
+        <option value="true">正常</option>
     </select>
         <button type="button" class="btn btn-success radius" onclick="onTableQuery();"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
     </div>
