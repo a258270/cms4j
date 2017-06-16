@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MenuMapper">
+    <select id="getAllMenusSortId" resultType="DataMap">
+        SELECT
+            MENU_ID,
+            NAME,
+            URL,
+            ICON,
+            PARENT_ID
+        FROM SYS_MENU
+        ORDER BY MENU_ID
+    </select>
+    <select id="getAllMenus" resultType="DataMap">
+        SELECT
+        MENU_ID,
+        NAME,
+        URL,
+        ICON,
+        PARENT_ID
+        FROM
+        SYS_MENU
+        ORDER BY SORT
+    </select>
+    <select id="getAllFatherMenus" resultType="DataMap">
+        SELECT
+        MENU_ID,
+        NAME,
+        URL,
+        ICON,
+        PARENT_ID
+        FROM
+        SYS_MENU
+        WHERE PARENT_ID IS NULL
+        ORDER BY SORT
+    </select>
+    <select id="getSonMenus" parameterType="DataMap" resultType="DataMap">
+        SELECT
+        MENU_ID,
+        NAME,
+        URL,
+        ICON,
+        PARENT_ID
+        FROM
+        SYS_MENU
+        WHERE PARENT_ID = #{MENU_ID}
+        ORDER BY SORT
+    </select>
+    <select id="getMenus" parameterType="Page" resultType="DataMap">
+        SELECT
+            MENU_ID,
+            NAME,
+            URL,
+            SORT
+        FROM SYS_MENU
+        <if test="params.PARENT_ID == null">
+            WHERE PARENT_ID IS NULL
+        </if>
+        <if test="params.PARENT_ID != null">
+            WHERE PARENT_ID = #{params.PARENT_ID}
+        </if>
+
+        <if test="params.NAME != null">
+            AND NAME LIKE CONCAT(CONCAT("%", #{params.NAME}), "%")
+        </if>
+        <if test="params.URL != null">
+            AND URL LIKE CONCAT(CONCAT("%", #{params.URL}), "%")
+        </if>
+        ORDER BY SORT
+    </select>
+
+    <insert id="addMenu" parameterType="DataMap">
+        INSERT INTO
+        SYS_MENU
+        (
+            MENU_ID,
+            NAME,
+            PARENT_ID,
+            URL,
+            ICON,
+            SORT
+        )
+        VALUES
+        (
+            #{MENU_ID},
+            #{NAME},
+            #{PARENT_ID},
+            #{URL},
+            #{ICON},
+            #{SORT}
+        )
+    </insert>
+    <select id="getMaxIdMenu" resultType="DataMap">
+        SELECT
+            MENU_ID,
+            NAME,
+            PARENT_ID,
+            URL,
+            ICON,
+            SORT
+        FROM SYS_MENU
+        WHERE MENU_ID = (SELECT MAX(MENU_ID) FROM SYS_MENU)
+    </select>
+    <delete id="batchRemoveMenus" parameterType="java.util.List">
+        DELETE FROM
+        SYS_MENU
+        WHERE
+        MENU_ID
+        IN
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <select id="getMenusByFatherId" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            MENU_ID,
+            NAME,
+            PARENT_ID,
+            URL,
+            ICON,
+            SORT
+        FROM SYS_MENU
+        WHERE PARENT_ID = #{MENU_ID}
+        ORDER BY SORT
+    </select>
+    <select id="getMenuById" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            MENU_ID,
+            NAME,
+            PARENT_ID,
+            URL,
+            ICON,
+            SORT
+        FROM SYS_MENU
+        WHERE MENU_ID = #{MENU_ID}
+    </select>
+    <update id="editMenu" parameterType="DataMap">
+        UPDATE
+            SYS_MENU
+        SET
+            NAME = #{NAME},
+            URL = #{URL},
+            ICON = #{ICON},
+            SORT = #{SORT}
+        WHERE MENU_ID = #{MENU_ID}
+    </update>
+    <select id="getMaxId" resultType="java.lang.Integer">
+        SELECT
+            MAX(MENU_ID)
+        FROM
+            SYS_MENU
+    </select>
+</mapper>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+    <select id="getUserByUsername" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            *
+        FROM
+         SYS_USER
+        WHERE USERNAME = #{USERNAME}
+    </select>
+
+    <select id="verifyUser" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            *
+        FROM
+        SYS_USER
+        WHERE USERNAME = #{USERNAME} AND PASSWORD = #{PASSWORD}
+    </select>
+    <update id="editUserLoginRecord" parameterType="DataMap">
+        UPDATE
+            SYS_USER
+        SET
+            LAST_LOGIN = #{LAST_LOGIN},
+            IP = #{IP}
+        WHERE USERNAME = #{USERNAME}
+    </update>
+
+    <select id="getUsers" parameterType="Page" resultType="DataMap">
+        SELECT
+            user.*,
+            ROLE.ROLENAME AS ROLENAME
+        FROM
+            SYS_USER user
+        LEFT JOIN SYS_ROLE role ON user.ROLE_ID = role.ROLE_ID
+        WHERE 1 =1
+        <if test="params.USERNAME != null">
+            AND user.USERNAME LIKE CONCAT(CONCAT("%", #{params.USERNAME}), "%")
+        </if>
+        <if test="params.NAME != null">
+            AND user.NAME LIKE CONCAT(CONCAT("%", #{params.NAME}), "%")
+        </if>
+        <if test="params.STATUS != null">
+            AND user.STATUS = #{params.STATUS}
+        </if>
+        <if test="params.ROLE_ID != null">
+            AND user.ROLE_ID = #{params.ROLE_ID}
+        </if>
+    </select>
+    <update id="batchRemoves" parameterType="java.util.List">
+        UPDATE
+            SYS_USER
+        SET
+            STATUS = false
+        WHERE
+            USER_ID
+        IN
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <update id="unRemove" parameterType="DataMap">
+        UPDATE
+            SYS_USER
+        SET
+            STATUS = true
+        WHERE
+            USER_ID = #{USER_ID}
+    </update>
+    <insert id="addUser" parameterType="DataMap">
+        INSERT INTO
+            SYS_USER
+        (
+            USER_ID,
+            USERNAME,
+            NAME,
+            PASSWORD,
+            ROLE_ID,
+            STATUS,
+            PHONE
+        )
+        VALUES
+        (
+            #{USER_ID},
+            #{USERNAME},
+            #{NAME},
+            #{PASSWORD},
+            #{ROLE_ID},
+            #{STATUS},
+            #{PHONE}
+        )
+    </insert>
+    <select id="getUserById" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            *
+        FROM
+            SYS_USER
+        WHERE USER_ID = #{USER_ID}
+    </select>
+    <update id="editUser" parameterType="DataMap">
+        UPDATE
+            SYS_USER
+        SET
+            NAME = #{NAME},
+            ROLE_ID = #{ROLE_ID},
+            PHONE = #{PHONE}
+        <if test="PASSWORD != null">
+            ,PASSWORD = #{PASSWORD}
+        </if>
+        WHERE USER_ID = #{USER_ID}
+    </update>
+</mapper>

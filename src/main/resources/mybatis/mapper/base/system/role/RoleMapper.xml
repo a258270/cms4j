@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoleMapper">
+    <select id="getRoleById" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            ROLE_ID,
+            ROLENAME,
+            PARENT_ID,
+            ADD_QX,
+            DEL_QX,
+            EDIT_QX,
+            QUERY_QX,
+            SORT
+        FROM SYS_ROLE
+        WHERE ROLE_ID = #{ROLE_ID}
+    </select>
+    <select id="getAllFatherRoles" resultType="DataMap">
+        SELECT
+            ROLE_ID,
+            ROLENAME,
+            PARENT_ID,
+            ADD_QX,
+            DEL_QX,
+            EDIT_QX,
+            QUERY_QX,
+            SORT
+        FROM SYS_ROLE
+        WHERE PARENT_ID IS NULL
+        ORDER BY SORT
+    </select>
+    <select id="getFatherRolesExceptSuadmin" resultType="DataMap">
+        SELECT
+            ROLE_ID,
+            ROLENAME,
+            PARENT_ID,
+            ADD_QX,
+            DEL_QX,
+            EDIT_QX,
+            QUERY_QX,
+            SORT
+        FROM SYS_ROLE
+        WHERE PARENT_ID IS NULL
+        AND ROLE_ID != 'SUADMIN'
+        ORDER BY SORT
+    </select>
+    <select id="getSonRolesByFatherId" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            ROLE_ID,
+            ROLENAME,
+            PARENT_ID,
+            ADD_QX,
+            DEL_QX,
+            EDIT_QX,
+            QUERY_QX,
+            SORT
+        FROM SYS_ROLE
+        WHERE PARENT_ID = #{ROLE_ID}
+        ORDER BY SORT
+    </select>
+    <insert id="addRole" parameterType="DataMap">
+        INSERT INTO
+            SYS_ROLE
+        (
+            ROLE_ID,
+            ROLENAME,
+            PARENT_ID,
+            ADD_QX,
+            DEL_QX,
+            EDIT_QX,
+            QUERY_QX,
+            SORT
+        )
+        VALUES
+        (
+            #{ROLE_ID},
+            #{ROLENAME},
+            #{PARENT_ID},
+            #{ADD_QX},
+            #{DEL_QX},
+            #{EDIT_QX},
+            #{QUERY_QX},
+            #{SORT}
+        )
+    </insert>
+    <update id="editRoleExceptQX" parameterType="DataMap">
+        UPDATE
+            SYS_ROLE
+        SET
+            ROLENAME = #{ROLENAME},
+            SORT = #{SORT}
+        WHERE ROLE_ID = #{ROLE_ID}
+    </update>
+    <delete id="removeRole" parameterType="DataMap">
+        DELETE FROM
+            SYS_ROLE
+        WHERE ROLE_ID = #{ROLE_ID}
+    </delete>
+    <update id="editRoleQX" parameterType="DataMap">
+        UPDATE
+            SYS_ROLE
+        SET
+            ADD_QX = #{ADD_QX},
+            DEL_QX = #{DEL_QX},
+            EDIT_QX = #{EDIT_QX},
+            QUERY_QX = #{QUERY_QX}
+        WHERE ROLE_ID = #{ROLE_ID}
+    </update>
+    <select id="getAllSonRoles" resultType="DataMap">
+        SELECT
+            ROLE_ID,
+            ROLENAME,
+            PARENT_ID,
+            ADD_QX,
+            DEL_QX,
+            EDIT_QX,
+            QUERY_QX,
+            SORT
+        FROM SYS_ROLE
+        WHERE PARENT_ID IS NOT NULL
+        ORDER BY SORT
+    </select>
+</mapper>

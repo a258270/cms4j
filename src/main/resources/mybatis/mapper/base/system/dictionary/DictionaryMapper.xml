@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DictionaryMapper">
+    <select id="getDictionaryById" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            DIC_ID,
+            NAME,
+            CODE,
+            SORT,
+            PARENT_ID,
+            LEVEL
+        FROM SYS_DICTIONARIES
+        WHERE DIC_ID = #{DIC_ID}
+    </select>
+    <select id="getDictionaries" parameterType="Page" resultType="DataMap">
+        SELECT
+            DIC_ID,
+            NAME,
+            CODE,
+            SORT,
+            LEVEL
+        FROM SYS_DICTIONARIES
+        <if test="params.PARENT_ID == null">
+            WHERE PARENT_ID IS NULL
+        </if>
+        <if test="params.PARENT_ID != null">
+            WHERE PARENT_ID = #{params.PARENT_ID}
+        </if>
+
+        <if test="params.NAME != null">
+            AND NAME LIKE CONCAT(CONCAT("%", #{params.NAME}), "%")
+        </if>
+        <if test="params.CODE != null">
+            AND CODE LIKE CONCAT(CONCAT("%", #{params.CODE}), "%")
+        </if>
+        ORDER BY SORT
+    </select>
+
+    <select id="getAllFatherDictionaries" resultType="DataMap">
+        SELECT
+            DIC_ID,
+            NAME
+        FROM SYS_DICTIONARIES
+        WHERE PARENT_ID IS NULL
+        ORDER BY SORT
+    </select>
+    
+    <insert id="addDictionary" parameterType="DataMap">
+        INSERT INTO
+            SYS_DICTIONARIES
+        (
+            DIC_ID,
+            NAME,
+            PARENT_ID,
+            CODE,
+            SORT,
+            LEVEL
+        )
+        VALUES
+        (
+            #{DIC_ID},
+            #{NAME},
+            #{PARENT_ID},
+            #{CODE},
+            #{SORT},
+            #{LEVEL}
+        )
+    </insert>
+    
+    <delete id="batchRemoveDictionaries" parameterType="java.util.List">
+        DELETE FROM
+            SYS_DICTIONARIES
+        WHERE
+            DIC_ID
+        IN
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    
+    <delete id="removeDictionary" parameterType="DataMap">
+        DELETE FROM
+            SYS_DICTIONARIES
+        WHERE DIC_ID = #{DIC_ID}
+    </delete>
+    
+    <select id="getDictionariesByFatherId" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            DIC_ID,
+            NAME,
+            CODE,
+            SORT,
+            LEVEL
+        FROM SYS_DICTIONARIES
+        WHERE PARENT_ID = #{DIC_ID}
+        ORDER BY SORT
+    </select>
+    
+    <update id="updateDictionary" parameterType="DataMap">
+
+        UPDATE
+            SYS_DICTIONARIES
+        SET
+            NAME = #{NAME},
+            CODE = #{CODE},
+            SORT = #{SORT}
+        WHERE DIC_ID = #{DIC_ID}
+    </update>
+    
+    <select id="getDictionaryByCode" parameterType="DataMap" resultType="DataMap">
+        SELECT
+            DIC_ID,
+            NAME,
+            PARENT_ID,
+            CODE,
+            SORT,
+            LEVEL
+        FROM
+            SYS_DICTIONARIES
+        WHERE CODE = #{CODE}
+    </select>
+</mapper>
