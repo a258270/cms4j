@@ -76,7 +76,7 @@ $(function () {
                 "render" : function (data, type, row, meta) {
                     var innerStr = "";
                     if(QUERY_QX) {
-                        innerStr += "<a title='踢出' href='javascript:;' onclick='online_kick(\"" + row.USER_ID + "\")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a>";
+                        innerStr += "<a title='踢出' href='javascript:;' onclick='online_kick(\"" + row.USER_ID + "\")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe706;</i></a>";
                     }
 
                     return innerStr;
@@ -128,5 +128,9 @@ var onTableQuery = function () {
 };
 
 var online_kick = function (id) {
-    sendRequest(ctxPath + "/user/online/api/kick", {USER_ID: id}, "POST", successFn);
+    layer.confirm("确定要踢出该用户？", {
+        btn: ["是", "否"]
+    }, function(index) {
+        sendRequest(ctxPath + "/user/online/api/kick", {USER_ID: id}, "POST", successFn);
+    });
 };

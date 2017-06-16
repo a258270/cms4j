@@ -3,6 +3,7 @@ package com.crm4j.base.system.user.online.service;
 import com.crm4j.base.util.DataMap;
 import com.crm4j.base.util.Page;
 import com.crm4j.base.util.SessionUtil;
+import org.apache.shiro.session.ExpiredSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,11 @@ public class SessionService {
             if(user == null)
                 continue;
             if(userId.equals(user.getString("USER_ID"))){
-                session.setTimeout(0);
+                try {
+                    session.setTimeout(0);
+                }catch (ExpiredSessionException e){
+
+                }
                 break;
             }
         }
