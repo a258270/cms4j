@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if(path.matches(Const.REG_NOTERCEPTOR_URL))
             return true;
 
-        DataMap user = (DataMap) request.getSession().getAttribute(SessionUtil.SESSION_USER_KEY);
+        DataMap user = SessionUtil.getCurUser();
         if(user == null){
             //跳转至登录界面
             response.sendRedirect(request.getContextPath() + Const.LOGIN);

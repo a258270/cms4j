@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 /**
@@ -124,20 +125,26 @@ public class UserApiController extends ApiBaseController {
 
         logger.begin("编辑用户");
         DataMap dataMap = this.getDataMap();
-        if(!StringUtils.isBlank(dataMap.getString("PASSWORD")) || !StringUtils.isBlank(dataMap.getString("REPASSWORD"))){
-            if(!dataMap.getString("PASSWORD").equals(dataMap.getString("REPASSWORD"))) {
-                return InvokeResult.failure("两次密码输入不一致");
-            }
 
-            dataMap.put("PASSWORD", MD5Util.getMD5(dataMap.getString("PASSWORD")));
-        }
-        else {
-            dataMap.put("PASSWORD", null);
-        }
-        if(StringUtils.isBlank(dataMap.getString("PHONE")))
-            dataMap.put("PHONE", null);
+        if(userService.editUser(dataMap, true).equals(0))
+            return InvokeResult.failure("两次密码输入不一致");
 
-        userService.editUser(dataMap);
+        userService.editUser(dataMap, false);
+        logger.end();
+        return InvokeResult.success();
+    }
+
+    @RequestMapping(value = "/editself", method = RequestMethod.POST)
+    public InvokeResult editSelf() throws Exception {
+        logger.begin("编辑个人信息");
+        DataMap dataMap = this.getDataMap();
+        DataMap curUser = SessionUtil.getCurUser();
+
+        dataMap.put("USER_ID", curUser.getString("USER_ID"));
+
+        if(userService.editUser(dataMap, true).equals(0))
+            return InvokeResult.failure("两次密码输入不一致");
+
         logger.end();
         return InvokeResult.success();
     }

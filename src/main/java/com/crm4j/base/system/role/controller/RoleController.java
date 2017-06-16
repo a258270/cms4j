@@ -1,10 +1,10 @@
 package com.crm4j.base.system.role.controller;
 
 import com.crm4j.base.controller.PageBaseController;
-import com.crm4j.base.system.menu.service.MenuService;
 import com.crm4j.base.system.role.service.RoleService;
-import com.crm4j.base.util.*;
-import org.apache.commons.lang3.StringUtils;
+import com.crm4j.base.util.DataMap;
+import com.crm4j.base.util.JurisdictionUtil;
+import com.crm4j.base.util.LoggerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

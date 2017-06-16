@@ -1,7 +1,6 @@
 package com.crm4j.base.config;
 
 import com.crm4j.base.interceptor.ShiroRealm;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;

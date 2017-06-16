@@ -1,7 +1,5 @@
 package com.crm4j.base.util;
 
-import org.apache.shiro.session.Session;
-
 import java.math.BigInteger;
 
 /**
@@ -26,8 +24,7 @@ public class JurisdictionUtil {
      * @return
      */
     public static boolean hasJurisdiction(String jurisdictionType, String menu_id){
-        Session session = SessionUtil.getSession();
-        DataMap role = (DataMap) session.getAttribute(SessionUtil.SESSION_ROLE_KEY);
+        DataMap role = SessionUtil.getRoleFromSession();
         if(role == null)
             return false;
         boolean isAdmin = Const.SUADMIN.equals(role.getString("ROLE_ID"));

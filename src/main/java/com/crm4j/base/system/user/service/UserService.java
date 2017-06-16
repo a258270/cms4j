@@ -2,7 +2,9 @@ package com.crm4j.base.system.user.service;
 
 import com.crm4j.base.dao.DaoSupport;
 import com.crm4j.base.util.DataMap;
+import com.crm4j.base.util.MD5Util;
 import com.crm4j.base.util.Page;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -107,10 +109,29 @@ public class UserService {
     /**
      * 编辑用户
      * @param dataMap
+     * @param isSelf
+     * @return 1----编辑成功，0----编辑失败，原因：密码两次输入不一致
      * @throws Exception
      */
     @Transactional(rollbackFor = Exception.class)
-    public void editUser(DataMap dataMap) throws Exception {
-        daoSupport.update("UserMapper.editUser", dataMap);
+    public Integer editUser(DataMap dataMap, boolean isSelf) throws Exception {
+        if(!StringUtils.isBlank(dataMap.getString("PASSWORD")) || !StringUtils.isBlank(dataMap.getString("REPASSWORD"))){
+            if(!dataMap.getString("PASSWORD").equals(dataMap.getString("REPASSWORD"))) {
+                return 0;
+            }
+
+            dataMap.put("PASSWORD", MD5Util.getMD5(dataMap.getString("PASSWORD")));
+        }
+        else {
+            dataMap.put("PASSWORD", null);
+        }
+        if(StringUtils.isBlank(dataMap.getString("PHONE")))
+            dataMap.put("PHONE", null);
+        if(isSelf)
+            daoSupport.update("UserMapper.editSelf", dataMap);
+        else
+            daoSupport.update("UserMapper.editUser", dataMap);
+
+        return 1;
     }
 }

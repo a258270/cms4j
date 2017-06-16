@@ -8,7 +8,6 @@ import com.crm4j.base.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,9 +49,7 @@ public class LoginApiController extends ApiBaseController {
             if(StringUtils.isBlank(dataMap.getString("CODE")))
                 return InvokeResult.failure("验证码不能为空！");
 
-            Session session = SessionUtil.getSession();
-
-            if(!dataMap.getString("CODE").equals(session.getAttribute(SessionUtil.SESSION_VERIFYCODE_KEY)))
+            if(!dataMap.getString("CODE").equals(SessionUtil.getCodeFromSession()))
                 return InvokeResult.failure("验证码不正确！");
 
             dataMap.put("PASSWORD", MD5Util.getMD5(dataMap.getString("PASSWORD")));
@@ -74,10 +71,10 @@ public class LoginApiController extends ApiBaseController {
             UsernamePasswordToken token = new UsernamePasswordToken(dataMap.getString("USERNAME"), dataMap.getString("PASSWORD"));
             subject.login(token);
 
-            session.setAttribute(SessionUtil.SESSION_USER_KEY, dataMap);
+            SessionUtil.addUser2Session(dataMap);
 
             DataMap role = roleService.getRoleById(dataMap);
-            session.setAttribute(SessionUtil.SESSION_ROLE_KEY, role);
+            SessionUtil.addRole2Session(role);
 
             logger.end();
             return InvokeResult.success();

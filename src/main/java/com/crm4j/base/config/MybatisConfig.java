@@ -2,13 +2,11 @@ package com.crm4j.base.config;
 
 import com.crm4j.base.plugin.PagePlugin;
 import com.crm4j.base.util.DataMap;
-import com.crm4j.base.util.LoggerUtil;
 import com.crm4j.base.util.Page;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;

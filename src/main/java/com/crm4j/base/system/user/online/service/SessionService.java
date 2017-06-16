@@ -28,7 +28,7 @@ public class SessionService {
     public void kickUser(String userId) {
         Collection<Session> sessions = memorySessionDAO.getActiveSessions();
         for(Session session : sessions) {
-            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
+            DataMap user = SessionUtil.getCurUser();
             if(user == null)
                 continue;
             if(userId.equals(user.getString("USER_ID"))){
@@ -53,7 +53,7 @@ public class SessionService {
         List<DataMap> users = new ArrayList<DataMap>();
         List<DataMap> usersOut = new ArrayList<DataMap>();
         for(Session session : sessions) {
-            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
+            DataMap user = SessionUtil.getCurUser();
             if(user == null)
                 continue;
 

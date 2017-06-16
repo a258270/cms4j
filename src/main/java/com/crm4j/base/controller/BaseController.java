@@ -2,9 +2,6 @@ package com.crm4j.base.controller;
 
 import com.crm4j.base.util.DataMap;
 import com.crm4j.base.util.ShortUUID;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

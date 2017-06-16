@@ -3,8 +3,6 @@ package com.crm4j.base.interceptor;
 import com.crm4j.base.plugin.BaseSetting;
 import com.crm4j.base.util.Const;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.AsyncWebRequestInterceptor;
 import org.springframework.web.context.request.WebRequest;

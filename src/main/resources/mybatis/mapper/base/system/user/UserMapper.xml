@@ -110,4 +110,15 @@
         </if>
         WHERE USER_ID = #{USER_ID}
     </update>
+    <update id="editSelf" parameterType="DataMap">
+        UPDATE
+            SYS_USER
+        SET
+            NAME = #{NAME},
+            PHONE = #{PHONE}
+        <if test="PASSWORD != null">
+            ,PASSWORD = #{PASSWORD}
+        </if>
+        WHERE USER_ID = #{USER_ID}
+    </update>
 </mapper>

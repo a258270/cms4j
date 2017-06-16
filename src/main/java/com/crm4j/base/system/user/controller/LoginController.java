@@ -4,7 +4,6 @@ import com.crm4j.base.controller.PageBaseController;
 import com.crm4j.base.util.LoggerUtil;
 import com.crm4j.base.util.SessionUtil;
 import com.crm4j.base.util.VerifyCodeUtil;
-import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,9 +50,7 @@ public class LoginController extends PageBaseController {
 
         ImageIO.write(VerifyCodeUtil.createImage(strCode), "JPEG", response.getOutputStream());
 
-        Session session = SessionUtil.getSession();
-
-        session.setAttribute(SessionUtil.SESSION_VERIFYCODE_KEY, strCode);
+        SessionUtil.addCode2Session(strCode);
 
         response.getOutputStream().flush();
     }

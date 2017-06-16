@@ -78,7 +78,7 @@
 </body>
 <script language="JavaScript">
     var myselfinfo = function () {
-        showWindow("编辑个人信息", ctxPath + "/user/edit/${Session.session_user_key.USER_ID}")
+        showWindow("编辑个人信息", ctxPath + "/user/editself")
     };
 </script>
 </html>
