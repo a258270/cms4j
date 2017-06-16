@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost_3306
 Source Server Version : 50624
 Source Host           : localhost:3306
-Source Database       : crm4j
+Source Database       : cms4j
 
 Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2017-06-16 14:50:57
+Date: 2017-06-16 15:53:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,8 +80,8 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '超级管理员', null, '0', '0', '0', '246', '1');
-INSERT INTO `sys_role` VALUES ('suadmin', '超级管理员', '1', '0', '254', '0', '246', '1');
+INSERT INTO `sys_role` VALUES ('1', '超级管理员', null, '0', '0', '0', '254', '1');
+INSERT INTO `sys_role` VALUES ('suadmin', '超级管理员', '1', '0', '254', '0', '254', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -103,4 +103,4 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '系统管理员', 'suadmin', '2017-06-16 14:25:17', '0:0:0:0:0:0:0:1', '1', null);
+INSERT INTO `sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '系统管理员', 'suadmin', '2017-06-16 15:49:27', '0:0:0:0:0:0:0:1', '1', null);

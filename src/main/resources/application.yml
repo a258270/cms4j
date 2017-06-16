@@ -4,7 +4,7 @@ server:
 spring:
     datasource:
       name: test
-      url: jdbc:mysql://localhost:3306/crm4j?useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/cms4j?useUnicode=true&characterEncoding=utf-8
       username: root
       password: ''
       # 使用druid数据源
