@@ -77,6 +77,9 @@ public class UserService {
         String[] objArr = objs.split(",");
         List<String> objList = Arrays.asList(objArr);
         daoSupport.update("UserMapper.batchRemoves", objList);
+        for(String obj : objList) {
+            sessionService.kickUser(obj);
+        }
     }
 
     /**
