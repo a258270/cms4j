@@ -14,4 +14,6 @@ public class Const {
     public static final String PROFILE_PRO = "pro";//生产环境
 
     public static final String SUADMIN = "suadmin";//超级管理员
+
+    public static final String NOLOGIN_CODE = "-1";//用户没有登陆的状态码
 }

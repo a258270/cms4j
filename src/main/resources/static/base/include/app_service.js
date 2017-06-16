@@ -1,5 +1,11 @@
 var sendRequest = function (url, param, ajaxType, successFn, errorFn) {
     url = ctxPath + url;
+    if(url.indexOf("?") > 0) {
+        url += "&ajax=true";
+    }
+    else{
+        url += "?ajax=true";
+    }
     param = param ? param : {};
     ajaxType = ajaxType ? ajaxType : "POST";
     //needFormPostCfg = needFormPostCfg ? needFormPostCfg : true;
@@ -11,6 +17,10 @@ var sendRequest = function (url, param, ajaxType, successFn, errorFn) {
         dataType : "json",
         success : function (res) {
             layer.close(loader);
+            if(res.errorCode == "-1"){
+                location.replace(ctxPath + "/login");
+                return false;
+            }
             if(res.hasErrors){
                 showError(res.errorMessage);
                 return false;

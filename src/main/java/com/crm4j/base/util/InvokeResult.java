@@ -1,5 +1,6 @@
 package com.crm4j.base.util;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.Iterator;
@@ -77,5 +78,10 @@ public class InvokeResult extends JSONObject {
 
     public boolean isSuccess() {
         return this.containsKey("errorCode") && "0".equalsIgnoreCase(this.getString("errorCode"));
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }
