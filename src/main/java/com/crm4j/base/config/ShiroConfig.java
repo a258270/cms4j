@@ -2,6 +2,7 @@ package com.crm4j.base.config;
 
 import com.crm4j.base.interceptor.ShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
@@ -53,6 +54,7 @@ public class ShiroConfig {
         DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
         //设置realm.
         securityManager.setRealm(getShiroRealm());
+        securityManager.setSessionManager(defaultWebSessionManager());
         return securityManager;
     }
 
@@ -60,5 +62,17 @@ public class ShiroConfig {
     public ShiroRealm getShiroRealm(){
         ShiroRealm shiroRealm = new ShiroRealm();
         return shiroRealm;
+    }
+
+    @Bean
+    public MemorySessionDAO memorySessionDAO() {
+        return new MemorySessionDAO();
+    }
+
+    @Bean
+    public DefaultWebSessionManager defaultWebSessionManager() {
+        DefaultWebSessionManager defaultWebSessionManager = new DefaultWebSessionManager();
+        defaultWebSessionManager.setSessionDAO(memorySessionDAO());
+        return defaultWebSessionManager;
     }
 }

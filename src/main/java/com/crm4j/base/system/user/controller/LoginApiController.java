@@ -2,6 +2,7 @@ package com.crm4j.base.system.user.controller;
 
 import com.crm4j.base.controller.ApiBaseController;
 import com.crm4j.base.system.role.service.RoleService;
+import com.crm4j.base.system.user.service.SessionService;
 import com.crm4j.base.system.user.service.UserService;
 import com.crm4j.base.util.*;
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +29,8 @@ public class LoginApiController extends ApiBaseController {
     private UserService userService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private SessionService sessionService;
 
     /**
      * 用户登录
@@ -60,6 +63,8 @@ public class LoginApiController extends ApiBaseController {
 
             if(!Boolean.valueOf(dataMap.getString("STATUS")))
                 return InvokeResult.failure("用户被冻结，无法登录！");
+
+            sessionService.checkReLogin(dataMap.getString("USERNAME"));
 
             dataMap.put("LAST_LOGIN", DateUtil.getCurrentTime());
             dataMap.put("IP", this.getRequestIpAddress());
