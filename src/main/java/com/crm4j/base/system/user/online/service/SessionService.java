@@ -34,7 +34,9 @@ public class SessionService {
             if(user == null)
                 continue;
             if(userId.equals(user.getString("USER_ID"))){
-                session.setTimeout(0);
+                //session.setTimeout(0);
+                SessionUtil.removeUserFromSession();
+                SessionUtil.removeRoleFromSession();
                 break;
             }
         }

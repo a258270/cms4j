@@ -76,6 +76,8 @@ public class LoginApiController extends ApiBaseController {
             DataMap role = roleService.getRoleById(dataMap);
             SessionUtil.addRole2Session(role);
 
+            SessionUtil.removeCodeFromSession();
+
             logger.end();
             return InvokeResult.success();
     }
