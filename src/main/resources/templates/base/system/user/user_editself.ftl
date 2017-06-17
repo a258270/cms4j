@@ -36,7 +36,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属角色：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" name="ROLE_ID" id="ROLE_ID">
+				<select class="select" size="1" name="ROLE_ID" id="ROLE_ID" disabled>
                     <#list roleObjs as roleObj>
                         <#if roleObj.ROLE_ID == user.ROLE_ID>
                         <option value="${roleObj.ROLE_ID}" selected>${roleObj.ROLENAME}</option>
