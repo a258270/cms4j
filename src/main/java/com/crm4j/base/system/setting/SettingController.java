@@ -17,9 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/setting")
 public class SettingController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public SettingController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "1";
     }
 

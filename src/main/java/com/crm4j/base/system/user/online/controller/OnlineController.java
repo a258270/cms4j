@@ -21,9 +21,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/user/online")
 public class OnlineController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public OnlineController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "8";
     }
 

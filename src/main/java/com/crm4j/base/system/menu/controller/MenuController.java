@@ -20,12 +20,11 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/menu")
 public class MenuController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     @Autowired
     private MenuService menuService;
 
     public MenuController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "6";
     }
 

@@ -1,6 +1,7 @@
 package com.crm4j.base.controller;
 
 import com.crm4j.base.util.DataMap;
+import com.crm4j.base.util.LoggerUtil;
 import com.crm4j.base.util.ShortUUID;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -16,6 +17,8 @@ import java.net.UnknownHostException;
  * @create: 2017/5/31
  */
 public class BaseController {
+    protected LoggerUtil logger;
+    protected String menuId;
 
     public String getUUID() {
         return ShortUUID.randomUUID();

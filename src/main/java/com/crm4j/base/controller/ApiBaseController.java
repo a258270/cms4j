@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ApiBaseController extends BaseController {
 
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
-    protected String menuId;
+    public ApiBaseController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
+    }
 
     @ExceptionHandler({Exception.class})
     protected InvokeResult handleException(Exception e) {

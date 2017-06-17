@@ -22,7 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LoginApiController extends ApiBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
+
+    public LoginApiController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
+    }
 
     @Autowired
     private UserService userService;

@@ -21,12 +21,11 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/role")
 public class RoleController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     @Autowired
     private RoleService roleService;
 
     public RoleController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "3";
     }
 

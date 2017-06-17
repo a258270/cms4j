@@ -22,9 +22,8 @@ import java.util.List;
 @RequestMapping(value = "/dictionary/api")
 public class DictionaryApiController extends ApiBaseController {
 
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public DictionaryApiController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "5";
     }
 

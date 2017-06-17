@@ -20,8 +20,9 @@ import java.io.IOException;
  */
 @Controller
 public class LoginController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
+    public LoginController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
+    }
     /**
      * 加载登录页面
      * @return

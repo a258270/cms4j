@@ -23,9 +23,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/user")
 public class UserController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public UserController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "4";
     }
 

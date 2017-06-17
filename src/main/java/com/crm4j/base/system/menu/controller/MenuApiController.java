@@ -21,9 +21,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/menu/api")
 public class MenuApiController extends ApiBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public MenuApiController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "6";
     }
 

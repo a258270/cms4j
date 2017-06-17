@@ -23,9 +23,8 @@ import java.util.Properties;
 @RestController
 @RequestMapping(value = "/setting/api")
 public class SettingApiController extends ApiBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public SettingApiController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "1";
     }
 

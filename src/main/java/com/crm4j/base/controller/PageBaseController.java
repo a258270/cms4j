@@ -18,9 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class PageBaseController extends BaseController {
 
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
-    protected String menuId;
+    public PageBaseController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
+    }
 
     @ExceptionHandler({Exception.class})
     protected ResponseEntity<Object> handleException(Exception e) {

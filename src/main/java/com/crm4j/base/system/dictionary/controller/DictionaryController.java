@@ -23,9 +23,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/dictionary")
 public class DictionaryController extends PageBaseController {
-    private LoggerUtil logger = LoggerUtil.getLogger(this.getClass());
-
     public DictionaryController() {
+        this.logger = LoggerUtil.getLogger(this.getClass());
         this.menuId = "5";
     }
 
