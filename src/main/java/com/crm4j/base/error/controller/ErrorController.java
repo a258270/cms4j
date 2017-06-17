@@ -16,9 +16,9 @@ public class ErrorController extends PageBaseController {
      * 无权限页面
      * @return
      */
-    @RequestMapping(value = "/403")
+    @RequestMapping(value = "/401")
     public String to403() {
-        return "base/error/403";
+        return "base/error/401";
     }
 
     /**
