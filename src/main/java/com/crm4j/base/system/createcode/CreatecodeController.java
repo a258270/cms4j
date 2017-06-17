@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by Administrator on 2017/6/17.
+ * description:
+ * @author: zmj
+ * @create: 2017/6/17
  */
 @Controller
 @RequestMapping(value = "/createcode")

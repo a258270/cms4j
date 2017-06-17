@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by Administrator on 2017/6/17.
+ * description:
+ * @author: zmj
+ * @create: 2017/6/17
  */
 @RestController
 @RequestMapping(value = "/createcode/api")
