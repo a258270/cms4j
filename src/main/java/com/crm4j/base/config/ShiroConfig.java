@@ -41,7 +41,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/static/**","anon");
         filterChainDefinitionMap.put("/getcode*","anon");
         filterChainDefinitionMap.put("/tologin*","anon");
-        filterChainDefinitionMap.put("/403*","anon");
+        filterChainDefinitionMap.put("/404*","anon");
         filterChainDefinitionMap.put("/500*","anon");
 
 
