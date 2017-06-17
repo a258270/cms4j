@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 
 @SpringBootApplication
-public class Crm4jApplication {
+public class Cms4jApplication {
 
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
@@ -21,6 +21,6 @@ public class Crm4jApplication {
 		});
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(Crm4jApplication.class, args);
+		SpringApplication.run(Cms4jApplication.class, args);
 	}
 }
