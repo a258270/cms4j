@@ -12,64 +12,64 @@
     <table class="table table-border table-bordered table-striped">
         <tbody>
         <tr>
-            <td class="text-r"><code>基础包名：</code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入基础包名"></td>
-            <td class="text-l" style="color: #FF0000"><code>该类的基础包名,如：输入test，则实际包名为：com.cms4j.test</code></td>
+            <td class="text-r"><code>完整包名：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入完整包名"></td>
+            <td class="text-l"><code class="c-red">该类的完整包名,如：输入com.cms4j.base.test，则实际包名为：com.cms4j.base.test</code></td>
         </tr>
         <tr>
-            <td class="text-r"><code>上级包名：</code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入上级包名"></td>
-            <td class="text-l" style="color: #FF0000"><code>该类的上级包名,如：基础报名输入base，上级报名输入test，则实际包名为：com.cms4j.base.test</code></td>
-        </tr>
-        <tr>
-            <td class="text-r"><code>类名：</code></td>
+            <td class="text-r"><code>类名：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入类名"></td>
-            <td class="text-l" style="color: #FF0000"><code>首字母需大写</code></td>
+            <td class="text-l"><code class="c-red">首字母需大写</code></td>
         </tr>
         <tr>
-            <td class="text-r"><code>上级菜单：</code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入类名"></td>
-            <td class="text-l" style="color: #FF0000"><code>左侧菜单栏处显示</code></td>
+            <td class="text-r"><code>显示名称：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入显示名称"></td>
+            <td class="text-l"><code class="c-red">用于对该类型进行新增或修改时的显示名称</code></td>
         </tr>
         <tr>
-            <td class="text-r"><code>表前缀：</code></td>
-            <td><input type="text" class="input-text radius" value="TB_" placeholder="表前缀"></td>
-            <td class="text-l" style="color: #FF0000"><code>数据库表的前缀</code></td>
+            <td class="text-r"><code>上级菜单：<span class="c-red">*</span></code></td>
+            <td>
+                <select class="select input-text radius" size="1" name="PARENT_ID" id="selectbox">
+                    <option value="" selected></option>
+                <#list menuObjs as menuObj>
+                    <option value="${menuObj.MENU_ID}">${menuObj.NAME}</option>
+                </#list>
+                </select>
+            </td>
+            <td class="text-l"><code class="c-red">数据库表的前缀</code></td>
         </tr>
-        <#--<tr>
-            <td class="text-r"><code>菜单名称：</code></td>
-            <td><input type="text" class="input-text radius" placeholder="文本框"></td>
-            <td class="text-l" style="color: #FF0000"><code>input-text radius</code></td>
-            <td class="text-r"><code>类名：</code></td>
-            <td><input type="text" class="input-text radius" placeholder="文本框"></td>
-            <td class="text-r"><code></code></td>
-        </tr>-->
+        <tr>
+            <td class="text-r"><code>表前缀：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" value="TB_" placeholder="输入表前缀"></td>
+            <td class="text-l"><code class="c-red">左侧菜单栏处显示</code></td>
+        </tr>
         </tbody>
     </table>
+    <div class="mt-20">
+        <table class="table table-border table-bg">
+            <thead>
+                <th class="text-c">序号</th>
+                <th class="text-c">属性名称</th>
+                <th class="text-c">备注</th>
+                <th class="text-c">数据类型</th>
+                <th class="text-c">必填项</th>
+                <th class="text-c">前台录入</th>
+                <th class="text-c">默认值</th>
+                <th class="text-c">列表可见</th>
+                <th class="text-c">搜索项</th>
+                <th class="text-c">检索条件</th>
+                <th class="text-c">数据字典</th>
+                <th class="text-c">字典内码</th>
+                <th class="text-c">操作</th>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
-            <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" onclick="add()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 新增菜单</a>
-            <a href="javascript:;" onclick="back2Top()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe66b;</i> 返回顶级</a>
+            <a href="javascript:;" onclick="add();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 新增属性</a>
+            <a href="javascript:;" onclick="create();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 生成</a>
         </span>
-    </div>
-    <div class="mt-20">
-        <table id="tab" class="table table-border table-bordered table-hover table-bg table-sort">
-            <thead>
-            <th class="center">
-                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                    <input type="checkbox" name="ck_all" class="group-checkable" data-set="#sample_1 .checkboxes" />
-                    <span></span>
-                </label>
-            </th>
-            <th class="text-c">菜单名称</th>
-            <th class="text-c">链接地址</th>
-            <th class="text-c">排序</th>
-            <th class="text-c">操作</th>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
     </div>
 </div>
 </body>
