@@ -50,7 +50,7 @@ public class DataMap extends HashMap implements Serializable {
                     value = valueObj.toString();
                 }
 
-                key.replace("[]", "");
+                key = key.replace("[]", "");
                 this.put(key, value);
             }
         }
