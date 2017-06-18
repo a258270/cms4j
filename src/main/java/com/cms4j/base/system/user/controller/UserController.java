@@ -71,14 +71,14 @@ public class UserController extends PageBaseController {
     }
 
     /**
-     * 加载新增用户页面
+     * 加载编辑用户页面
      * @param id
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable String id) throws Exception {
-        logger.begin("加载新增用户页面");
+        logger.begin("加载编辑用户页面");
         ModelAndView modelAndView = this.getModelAndView();
         modelAndView.setViewName("base/system/user/user_edit");
         DataMap dataMap = new DataMap();
@@ -93,6 +93,11 @@ public class UserController extends PageBaseController {
         return modelAndView;
     }
 
+    /**
+     * 编辑个人信息
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/editself", method = RequestMethod.GET)
     public ModelAndView editSelf() throws Exception {
         logger.begin("加载编辑个人信息页面");
