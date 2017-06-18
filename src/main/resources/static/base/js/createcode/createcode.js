@@ -6,7 +6,59 @@ var add = function () {
 };
 
 var save = function () {
-    
+    layer.confirm("确定要生成代码？", {
+        btn: ["是", "否"]
+    }, function(index) {
+        layer.close(index);
+        toCreate();
+    });
+};
+
+var toCreate = function () {
+    if($("#COMPLETEPACK").val() == ""){
+        showError("完整包名不能为空！");
+        return false;
+    }
+
+    if($("#CLASSNAME").val() == "") {
+        showError("类名不能为空！");
+        return false;
+    }
+
+    if($("#SHOWNAME").val() == ""){
+        showError("显示名称不能为空！");
+        return false;
+    }
+
+    if($("#FATHERMENU").val() == "") {
+        showError("上级菜单不能为空！");
+        return false;
+    }
+
+    if($("#TABLEFRONT").val() == "") {
+        showError("表前缀不能为空！");
+        return false;
+    }
+
+    if(!(dataRows.length > 0)){
+        showError("属性至少为一项");
+        return false;
+    }
+
+    if(!/^[A-Z][a-zA-Z0-9_]+$/.test($("#CLASSNAME").val())){
+        showError("类名不合法！</br>格式要求：</br>1、首字母必须为大写字母</br>2、全名称只能包含字母、数字或者下划线");
+        return false;
+    }
+
+    var param = {};
+    param.COMPLETEPACK = $("#COMPLETEPACK").val();
+    param.CLASSNAME = $("#CLASSNAME").val();
+    param.SHOWNAME = $("#SHOWNAME").val();
+    param.FATHERMENU = $("#FATHERMENU").val();
+    param.TABLEFRONT = $("#TABLEFRONT").val();
+    param.PARAMS = dataRows;
+
+    sendRequest(ctxPath + "/createcode/api/create", param, "POST");
 };
 
 var edit = function (id) {

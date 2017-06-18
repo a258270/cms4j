@@ -88,11 +88,6 @@ var save = function () {
         return false;
     }
 
-    if(!/^[A-Z][a-zA-Z0-9_]+$/.test($("#NAME").val())){
-        showError("属性名称不合法！</br>格式要求：</br>1、首字母必须为大写字母</br>2、全名称只能包含字母、数字或者下划线");
-        return false;
-    }
-
     var data = "";
     data += $("#NAME").val() + ",";
     data += $("#REMARK").val() + ",";

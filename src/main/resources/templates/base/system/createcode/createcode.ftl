@@ -13,23 +13,23 @@
         <tbody>
         <tr>
             <td class="text-r"><code>完整包名：<span class="c-red">*</span></code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入完整包名"></td>
+            <td><input type="text" class="input-text radius" placeholder="输入完整包名" id="COMPLETEPACK" name="COMPLETEPACK"></td>
             <td class="text-l"><code class="c-red">该类的完整包名,如：输入com.cms4j.base.test，则实际包名为：com.cms4j.base.test</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>类名：<span class="c-red">*</span></code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入类名"></td>
+            <td><input type="text" class="input-text radius" placeholder="输入类名" id="CLASSNAME" name="CLASSNAME"></td>
             <td class="text-l"><code class="c-red">首字母需大写</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>显示名称：<span class="c-red">*</span></code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入显示名称"></td>
+            <td><input type="text" class="input-text radius" placeholder="输入显示名称" id="SHOWNAME" name="SHOWNAME"></td>
             <td class="text-l"><code class="c-red">用于对该类型进行新增或修改时的显示名称</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>上级菜单：<span class="c-red">*</span></code></td>
             <td>
-                <select class="select input-text radius" size="1" name="PARENT_ID" id="selectbox">
+                <select class="select input-text radius" size="1" name="PARENT_ID" id="FATHERMENU" name="FATHERMENU">
                     <option value="" selected></option>
                 <#list menuObjs as menuObj>
                     <option value="${menuObj.MENU_ID}">${menuObj.NAME}</option>
@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td class="text-r"><code>表前缀：<span class="c-red">*</span></code></td>
-            <td><input type="text" class="input-text radius" value="TB_" placeholder="输入表前缀"></td>
+            <td><input type="text" class="input-text radius" value="TB_" placeholder="输入表前缀" id="TABLEFRONT" name="TABLEFRONT"></td>
             <td class="text-l"><code class="c-red">左侧菜单栏处显示</code></td>
         </tr>
         </tbody>
@@ -68,7 +68,7 @@
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
             <a href="javascript:;" onclick="add();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 新增属性</a>
-            <a href="javascript:;" onclick="create();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 生成</a>
+            <a href="javascript:;" onclick="save();" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 生成</a>
         </span>
     </div>
 </div>
