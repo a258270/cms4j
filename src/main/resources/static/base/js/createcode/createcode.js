@@ -1,4 +1,5 @@
 var dataRows = [];
+var selectEdit = "";
 
 var add = function () {
     showWindow("新增属性", ctxPath + "/createcode/add");
@@ -6,6 +7,27 @@ var add = function () {
 
 var save = function () {
     
+};
+
+var edit = function (id) {
+    selectEdit = id;
+    showWindow("编辑属性", ctxPath + "/createcode/add");
+};
+
+var del = function (id) {
+    layer.confirm("确定要删除该项？", {
+        btn: ["是", "否"]
+    }, function(index) {
+        layer.close(index);
+        var dataRowsTmp = [];
+        for(var i = 0, len = dataRows.length; i < len; i++) {
+            if(i == id)
+                continue;
+            dataRowsTmp.push(dataRows[i]);
+        }
+        dataRows = dataRowsTmp;
+        createTable();
+    });
 };
 
 var createTable = function () {

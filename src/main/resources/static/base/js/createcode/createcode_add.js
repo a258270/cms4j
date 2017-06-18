@@ -9,7 +9,7 @@
  * ISSEARCH  是否为搜索项
  * SEARCHCONDITION  检索条件
  */
-
+var selectIndex = "";
 $(function () {
     $("#ISFRONT").change(function () {
        if($(this).val() == "是"){
@@ -43,6 +43,33 @@ $(function () {
             $("#DICCODE").prop("disabled", true);
         }
     });
+
+    if(parent.selectEdit != "") {
+        var data = parent.dataRows[parent.selectEdit].split(",");
+        $("#NAME").val(data[0]);
+        $("#REMARK").val(data[1]);
+        $("#DATATYPE").val(data[2]);
+        $("#ISREQUIRED").val(data[3]);
+        $("#ISFRONT").val(data[4]);
+        $("#DEFUALT").val(data[5]);
+        $("#ISLIST").val(data[6]);
+        $("#ISSEARCH").val(data[7]);
+        $("#SEARCHCONDITION").val(data[8]);
+        $("#ISDIC").val(data[9]);
+        $("#DICCODE").val(data[10]);
+
+        if($("#ISFRONT").val() == "否"){
+            $("#DEFUALT ").prop("disabled", false);
+        }
+
+        if($("#ISDIC").val() == "是") {
+            $("#DICCODE").prop("disabled", false);
+        }
+
+        selectIndex = parent.selectEdit;
+
+        parent.selectEdit = "";
+    }
 });
 
 var save = function () {
@@ -79,7 +106,13 @@ var save = function () {
     data += $("#ISDIC").val() + ",";
     data += $("#DICCODE").val();
 
-    parent.dataRows.push(data)
+    if(selectIndex != ""){
+        parent.dataRows[selectIndex] = data;
+    }
+    else{
+        parent.dataRows.push(data);
+    }
+
     parent.createTable();
 
     var index = parent.layer.getFrameIndex(window.name);
