@@ -1,5 +1,6 @@
 server:
   port: 8080
+  basepackage: com.cms4j
 
 spring:
     datasource:

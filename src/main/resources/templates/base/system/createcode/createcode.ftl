@@ -12,14 +12,29 @@
     <table class="table table-border table-bordered table-striped">
         <tbody>
         <tr>
-            <td class="text-r"><code>完整包名：<span class="c-red">*</span></code></td>
-            <td><input type="text" class="input-text radius" placeholder="输入完整包名" id="COMPLETEPACK" name="COMPLETEPACK"></td>
-            <td class="text-l"><code class="c-red">该类的完整包名,如：输入com.cms4j.base.test，则实际包名为：com.cms4j.base.test</code></td>
+            <td class="text-r"><code>上级包名：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入上级包名" id="UPPERPACKAGE" name="UPPERPACKAGE"></td>
+            <td class="text-l"><code class="c-red">基础包名+上级包名组成完整报名，基础包名(basepackage)请见application.yml文件</code></td>
+        </tr>
+        <tr>
+            <td class="text-r"><code>js存放路径：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入js存放路径" id="JSPATH" name="JSPATH"></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/static，即：若输入base/test，则该路径实际为项目中的resources/static/base/test</code></td>
+        </tr>
+        <tr>
+            <td class="text-r"><code>ftl存放路径：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入ftl存放路径" id="FTLPATH" name="FTLPATH"></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/templates，即：若输入base/test，则该路径实际为项目中的resources/templates/base/test</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>类名：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入类名" id="CLASSNAME" name="CLASSNAME"></td>
             <td class="text-l"><code class="c-red">首字母需大写</code></td>
+        </tr>
+        <tr>
+            <td class="text-r"><code>菜单名称：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入菜单名称" id="MENUNAME" name="MENUNAME"></td>
+            <td class="text-l"><code class="c-red">左侧菜单栏中的显示名称</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>显示名称：<span class="c-red">*</span></code></td>

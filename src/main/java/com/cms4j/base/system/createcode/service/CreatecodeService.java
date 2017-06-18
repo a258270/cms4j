@@ -1,9 +1,12 @@
 package com.cms4j.base.system.createcode.service;
 
 import com.cms4j.base.util.DataMap;
+import com.cms4j.base.util.DateUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,18 +19,27 @@ import java.util.List;
 public class CreatecodeService {
 
     public static Integer numberOfProperty = 11;//生成器的新增属性页面中的属性值
+    @Value("server.basepackage")
+    private String basePackage;
 
     public void createcode(DataMap dataMap) {
         /**
          * 生成页面参数
          */
-        String completePackName = dataMap.getString("COMPLETEPACK");//完整包名
+        String upperPackage = dataMap.getString("UPPERPACKAGE");//上级包名
+        String compeletePackage = basePackage + "." + upperPackage;//完整报名
+        String jsPath = dataMap.getString("JSPATH");
+        String ftlPath = dataMap.getString("FTLPATH");
         String className = dataMap.getString("CLASSNAME");//类名
         String classNameLower = dataMap.getString("CLASSNAME").toLowerCase();//全小写类名
         String classNameUpper = dataMap.getString("CLASSNAME").toUpperCase();//全大写类名
+        String menuName = dataMap.getString("MENUNAME");//菜单名称
         String showName = dataMap.getString("SHOWNAME");//显示名称
         String fatherMenuId = dataMap.getString("FATHERMENU");//上级菜单
+        String fatherMenuName = dataMap.getString("FATHERMENUNAME");//上级菜单名
         String isTalbeFront = dataMap.getString("TABLEFRONT");//表前缀
+        String curDate = DateUtil.date2Str(new Date(), "yyyy/MM/dd");//当前时间
+        String menuId = dataMap.getString("menuId");//菜单id
         List<DataMap> datas = new ArrayList<DataMap>();
 
         /**
@@ -50,5 +62,23 @@ public class CreatecodeService {
             data.put("dicCode", params[i + 10]);//字典内码
             datas.add(data);
         }
+
+        DataMap templateParam = new DataMap();
+        templateParam.put("basePackage", basePackage);
+        templateParam.put("upperPackage", upperPackage);
+        templateParam.put("compeletePackage", compeletePackage);
+        templateParam.put("jsPath", jsPath);
+        templateParam.put("ftlPath", ftlPath);
+        templateParam.put("className", className);
+        templateParam.put("classNameLower", classNameLower);
+        templateParam.put("classNameUpper", classNameUpper);
+        templateParam.put("menuName", menuName);
+        templateParam.put("showName", showName);
+        templateParam.put("fatherMenuId", fatherMenuId);
+        templateParam.put("fatherMenuName", fatherMenuName);
+        templateParam.put("isTalbeFront", isTalbeFront);
+        templateParam.put("curDate", curDate);
+        templateParam.put("menuId", menuId);
+        templateParam.put("datas", datas);
     }
 }

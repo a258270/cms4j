@@ -15,13 +15,28 @@ var save = function () {
 };
 
 var toCreate = function () {
-    if($("#COMPLETEPACK").val() == ""){
-        showError("完整包名不能为空！");
+    if($("#UPPERPACKAGE").val() == ""){
+        showError("上级包名不能为空！");
+        return false;
+    }
+
+    if($("#JSPATH").val() == "") {
+        showError("js存放路径不能为空！");
+        return false;
+    }
+
+    if($("#FTLPATH").val() == "") {
+        showError("ftl存放路径不能为空！");
         return false;
     }
 
     if($("#CLASSNAME").val() == "") {
         showError("类名不能为空！");
+        return false;
+    }
+
+    if($("#MENUNAME").val() == "") {
+        showError("菜单名称不能为空！");
         return false;
     }
 
@@ -51,8 +66,11 @@ var toCreate = function () {
     }
 
     var param = {};
-    param.COMPLETEPACK = $("#COMPLETEPACK").val();
+    param.UPPERPACKAGE = $("#UPPERPACKAGE").val();
+    param.JSPATH = $("#JSPATH").val();
+    param.FTLPATH = $("#FTLPATH").val();
     param.CLASSNAME = $("#CLASSNAME").val();
+    param.MENUNAME = $("#MENUNAME").val();
     param.SHOWNAME = $("#SHOWNAME").val();
     param.FATHERMENU = $("#FATHERMENU").val();
     param.TABLEFRONT = $("#TABLEFRONT").val();

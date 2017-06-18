@@ -1,8 +1,6 @@
-package com.cms4j.base.system.user.controller;
+package ${completePackName}.controller;
 
 import com.cms4j.base.controller.PageBaseController;
-import com.cms4j.base.system.role.service.RoleService;
-import com.cms4j.base.system.user.service.UserService;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.JurisdictionUtil;
 import com.cms4j.base.util.LoggerUtil;
@@ -13,34 +11,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 
+templateParam.put("completePackName", completePackName);
+templateParam.put("jsPath", jsPath);
+templateParam.put("ftlPath", ftlPath);
+templateParam.put("className", className);
+templateParam.put("classNameLower", classNameLower);
+templateParam.put("classNameUpper", classNameUpper);
+templateParam.put("showName", showName);
+templateParam.put("fatherMenuId", fatherMenuId);
+templateParam.put("isTalbeFront", isTalbeFront);
+templateParam.put("curDate", curDate);
+templateParam.put("datas", datas);
 /**
-* Description:
-* Created by zmj on 2017/6/15.
+* Description: ${className}Controller
+* Created by zmj on ${curDate}.
 */
 @Controller
-@RequestMapping(value = "/user")
-public class UserController extends PageBaseController {
-    public UserController() {
+@RequestMapping(value = "/${classNameLower}")
+public class ${className}Controller extends PageBaseController {
+    public ${className}Controller() {
         this.logger = LoggerUtil.getLogger(this.getClass());
-        this.menuId = "4";
+        this.menuId = "${menuId}";
     }
 
     @Autowired
-    private UserService userService;
-    @Autowired
-    private RoleService roleService;
+    private ${className}Service ${classNameLower}Service;
 
     /**
-    * 加载用户管理页面
+    * 加载${showName}页面
     * @return
     * @throws Exception
     */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index() throws Exception {
-        logger.begin("加载用户管理页面");
+        logger.begin("加载${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
         modelAndView.setViewName("base/system/user/user");
 
