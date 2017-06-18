@@ -1,4 +1,4 @@
-package com.cms4j.base.system.createcode;
+package com.cms4j.base.system.createcode.controller;
 
 import com.cms4j.base.controller.ApiBaseController;
 import com.cms4j.base.util.DataMap;
