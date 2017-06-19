@@ -2,9 +2,12 @@ package com.cms4j.base.system.createcode.service;
 
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.DateUtil;
+import com.cms4j.base.util.Freemarker;
+import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +25,7 @@ public class CreatecodeService {
     @Value("server.basepackage")
     private String basePackage;
 
-    public void createcode(DataMap dataMap) {
+    public void createcode(DataMap dataMap) throws IOException, TemplateException {
         /**
          * 生成页面参数
          */
@@ -99,5 +102,7 @@ public class CreatecodeService {
         templateParam.put("maxIsDicIndex", maxIsDicIndex);
         templateParam.put("maxIsNotDicIndex", maxIsNotDicIndex);
         templateParam.put("datas", datas);
+
+        Freemarker.createFile(templateParam);
     }
 }
