@@ -27,6 +27,11 @@
             <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/templates，即：若输入base/test，则该路径实际为项目中的resources/templates/base/test/上级包名</code></td>
         </tr>
         <tr>
+            <td class="text-r"><code>mapper存放路径：<span class="c-red">*</span></code></td>
+            <td><input type="text" class="input-text radius" placeholder="输入mapper存放路径" id="MAPPERPATH" name="MAPPERPATH"></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/mybatis/mapper，即：若输入base/test，则该路径实际为项目中的resources/mybatis/mapper/base/test/上级包名</code></td>
+        </tr>
+        <tr>
             <td class="text-r"><code>类名：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入类名" id="CLASSNAME" name="CLASSNAME"></td>
             <td class="text-l"><code class="c-red">首字母需大写</code></td>

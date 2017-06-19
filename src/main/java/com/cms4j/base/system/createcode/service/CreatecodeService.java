@@ -28,8 +28,9 @@ public class CreatecodeService {
          */
         String upperPackage = dataMap.getString("UPPERPACKAGE");//上级包名
         String compeletePackage = basePackage + "." + upperPackage;//完整报名
-        String jsPath = dataMap.getString("JSPATH");
-        String ftlPath = dataMap.getString("FTLPATH");
+        String jsPath = dataMap.getString("JSPATH");//js文件存放路径
+        String ftlPath = dataMap.getString("FTLPATH");//ftl文件存放路径
+        String mapperPath = dataMap.getString("MAPPERPATH");//mapper文件存放路径
         String className = dataMap.getString("CLASSNAME");//类名
         String classNameLower = dataMap.getString("CLASSNAME").toLowerCase();//全小写类名
         String classNameUpper = dataMap.getString("CLASSNAME").toUpperCase();//全大写类名
@@ -37,10 +38,14 @@ public class CreatecodeService {
         String showName = dataMap.getString("SHOWNAME");//显示名称
         String fatherMenuId = dataMap.getString("FATHERMENU");//上级菜单
         String fatherMenuName = dataMap.getString("FATHERMENUNAME");//上级菜单名
-        String isTalbeFront = dataMap.getString("TABLEFRONT");//表前缀
+        String isTableFront = dataMap.getString("TABLEFRONT");//表前缀
         String curDate = DateUtil.date2Str(new Date(), "yyyy/MM/dd");//当前时间
         String menuId = dataMap.getString("menuId");//菜单id
         List<DataMap> datas = new ArrayList<DataMap>();
+        Integer maxIsFrontIndex = -1;
+        Integer maxIsNotFrontIndex = -1;
+        Integer maxIsDicIndex = -1;
+        Integer maxIsNotDicIndex = -1;
 
         /**
          * 属性参数
@@ -61,6 +66,15 @@ public class CreatecodeService {
             data.put("isDic", params[i + 9]);//是否为数据字典
             data.put("dicCode", params[i + 10]);//字典内码
             datas.add(data);
+            if(params[i + 4] == "是")
+                maxIsFrontIndex = j;
+            else
+                maxIsNotFrontIndex = j;
+
+            if(params[i + 9] == "是")
+                maxIsDicIndex = j;
+            else
+                maxIsNotDicIndex = j;
         }
 
         DataMap templateParam = new DataMap();
@@ -69,6 +83,7 @@ public class CreatecodeService {
         templateParam.put("compeletePackage", compeletePackage);
         templateParam.put("jsPath", jsPath);
         templateParam.put("ftlPath", ftlPath);
+        templateParam.put("mapperPath", mapperPath);
         templateParam.put("className", className);
         templateParam.put("classNameLower", classNameLower);
         templateParam.put("classNameUpper", classNameUpper);
@@ -76,9 +91,13 @@ public class CreatecodeService {
         templateParam.put("showName", showName);
         templateParam.put("fatherMenuId", fatherMenuId);
         templateParam.put("fatherMenuName", fatherMenuName);
-        templateParam.put("isTalbeFront", isTalbeFront);
+        templateParam.put("isTableFront", isTableFront);
         templateParam.put("curDate", curDate);
         templateParam.put("menuId", menuId);
+        templateParam.put("maxIsFrontIndex", maxIsFrontIndex);
+        templateParam.put("maxIsNotFrontIndex", maxIsNotFrontIndex);
+        templateParam.put("maxIsDicIndex", maxIsDicIndex);
+        templateParam.put("maxIsNotDicIndex", maxIsNotDicIndex);
         templateParam.put("datas", datas);
     }
 }

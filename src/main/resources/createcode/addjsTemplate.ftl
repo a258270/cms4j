@@ -7,7 +7,7 @@ $(function () {
                 <#if data.isRequired == '是'>
                 required:true,
                 </#if>
-            }<#if data_has_next>,</#if>
+            }<#if data_has_next <= maxIsFrontIndex>,</#if>
             </#if>
             </#list>
         },

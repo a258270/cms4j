@@ -30,6 +30,11 @@ var toCreate = function () {
         return false;
     }
 
+    if($("#MAPPERPATH").val() == "") {
+        showError("mapper存放路径不能为空！");
+        return false;
+    }
+
     if($("#CLASSNAME").val() == "") {
         showError("类名不能为空！");
         return false;
@@ -69,6 +74,7 @@ var toCreate = function () {
     param.UPPERPACKAGE = $("#UPPERPACKAGE").val();
     param.JSPATH = $("#JSPATH").val();
     param.FTLPATH = $("#FTLPATH").val();
+    param.MAPPERPATH = $("#MAPPERPATH").val();
     param.CLASSNAME = $("#CLASSNAME").val();
     param.MENUNAME = $("#MENUNAME").val();
     param.SHOWNAME = $("#SHOWNAME").val();

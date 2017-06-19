@@ -1,6 +1,8 @@
 package ${completePackName}.controller;
 
 import com.cms4j.base.controller.PageBaseController;
+import com.cms4j.base.system.dictionary.service.DictionaryService;
+import ${completePackName}.service.${className}Service;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.JurisdictionUtil;
 import com.cms4j.base.util.LoggerUtil;
@@ -13,17 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-templateParam.put("completePackName", completePackName);
-templateParam.put("jsPath", jsPath);
-templateParam.put("ftlPath", ftlPath);
-templateParam.put("className", className);
-templateParam.put("classNameLower", classNameLower);
-templateParam.put("classNameUpper", classNameUpper);
-templateParam.put("showName", showName);
-templateParam.put("fatherMenuId", fatherMenuId);
-templateParam.put("isTalbeFront", isTalbeFront);
-templateParam.put("curDate", curDate);
-templateParam.put("datas", datas);
 /**
 * Description: ${className}Controller
 * Created by zmj on ${curDate}.
@@ -39,6 +30,9 @@ public class ${className}Controller extends PageBaseController {
     @Autowired
     private ${className}Service ${classNameLower}Service;
 
+    @Autowired
+    private DicitonaryService dictionaryService;
+
     /**
     * 加载${showName}页面
     * @return
@@ -48,10 +42,16 @@ public class ${className}Controller extends PageBaseController {
     public ModelAndView index() throws Exception {
         logger.begin("加载${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("base/system/user/user");
+        modelAndView.setViewName("${ftlPath}/${upperPackage}/index");
 
-        List<DataMap> roles = roleService.getAllSonRoles();
-        modelAndView.addObject("roleObjs", roles);
+        <#list datas as data>
+            <#if data.isDic == '是'>
+        DataMap ${data.dicCode} = new DataMap();
+        dataMap.put("DIC_ID", "${data.dicCode}");
+        List<DataMap> ${data.dicCode}s = dictionaryService.getDictionariesByFatherId(${data.dicCode});
+        modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
+            </#if>
+        </#list>
 
         this.setJurisdictionInfo(modelAndView, JurisdictionUtil.QUERY_QX);
         logger.end();
@@ -59,17 +59,24 @@ public class ${className}Controller extends PageBaseController {
     }
 
     /**
-    * 加载新增用户页面
+    * 加载新增${showName}页面
     * @return
     * @throws Exception
     */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView add() throws Exception {
-        logger.begin("加载新增用户页面");
+        logger.begin("加载新增${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("base/system/user/user_add");
-        List<DataMap> roleObjs = roleService.getAllSonRoles();
-        modelAndView.addObject("roleObjs", roleObjs);
+        modelAndView.setViewName("${ftlPath}/${upperPackage}/add");
+
+        <#list datas as data>
+            <#if data.isDic == '是'>
+        DataMap ${data.dicCode} = new DataMap();
+        dataMap.put("DIC_ID", "${data.dicCode}");
+        List<DataMap> ${data.dicCode}s = dictionaryService.getDictionariesByFatherId(${data.dicCode});
+        modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
+            </#if>
+        </#list>
 
         this.setJurisdictionInfo(modelAndView, JurisdictionUtil.ADD_QX);
         logger.end();
@@ -77,38 +84,31 @@ public class ${className}Controller extends PageBaseController {
     }
 
     /**
-    * 加载新增用户页面
+    * 加载编辑${showName}页面
     * @param id
     * @return
     * @throws Exception
     */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable String id) throws Exception {
-        logger.begin("加载新增用户页面");
+        logger.begin("加载编辑${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("base/system/user/user_edit");
+        modelAndView.setViewName("${ftlPath}/${upperPackage}/edit");
         DataMap dataMap = new DataMap();
-        dataMap.put("USER_ID", id);
-        dataMap = userService.getUserById(dataMap);
-        modelAndView.addObject("user", dataMap);
-        List<DataMap> roleObjs = roleService.getAllSonRoles();
-        modelAndView.addObject("roleObjs", roleObjs);
+        dataMap.put("${classNameUpper}_ID", id);
+        dataMap = ${classNameLower}Service.get${className}ById(dataMap);
+        modelAndView.addObject("${classNameLower}", dataMap);
+
+        <#list datas as data>
+            <#if data.isDic == '是'>
+        DataMap ${data.dicCode} = new DataMap();
+        dataMap.put("DIC_ID", "${data.dicCode}");
+        List<DataMap> ${data.dicCode}s = dictionaryService.getDictionariesByFatherId(${data.dicCode});
+        modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
+            </#if>
+        </#list>
 
         this.setJurisdictionInfo(modelAndView, JurisdictionUtil.EDIT_QX);
-        logger.end();
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/editself", method = RequestMethod.GET)
-    public ModelAndView editSelf() throws Exception {
-        logger.begin("加载编辑个人信息页面");
-        ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("base/system/user/user_editself");
-        DataMap user = SessionUtil.getCurUser();
-        modelAndView.addObject("user", user);
-        List<DataMap> roleObjs = roleService.getAllSonRoles();
-        modelAndView.addObject("roleObjs", roleObjs);
-
         logger.end();
         return modelAndView;
     }
