@@ -19,12 +19,12 @@
         <tr>
             <td class="text-r"><code>js存放路径：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入js存放路径" id="JSPATH" name="JSPATH"></td>
-            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/static，即：若输入base/test，则该路径实际为项目中的resources/static/base/test</code></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/static，即：若输入base/test，则该路径实际为项目中的resources/static/base/test/上级包名</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>ftl存放路径：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入ftl存放路径" id="FTLPATH" name="FTLPATH"></td>
-            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/templates，即：若输入base/test，则该路径实际为项目中的resources/templates/base/test</code></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/templates，即：若输入base/test，则该路径实际为项目中的resources/templates/base/test/上级包名</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>类名：<span class="c-red">*</span></code></td>
