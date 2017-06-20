@@ -52,6 +52,10 @@ public class CreatecodeService {
         Integer maxIsNotFrontIndex = -1;
         Integer maxIsDicIndex = -1;
         Integer maxIsNotDicIndex = -1;
+        Integer maxIsSearchIndex = -1;
+        Integer maxIsNotSearchIndex = -1;
+        Integer maxIsListIndex = -1;
+        Integer maxIsNotListIndex = -1;
 
         DataMap menu = new DataMap();
         menu.put("NAME", menuName);
@@ -86,12 +90,22 @@ public class CreatecodeService {
             data.put("isDic", params[i + 9]);//是否为数据字典
             data.put("dicCode", params[i + 10]);//字典内码
             datas.add(data);
-            if(params[i + 4] == "是")
+            if(params[i + 4].equals("是"))
                 maxIsFrontIndex = j;
             else
                 maxIsNotFrontIndex = j;
 
-            if(params[i + 9] == "是")
+            if(params[i + 6].equals("是"))
+                maxIsListIndex = j;
+            else
+                maxIsNotListIndex = j;
+
+            if(params[i + 7].equals("是"))
+                maxIsSearchIndex = j;
+            else
+                maxIsNotSearchIndex = j;
+
+            if(params[i + 9].equals("是"))
                 maxIsDicIndex = j;
             else
                 maxIsNotDicIndex = j;
@@ -118,6 +132,12 @@ public class CreatecodeService {
         templateParam.put("maxIsNotFrontIndex", maxIsNotFrontIndex);
         templateParam.put("maxIsDicIndex", maxIsDicIndex);
         templateParam.put("maxIsNotDicIndex", maxIsNotDicIndex);
+
+        templateParam.put("maxIsListIndex", maxIsListIndex);
+        templateParam.put("maxIsNotListIndex", maxIsNotListIndex);
+        templateParam.put("maxIsSearchIndex", maxIsSearchIndex);
+        templateParam.put("maxIsNotSearchIndex", maxIsNotSearchIndex);
+
         templateParam.put("datas", datas);
 
         Freemarker.createCode(templateParam);

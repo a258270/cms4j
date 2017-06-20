@@ -29,8 +29,8 @@ public class Freemarker {
         String templatePath = path + "createcode";
         String basePackage = createPath + "/" + dataMap.getString("basePackage").replace(".", "/");
         String javaFilePath = basePackage + "/" + dataMap.getString("upperPackage");
-        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath") + dataMap.getString("upperPackage");
-        String ftlFilePath = createPath + "/templates/" + dataMap.getString("ftlPath") + dataMap.getString("upperPackage");
+        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath") + "/" + dataMap.getString("upperPackage");
+        String ftlFilePath = createPath + "/templates/" + dataMap.getString("ftlPath") + "/" + dataMap.getString("upperPackage");
         String mapperFilePath = createPath + "/mybatis/mapper/" + dataMap.getString("mapperPath") + "/" + dataMap.getString("upperPackage");
 
         FileUtil.delAllFile(codePath);//清除之前生成的文件

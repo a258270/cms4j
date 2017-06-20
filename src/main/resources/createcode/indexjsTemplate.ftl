@@ -18,7 +18,7 @@ $(function () {
         className: "td-checkbox",
         orderable : false,
         bSortable : false,
-        data : "USER_ID",
+        data : "${classNameUpper}_ID",
         sClass : "text-c",
         render : function(data, type, row, meta) {
         var content = '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">';
@@ -27,10 +27,6 @@ $(function () {
             content += '</label>';
         return content;
         }
-        },
-        {
-            "data" : "${classNameUpper}_ID",
-            "className" : "text-c"
         },
         <#list datas as data>
             <#if data.isList == '是'>
@@ -68,7 +64,7 @@ $(function () {
         {
             "data" : "${data.propertyNameUpper}",
             "className" : "text-c",
-        }
+        },
         </#if>
                 </#if>
             </#if>
@@ -81,7 +77,7 @@ $(function () {
             if(EDIT_QX) {
                 innerStr += "<a title='编辑' href='javascript:;' onclick='edit(\"" + row.${classNameUpper}_ID + "\")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a>";
             }
-            if(DEL_QX && row.STATUS) {
+            if(DEL_QX) {
                 innerStr += "<a title='删除' href='javascript:;' onclick='del(\"" + row.${classNameUpper}_ID + "\")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a>";
             }
             return innerStr;
@@ -158,7 +154,7 @@ var onTableQuery = function () {
     var params = {};
 <#list datas as data>
     <#if data.isSearch == '是'>
-    params.${r"$('#"}${data.propertyNameUpper}${r"')"}.val();
+    params.${data.propertyNameUpper} = ${r"$('#"}${data.propertyNameUpper}${r"')"}.val();
     </#if>
 </#list>
     tableQuery(tab, params);

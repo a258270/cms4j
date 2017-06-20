@@ -4,12 +4,13 @@
     <!-- 根据Id获取数据 -->
     <select id="get${className}ById" parameterType="DataMap" resultType="DataMap">
         SELECT
+            ${classNameLower}.${classNameUpper}_ID,
             <#list datas as data>
             <#if data.isDic == '是'>
             ${classNameLower}.${data.propertyNameUpper},
-            dic${data_index}.NAME AS ${data.propertyNameUpper}_VALUE<#if data_index <= maxIsDicIndex>,</#if>
+            dic${data_index}.NAME AS ${data.propertyNameUpper}_VALUE<#if data_has_next>,</#if>
             <#else>
-            ${classNameLower}.${data.propertyNameUpper}<#if data_index <= maxIsNotDicIndex>,</#if>
+            ${classNameLower}.${data.propertyNameUpper}<#if data_has_next>,</#if>
             </#if>
             </#list>
         FROM
@@ -25,12 +26,13 @@
     <!-- 获取${showName}分页数据 -->
     <select id="get${className}s" parameterType="Page" resultType="DataMap">
         SELECT
+        ${classNameLower}.${classNameUpper}_ID,
         <#list datas as data>
             <#if data.isDic == '是'>
         ${classNameLower}.${data.propertyNameUpper},
-            dic${data_index}.NAME AS ${data.propertyNameUpper}_VALUE<#if data_index <= maxIsDicIndex>,</#if>
+            dic${data_index}.NAME AS ${data.propertyNameUpper}_VALUE<#if data_has_next>,</#if>
             <#else>
-        ${classNameLower}.${data.propertyNameUpper}<#if data_index <= maxIsNotDicIndex>,</#if>
+        ${classNameLower}.${data.propertyNameUpper}<#if data_has_next>,</#if>
             </#if>
         </#list>
         FROM
@@ -51,16 +53,16 @@
             AND ${classNameLower}.${data.propertyNameUpper} = ${r"#{"}params.${data.propertyNameUpper}${r"}"}
             </#if>
             <#if data.searchCondition == '>'>
-            AND ${classNameLower}.${data.propertyNameUpper} &gt; ${r"#{"}params.${data.propertyNameUpper}${r"}"}
+            AND ${classNameLower}.${data.propertyNameUpper} ${r"&gt;"} ${r"#{"}params.${data.propertyNameUpper}${r"}"}
             </#if>
             <#if data.searchCondition == '<'>
-            AND ${classNameLower}.${data.propertyNameUpper} &lt; ${r"#{"}params.${data.propertyNameUpper}${r"}"}
+            AND ${classNameLower}.${data.propertyNameUpper} ${r"&lt;"} ${r"#{"}params.${data.propertyNameUpper}${r"}"}
             </#if>
             <#if data.searchCondition == '<='>
-            AND ${classNameLower}.${data.propertyNameUpper} &lt;= ${r"#{"}params.${data.propertyNameUpper}${r"}"}
+            AND ${classNameLower}.${data.propertyNameUpper} ${r"&lt;"}= ${r"#{"}params.${data.propertyNameUpper}${r"}"}
             </#if>
             <#if data.searchCondition == '>='>
-            AND ${classNameLower}.${data.propertyNameUpper} &gt;= ${r"#{"}params.${data.propertyNameUpper}${r"}"}
+            AND ${classNameLower}.${data.propertyNameUpper} ${r"&gt;"}= ${r"#{"}params.${data.propertyNameUpper}${r"}"}
             </#if>
         ${r"</if>"}
             </#if>
@@ -86,14 +88,14 @@
         (
         ${classNameUpper}_ID,
         <#list datas as data>
-        ${data.propertyNameUpper}<#if data_index <= maxIsFrontIndex>,</#if>
+        ${data.propertyNameUpper}<#if data_has_next>,</#if>
         </#list>
         )
         VALUES
         (
         ${r"#{"}${classNameUpper}_ID${r"}"},
         <#list datas as data>
-        ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_index <= maxIsFrontIndex>,</#if>
+        ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_has_next>,</#if>
         </#list>
         )
     </insert>

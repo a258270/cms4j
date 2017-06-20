@@ -31,7 +31,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                 <input type="text" class="input-text" value="" placeholder="请输入${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
                 </#if>
                 <#if data.dataType == 'Date'>
-                <input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })" placeholder="请选择${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="input-text Wdate" readOnly>
+                <input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd' })" placeholder="请选择${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="input-text Wdate" readOnly>
                 </#if>
                 <#if data.dataType == 'Datetime'>
                 <input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })" placeholder="请选择${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="input-text Wdate" readOnly>

@@ -30,7 +30,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                     <option value="0">否</option>
                 </select>
             </#if>
-            <#if data.dataType == 'Date'><input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })" id="${data.propertyNameUpper}" class="input-text Wdate" style="width:120px;" readOnly></#if>
+            <#if data.dataType == 'Date'><input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="${data.propertyNameUpper}" class="input-text Wdate" style="width:120px;" readOnly></#if>
             <#if data.dataType == 'Datetime'><input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })" id="${data.propertyNameUpper}" class="input-text Wdate" style="width:120px;" readOnly></#if>
         </#if>
     </#if>
