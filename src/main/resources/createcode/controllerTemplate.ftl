@@ -31,7 +31,7 @@ public class ${className}Controller extends PageBaseController {
     private ${className}Service ${classNameLower}Service;
 
     @Autowired
-    private DicitonaryService dictionaryService;
+    private DictionaryService dictionaryService;
 
     /**
     * 加载${showName}页面

@@ -116,7 +116,7 @@ public class ${className}Service {
     * @throws Exception
     */
     @Transactional(rollbackFor = Exception.class)
-    public void edit${className}(DataMap dataMap) throws Exception {
+    public void editNotFrontOf${className}(DataMap dataMap) throws Exception {
     <#list datas as data>
         <#if data.isFront == '否'>
         if(StringUtils.isBlank(dataMap.getString("${data.propertyNameUpper}")))
