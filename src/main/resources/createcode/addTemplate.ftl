@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<#include "${r"${ctxPath}"}/base/include/head.ftl" />
-<#include "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
+${r"<#include"} "${r"${ctxPath}"}/base/include/head.ftl" />
+${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
     <!-- 页面独有文件 -->
     <script type="text/javascript" src="${r"${ctxPath}"}/static/${jsPath}/${upperPackage}/add.js?v=${r"${v}"}"></script>
 </head>

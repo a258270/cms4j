@@ -1,8 +1,8 @@
-package ${completePackName}.controller;
+package ${compeletePackage}.controller;
 
 import com.cms4j.base.controller.PageBaseController;
 import com.cms4j.base.system.dictionary.service.DictionaryService;
-import ${completePackName}.service.${className}Service;
+import ${compeletePackage}.service.${className}Service;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.JurisdictionUtil;
 import com.cms4j.base.util.LoggerUtil;

@@ -1,9 +1,11 @@
 package com.cms4j.base.system.createcode.service;
 
+import com.cms4j.base.system.menu.service.MenuService;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.DateUtil;
 import com.cms4j.base.util.Freemarker;
 import freemarker.template.TemplateException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +24,13 @@ import java.util.List;
 public class CreatecodeService {
 
     public static Integer numberOfProperty = 11;//生成器的新增属性页面中的属性值
-    @Value("server.basepackage")
+    @Value("${server.basepackage}")
     private String basePackage;
 
-    public void createcode(DataMap dataMap) throws IOException, TemplateException {
+    @Autowired
+    private MenuService menuService;
+
+    public void createcode(DataMap dataMap) throws Exception {
         /**
          * 生成页面参数
          */
@@ -40,15 +45,27 @@ public class CreatecodeService {
         String menuName = dataMap.getString("MENUNAME");//菜单名称
         String showName = dataMap.getString("SHOWNAME");//显示名称
         String fatherMenuId = dataMap.getString("FATHERMENU");//上级菜单
-        String fatherMenuName = dataMap.getString("FATHERMENUNAME");//上级菜单名
-        String isTableFront = dataMap.getString("TABLEFRONT");//表前缀
+        String tableFront = dataMap.getString("TABLEFRONT");//表前缀
         String curDate = DateUtil.date2Str(new Date(), "yyyy/MM/dd");//当前时间
-        String menuId = dataMap.getString("menuId");//菜单id
         List<DataMap> datas = new ArrayList<DataMap>();
         Integer maxIsFrontIndex = -1;
         Integer maxIsNotFrontIndex = -1;
         Integer maxIsDicIndex = -1;
         Integer maxIsNotDicIndex = -1;
+
+        DataMap menu = new DataMap();
+        menu.put("NAME", menuName);
+        menu.put("URL", "/" + classNameLower + "/index");
+        menu.put("ICON", "");
+        menu.put("PARENT_ID", fatherMenuId);
+        menu.put("SORT", 1);
+        menuService.addMenu(menu);
+
+        String menuId = String.valueOf(menuService.getMaxId());//菜单id
+
+        menu.put("MENU_ID", fatherMenuId);
+        menu = menuService.getMenuById(menu);
+        String fatherMenuName = menu.getString("NAME");//上级菜单名
 
         /**
          * 属性参数
@@ -94,7 +111,7 @@ public class CreatecodeService {
         templateParam.put("showName", showName);
         templateParam.put("fatherMenuId", fatherMenuId);
         templateParam.put("fatherMenuName", fatherMenuName);
-        templateParam.put("isTableFront", isTableFront);
+        templateParam.put("tableFront", tableFront);
         templateParam.put("curDate", curDate);
         templateParam.put("menuId", menuId);
         templateParam.put("maxIsFrontIndex", maxIsFrontIndex);
@@ -103,6 +120,6 @@ public class CreatecodeService {
         templateParam.put("maxIsNotDicIndex", maxIsNotDicIndex);
         templateParam.put("datas", datas);
 
-        Freemarker.createFile(templateParam);
+        Freemarker.createCode(templateParam);
     }
 }

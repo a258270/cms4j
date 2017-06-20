@@ -65,6 +65,11 @@ var toCreate = function () {
         return false;
     }
 
+    if(!/^[a-zA-Z0-9]+$/.test($("#UPPERPACKAGE").val())){
+        showError("上级包名不合法！</br>格式要求：</br>1、不能包含“.”、“/”等字符</br>2、全名称只能包含字母、数字");
+        return false;
+    }
+
     if(!/^[A-Z][a-zA-Z0-9_]+$/.test($("#CLASSNAME").val())){
         showError("类名不合法！</br>格式要求：</br>1、首字母必须为大写字母</br>2、全名称只能包含字母、数字或者下划线");
         return false;

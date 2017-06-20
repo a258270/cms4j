@@ -2,7 +2,6 @@ package com.cms4j.base.system.createcode.controller;
 
 import com.cms4j.base.controller.ApiBaseController;
 import com.cms4j.base.system.createcode.service.CreatecodeService;
-import com.cms4j.base.system.menu.service.MenuService;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.InvokeResult;
 import com.cms4j.base.util.JurisdictionUtil;
@@ -26,8 +25,6 @@ public class CreatecodeApiController extends ApiBaseController {
 
     @Autowired
     private CreatecodeService createcodeService;
-    @Autowired
-    private MenuService menuService;
 
     @RequestMapping(value = "/create")
     public InvokeResult create() throws Exception {

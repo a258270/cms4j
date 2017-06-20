@@ -29,32 +29,32 @@ $(function () {
         }
         },
         {
-        "data" : "${classNameUpper}_ID",
-        "className" : "text-c"
+            "data" : "${classNameUpper}_ID",
+            "className" : "text-c"
         },
         <#list datas as data>
             <#if data.isList == '是'>
                 <#if data.isDic == '是'>
         {
-            "data" : "${propertyNameUpper}_VALUE",
+            "data" : "${data.propertyNameUpper}_VALUE",
             "className" : "text-c"
         },
                 <#else>
         <#if data.dataType == 'Date'>
         {
-            "data" : "${propertyNameUpper}",
+            "data" : "${data.propertyNameUpper}",
             "className" : "text-c"
         },
         </#if>
         <#if data.dataType == 'Datetime'>
         {
-            "data" : "${propertyNameUpper}",
+            "data" : "${data.propertyNameUpper}",
             "className" : "text-c"
         },
         </#if>
         <#if data.dataType == 'Boolean'>
         {
-            "data" : "${propertyNameUpper}",
+            "data" : "${data.propertyNameUpper}",
             "className" : "text-c",
             "render" : function (data, type, row, meta) {
                 if(data){
@@ -66,7 +66,7 @@ $(function () {
         </#if>
         <#if data.dataType == 'String' || data.dataType == 'Integer' || data.dataType == 'Double'>
         {
-            "data" : "${propertyNameUpper}",
+            "data" : "${data.propertyNameUpper}",
             "className" : "text-c",
         }
         </#if>
@@ -119,8 +119,9 @@ $(function () {
         });
 });
 
+//请求接口的处理函数
 var successFn = function (res) {
-onTableQuery();
+    onTableQuery();
 };
 
 //新增${showName}
@@ -152,20 +153,23 @@ var batchdel = function () {
     });
 };
 
+//列表查询
 var onTableQuery = function () {
     var params = {};
 <#list datas as data>
-    <#if data.isSearch>
+    <#if data.isSearch == '是'>
     params.${r"$('#"}${data.propertyNameUpper}${r"')"}.val();
     </#if>
 </#list>
     tableQuery(tab, params);
 };
 
+//编辑${showName}
 var edit = function (id) {
     showWindow("编辑${showName}", ctxPath + "/${classNameLower}/edit/" + id);
 };
 
+//删除${showName}
 var del = function (id) {
     layer.confirm("确定要删除？", {
         btn: ["是", "否"]

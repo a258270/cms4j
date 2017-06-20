@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<#include "${r"${ctxPath}"}/base/include/head.ftl" />
-<#include "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
+${r"<#include"} "${r"${ctxPath}"}/base/include/head.ftl" />
+${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
     <!-- 页面独有文件 -->
     <script type="text/javascript" src="${r"${ctxPath}"}/static/plugin/h-ui/lib/datatables/1.10.0/jquery.dataTables.min.js?v=${r"${v}"}"></script>
     <script type="text/javascript" src="${r"${ctxPath}"}/static/${jsPath}/${upperPackage}/index.js?v=${r"${v}"}"></script>
@@ -54,7 +54,7 @@
             </th>
             <#list datas as data>
                 <#if data.isList == '是'>
-                    <th class="text-c">${data.remark}</th>
+            <th class="text-c">${data.remark}</th>
                 </#if>
             </#list>
             <th class="text-c">操作</th>

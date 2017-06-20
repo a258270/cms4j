@@ -75,6 +75,11 @@ public class MenuService {
      */
     @Transactional(rollbackFor = Exception.class)
     public void addMenu(DataMap dataMap) throws Exception {
+        Integer maxId = this.getMaxId();
+        if(maxId == null)
+            maxId = 0;//若不存在，menuId 从1开始
+        maxId++;
+        dataMap.put("MENU_ID", maxId);
         daoSupport.save("MenuMapper.addMenu", dataMap);
     }
 

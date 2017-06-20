@@ -16,18 +16,144 @@ import java.util.Locale;
  */
 public class Freemarker {
 
-    public static void createFile(DataMap dataMap) throws IOException, TemplateException {
+    /**
+     * 代码生成
+     * @param dataMap 数据信息
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createCode(DataMap dataMap) throws IOException, TemplateException {
         String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-        String createPath = path + "/code";
-        String templatePath = path + "/createcode";
-        File file = new File(createPath + "/" + dataMap.getString("className") + "Controller.java");
-        if(!file.getParentFile().exists())
+        String createPath = path + "code";
+        String templatePath = path + "createcode";
+        String basePackage = createPath + "/" + dataMap.getString("basePackage").replace(".", "/");
+        String javaFilePath = basePackage + "/" + dataMap.getString("upperPackage");
+        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath");
+        String ftlFilePath = createPath + "/templates/" + dataMap.getString("jsPath");
+        String mapperFilePath = createPath + "/mybatis/mapper/" + dataMap.getString("mapperPath") + "/" + dataMap.getString("upperPackage");
+
+        Freemarker.createControllerFile(dataMap, createPath, templatePath);
+        Freemarker.createServiceFile(dataMap, createPath, templatePath);
+        Freemarker.createMapperFile(dataMap, createPath, templatePath);
+        Freemarker.createSqlFile(dataMap, createPath, templatePath);
+        Freemarker.createFtlFile(dataMap, createPath, templatePath);
+        Freemarker.createJsFile(dataMap, createPath, templatePath);
+    }
+
+    /**
+     * 创建ftl文件
+     * @param dataMap 数据信息
+     * @param ftlFilePath 文件全路径（不包含文件名）
+     * @param templatePath 模板全路径（不包含文件名）
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createFtlFile(DataMap dataMap, String ftlFilePath, String templatePath) throws IOException, TemplateException {
+        String ftlPath = ftlFilePath;
+
+        Freemarker.createFile(dataMap, ftlPath, "index.ftl", templatePath, "indexTemplate.ftl");
+        Freemarker.createFile(dataMap, ftlPath, "add.ftl", templatePath, "addTemplate.ftl");
+        Freemarker.createFile(dataMap, ftlPath, "edit.ftl", templatePath, "editTemplate.ftl");
+    }
+
+    /**
+     * 创建js文件
+     * @param dataMap 数据信息
+     * @param jsFilePath 文件全路径（不包含文件名）
+     * @param templatePath 模板全路径（不包含文件名）
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createJsFile(DataMap dataMap, String jsFilePath, String templatePath) throws IOException, TemplateException {
+        String jsPath = jsFilePath;
+
+        Freemarker.createFile(dataMap, jsPath, "index.js", templatePath, "indexjsTemplate.ftl");
+        Freemarker.createFile(dataMap, jsPath, "add.js", templatePath, "addjsTemplate.ftl");
+        Freemarker.createFile(dataMap, jsPath, "edit.js", templatePath, "editjsTemplate.ftl");
+    }
+
+    /**
+     * 创建controller文件
+     * @param dataMap 数据信息
+     * @param javaFilePath 文件全路径（不包含文件名）
+     * @param templatePath 模板全路径（不包含文件名）
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createControllerFile(DataMap dataMap, String javaFilePath, String templatePath) throws IOException, TemplateException {
+        String controllerPath = javaFilePath + "/controller";
+
+        Freemarker.createFile(dataMap, controllerPath, dataMap.getString("className") + "Controller.java", templatePath, "controllerTemplate.ftl");
+        Freemarker.createFile(dataMap, controllerPath, dataMap.getString("className") + "ApiController.java", templatePath, "controllerApiTemplate.ftl");
+    }
+
+    /**
+     * 创建service文件
+     * @param dataMap 数据信息
+     * @param javaFilePath 文件全路径（不包含文件名）
+     * @param templatePath 模板全路径（不包含文件名）
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createServiceFile(DataMap dataMap, String javaFilePath, String templatePath) throws IOException, TemplateException {
+        String servicePath = javaFilePath + "/service";
+
+        Freemarker.createFile(dataMap, servicePath, dataMap.getString("className") + "Service.java", templatePath, "serviceTemplate.ftl");
+    }
+
+    /**
+     * 创建mapper文件
+     * @param dataMap 数据信息
+     * @param mapperFilePath 文件全路径（不包含文件名）
+     * @param templatePath 模板全路径（不包含文件名）
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createMapperFile(DataMap dataMap, String mapperFilePath, String templatePath) throws IOException, TemplateException {
+        String mapperPath = mapperFilePath;
+
+        Freemarker.createFile(dataMap, mapperPath, dataMap.getString("className") + "Mapper.xml", templatePath, "mapperTemplate.ftl");
+    }
+
+    /**
+     * 创建sql文件
+     * @param dataMap 数据信息
+     * @param sqlFilePath 文件全路径（不包含文件名）
+     * @param templatePath 模板全路径（不包含文件名）
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createSqlFile(DataMap dataMap, String sqlFilePath, String templatePath) throws IOException, TemplateException {
+        String sqlPath = sqlFilePath;
+
+        Freemarker.createFile(dataMap, sqlPath, dataMap.getString("className") + "Sql.sql", templatePath, "sqlTemplate.ftl");
+    }
+
+    /**
+     * 创建文件
+     * @param dataMap 数据信息
+     * @param filePath 创建的文件的全路径（不包含文件名）
+     * @param fileName 创建的文件名
+     * @param templatePath 模板文件的全路径（不包含文件名）
+     * @param templateName 模板文件名
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public static void createFile(DataMap dataMap, String filePath, String fileName, String templatePath, String templateName) throws IOException, TemplateException {
+        if(!filePath.substring(filePath.length() - 1).equals("/"))
+            filePath += "/";
+        if(!templatePath.substring(templatePath.length() - 1).equals("/"))
+            templatePath += "/";
+        File file = new File(filePath + fileName);
+        if(!file.getParentFile().exists()){
             file.getParentFile().mkdirs();
-        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"));
-        Configuration cfg = new Configuration();  												//通过Freemaker的Configuration读取相应的ftl
+        }
+
+        Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"));
+        Configuration cfg = new Configuration();
         cfg.setEncoding(Locale.CHINA, "utf-8");
-        cfg.setDirectoryForTemplateLoading(new File(templatePath));		//设定去哪里读取相应的ftl模板文件
-        Template template = cfg.getTemplate("controllerTemplate.ftl");
-        template.process(dataMap, out);
+        cfg.setDirectoryForTemplateLoading(new File(templatePath));
+        Template template = cfg.getTemplate(templateName);
+        template.process(dataMap, writer);
     }
 }

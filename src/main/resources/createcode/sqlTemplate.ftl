@@ -1,10 +1,10 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for ${classNameUpper}
+-- Table structure for ${tableFront}${classNameUpper}
 -- ----------------------------
-DROP TABLE IF EXISTS ${r"`"}${classNameUpper}${r"`"};
-CREATE TABLE ${r"`"}${classNameUpper}${r"`"} (
+DROP TABLE IF EXISTS ${r"`"}${tableFront}${classNameUpper}${r"`"};
+CREATE TABLE ${r"`"}${tableFront}${classNameUpper}${r"`"} (
 ${r"`"}${classNameUpper}_ID${r"`"} varchar(255) NOT NULL,
 <#list datas as data>
     <#if data.dataType == 'String'>

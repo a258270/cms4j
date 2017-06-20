@@ -1,7 +1,7 @@
-package ${compeletePackage}.controller;
+package server.basepackage.basepackage.controller;
 
 import com.cms4j.base.controller.ApiBaseController;
-import ${compeletePackage}.service.${className}Service;
+import server.basepackage.basepackage.service.TTestService;
 import com.cms4j.base.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,50 +11,46 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
-* Description: ${className}ApiController
-* Created by zmj on ${curDate}.
+* Description: TTestApiController
+* Created by zmj on 2017/06/20.
 */
 @RestController
-@RequestMapping(value = "/${classNameLower}/api")
-public class ${className}ApiController extends ApiBaseController {
-    public ${className}ApiController() {
+@RequestMapping(value = "/ttest/api")
+public class TTestApiController extends ApiBaseController {
+    public TTestApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());
-        this.menuId = "${menuId}";
+        this.menuId = "17";
     }
 
     @Autowired
-    private ${className}Service ${classNameLower}Service;
+    private TTestService ttestService;
 
     /**
-    * 获取${showName}分页数据
+    * 获取测试名称分页数据
     * @return
     * @throws Exception
     */
-    @RequestMapping(value = "/get${classNameLower}s", method = RequestMethod.POST)
+    @RequestMapping(value = "/getttests", method = RequestMethod.POST)
     public PageDto getUsers() throws Exception {
         if(!this.validJurisdiction(JurisdictionUtil.QUERY_QX))
         return new PageDto();
-        logger.begin("获取${showName}分页数据");
+        logger.begin("获取测试名称分页数据");
         DataMap dataMap = this.getDataMap();
-        <#list datas as data>
-            <#if data.isSearch == '是'>
-        if(StringUtils.isBlank(dataMap.getString("${data.propertyNameUpper}")))
-            dataMap.put("${data.propertyNameUpper}", null);
-            </#if>
-        </#list>
+        if(StringUtils.isBlank(dataMap.getString("NAME")))
+            dataMap.put("NAME", null);
         Page page = new Page();
         page.setParams(dataMap);
         page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")));
         page.setPageSize(Integer.valueOf(dataMap.getString("iDisplayLength")));
-        List<DataMap> ${classNameLower}s = ${classNameLower}Service.get${className}s(page);
-        page.setResults(${classNameLower}s);
+        List<DataMap> ttests = ttestService.getTTests(page);
+        page.setResults(ttests);
         logger.end();
 
         return PageConverter.toPageDto(page, Integer.valueOf(dataMap.getString("sEcho")));
     }
 
     /**
-    * 批量删除${showName}
+    * 批量删除测试名称
     * @return
     * @throws Exception
     */
@@ -63,15 +59,15 @@ public class ${className}ApiController extends ApiBaseController {
         if(!this.validJurisdiction(JurisdictionUtil.DEL_QX))
         return this.interceptorJurisdiction();
 
-        logger.begin("批量删除${showName}");
+        logger.begin("批量删除测试名称");
         DataMap dataMap = this.getDataMap();
-        ${classNameLower}Service.batchRemoves(dataMap.getString("batchremoves"));
+        ttestService.batchRemoves(dataMap.getString("batchremoves"));
         logger.end();
         return InvokeResult.success();
     }
 
     /**
-    * 新增${showName}
+    * 新增测试名称
     * @return
     * @throws Exception
     */
@@ -80,15 +76,15 @@ public class ${className}ApiController extends ApiBaseController {
         if(!this.validJurisdiction(JurisdictionUtil.ADD_QX))
         return this.interceptorJurisdiction();
 
-        logger.begin("新增${showName}");
+        logger.begin("新增测试名称");
         DataMap dataMap = this.getDataMap();
-        ${classNameLower}Service.add${className}(dataMap);
+        ttestService.addTTest(dataMap);
         logger.end();
         return InvokeResult.success();
     }
 
     /**
-    * 编辑${showName}
+    * 编辑测试名称
     * @return
     * @throws Exception
     */
@@ -97,10 +93,10 @@ public class ${className}ApiController extends ApiBaseController {
         if(!this.validJurisdiction(JurisdictionUtil.EDIT_QX))
         return this.interceptorJurisdiction();
 
-        logger.begin("编辑${showName}");
+        logger.begin("编辑测试名称");
         DataMap dataMap = this.getDataMap();
 
-        ${classNameLower}Service.edit${className}(dataMap);
+        ttestService.editTTest(dataMap);
         logger.end();
         return InvokeResult.success();
     }

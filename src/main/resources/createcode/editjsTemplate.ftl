@@ -3,7 +3,7 @@ $(function () {
         rules:{
         <#list datas as data>
             <#if data.isFront == '是'>
-            ${propertyNameUpper}:{
+        ${data.propertyNameUpper}:{
                 <#if data.isRequired == '是'>
                 required:true,
                 </#if>

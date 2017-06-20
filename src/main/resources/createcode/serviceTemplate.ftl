@@ -1,4 +1,4 @@
-package ${completePackName}.service;
+package ${compeletePackage}.service;
 
 import com.cms4j.base.dao.DaoSupport;
 import com.cms4j.base.util.DataMap;

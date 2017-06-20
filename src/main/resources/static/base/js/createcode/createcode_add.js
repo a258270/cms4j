@@ -83,6 +83,13 @@ var save = function () {
         return false;
     }
 
+    if($("#ISSEARCH").val() == "是") {
+        if($("#SEARCHCONDITION") == "无") {
+            showError("请选择检索条件");
+            return false;
+        }
+    }
+
     if($("#DICCODE").val() == "") {
         showError("字典内码不能为空！");
         return false;

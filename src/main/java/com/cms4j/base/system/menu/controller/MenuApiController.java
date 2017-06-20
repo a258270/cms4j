@@ -75,13 +75,6 @@ public class MenuApiController extends ApiBaseController {
             dataMap.put("ICON", "");
         }
 
-        Integer maxId = 1;
-        DataMap maxIdMenu = menuService.getMaxIdMenu();
-        if(maxIdMenu != null)
-            maxId = (Integer) maxIdMenu.get("MENU_ID");
-
-        maxId++;
-        dataMap.put("MENU_ID", maxId);
         menuService.addMenu(dataMap);
         logger.end();
 

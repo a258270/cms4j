@@ -6,14 +6,14 @@
         SELECT
             <#list datas as data>
             <#if data.isDic == '是'>
-            ${classNameLower}.${propertyNameUpper},
-            dic${data_index}.NAME AS ${propertyNameUpper}_VALUE<#if data_has_next <= maxIsDicIndex>,</#if>
+            ${classNameLower}.${data.propertyNameUpper},
+            dic${data_index}.NAME AS ${data.propertyNameUpper}_VALUE<#if data_index <= maxIsDicIndex>,</#if>
             <#else>
-            ${classNameLower}.${propertyNameUpper}<#if data_has_next <= maxIsNotDicIndex>,</#if>
+            ${classNameLower}.${data.propertyNameUpper}<#if data_index <= maxIsNotDicIndex>,</#if>
             </#if>
             </#list>
         FROM
-        ${isTableFront}${classNameUpper} ${classNameLower}
+        ${tableFront}${classNameUpper} ${classNameLower}
         <#list datas as data>
             <#if data.isDic == '是'>
         LEFT JOIN SYS_DICTIONARIES dic${data_index} ON dic${data_index}.DIC_ID = ${classNameLower}.${data.propertyNameUpper}
@@ -27,14 +27,14 @@
         SELECT
         <#list datas as data>
             <#if data.isDic == '是'>
-        ${classNameLower}.${propertyNameUpper},
-            dic${data_index}.NAME AS ${propertyNameUpper}_VALUE<#if data_has_next <= maxIsDicIndex>,</#if>
+        ${classNameLower}.${data.propertyNameUpper},
+            dic${data_index}.NAME AS ${data.propertyNameUpper}_VALUE<#if data_index <= maxIsDicIndex>,</#if>
             <#else>
-        ${classNameLower}.${propertyNameUpper}<#if data_has_next <= maxIsNotDicIndex>,</#if>
+        ${classNameLower}.${data.propertyNameUpper}<#if data_index <= maxIsNotDicIndex>,</#if>
             </#if>
         </#list>
         FROM
-        ${isTableFront}${classNameUpper} ${classNameLower}
+        ${tableFront}${classNameUpper} ${classNameLower}
         <#list datas as data>
             <#if data.isDic == '是'>
         LEFT JOIN SYS_DICTIONARIES dic${data_index} ON dic${data_index}.DIC_ID = ${classNameLower}.${data.propertyNameUpper}
@@ -70,7 +70,7 @@
     <!-- 批量删除${showName} -->
     <delete id="batchRemoves" parameterType="java.util.List">
         DELETE FROM
-            ${isTableFront}${classNameUpper}
+            ${tableFront}${classNameUpper}
         WHERE
             ${classNameUpper}_ID
         IN
@@ -82,7 +82,7 @@
     <!-- 新增${showName} -->
     <insert id="add${className}" parameterType="DataMap">
         INSERT INTO
-            ${isTableFront}${classNameUpper}
+            ${tableFront}${classNameUpper}
         (
         ${classNameUpper}_ID,
         <#list datas as data>
@@ -101,7 +101,7 @@
     <!-- 编辑删除${showName} -->
     <update id="edit${className}" parameterType="DataMap">
         UPDATE
-            ${isTableFront}${classNameUpper}
+            ${tableFront}${classNameUpper}
         SET
             <#list datas as data>
                 <#if data.isFront == '是'>
@@ -117,16 +117,16 @@
         WHERE
             ${classNameUpper}_ID = ${r"#{"}${classNameUpper}_ID${r"}"}
     </update>
-    <#if maxIsNotFrontIndex > -1>
+    <#if (maxIsNotFrontIndex > -1)>
     <!-- 编辑${showName}中的非前台录入属性 -->
     <update id="editNotFrontOf${className}" parameterType="DataMap">
         UPDATE
-            ${isTableFront}${classNameUpper}
+            ${tableFront}${classNameUpper}
         SET
             <#list datas as data>
                 <#if data.isFront == '否'>
             ${r"<if test='"}${data.propertyNameUpper}${r" != null'>"}
-            ${data.propertyNameUpper} = ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_has_next <= maxIsNotFrontIndex>,</#if>
+            ${data.propertyNameUpper} = ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_index <= maxIsNotFrontIndex>,</#if>
             ${r"</if>"}
                 </#if>
             </#list>
