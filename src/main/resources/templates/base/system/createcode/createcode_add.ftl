@@ -10,6 +10,18 @@
 <article class="page-container">
     <form method="post" class="form form-horizontal" id="form">
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3 c-red">主键策略：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <label class="c-red">无需添加主键，系统默认增加内容为UUID的主键ID字段</label>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3 c-red">注意事项①：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <label class="c-red">当是否前端录入为“否”时，生成的代码的Service中会给这些字段加上默认值，当数据类型为String、Integer、Double时，默认值即为设置值，当数据类型为Date、Datetime时，默认值为当前时间，当数据类型为Boolean时，若设置默认值则默认值为true，若不设置，则为false</label>
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>属性名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="" placeholder="请输入属性名称" id="NAME" name="NAME">
@@ -53,7 +65,7 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>默认值：</label>
+            <label class="form-label col-xs-4 col-sm-3">默认值：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="无" placeholder="请输入默认值" id="DEFUALT" name="DEFUALT" disabled>
             </div>

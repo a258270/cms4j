@@ -83,12 +83,25 @@ var save = function () {
         return false;
     }
 
-    if($("#ISSEARCH").val() == "是") {
+    if($("#ISFRONT").val() == "否") {
+        if($("#DATATYPE").val() == "Double" || $("#DATATYPE").val() == "Integer") {
+            if($("#DEFUALT").val() == ""){
+                showError("数据类型为Double或者Integer时，默认值为必填项");
+                return false;
+            }
+        }
+    }
 
+    if($("#ISSEARCH").val() == "是") {
         if($("#SEARCHCONDITION").val() == "无") {
             showError("请选择检索条件");
             return false;
         }
+    }
+
+    if($("#ISDIC").val() == "是" && $("#DATATYPE").val() != "String") {
+        showError("当字段为数据字典时，数据类型必须为String");
+        return false;
     }
 
     if($("#DICCODE").val() == "") {
