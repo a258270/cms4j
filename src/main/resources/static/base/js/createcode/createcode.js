@@ -14,6 +14,10 @@ var save = function () {
     });
 };
 
+var successFn = function (res) {
+    window.open(ctxPath + "/createcode/download");
+};
+
 var toCreate = function () {
     if($("#UPPERPACKAGE").val() == ""){
         showError("上级包名不能为空！");
@@ -87,7 +91,7 @@ var toCreate = function () {
     param.TABLEFRONT = $("#TABLEFRONT").val();
     param.PARAMS = dataRows;
 
-    sendRequest(ctxPath + "/createcode/api/create", param, "POST");
+    sendRequest(ctxPath + "/createcode/api/create", param, "POST", successFn);
 };
 
 var edit = function (id) {

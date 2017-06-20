@@ -5,6 +5,11 @@
     <!-- 页面独有文件 -->
     <script src="${ctxPath}/static/base/js/index.js?v=${v}"></script>
 </head>
+<script>
+if (window.top !== window.self) {
+    window.top.location = window.location;
+}
+</script>
 <body>
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">

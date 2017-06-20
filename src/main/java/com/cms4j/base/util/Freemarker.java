@@ -22,22 +22,27 @@ public class Freemarker {
      * @throws IOException
      * @throws TemplateException
      */
-    public static void createCode(DataMap dataMap) throws IOException, TemplateException {
+    public static void createCode(DataMap dataMap) throws Exception {
         String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-        String createPath = path + "code";
+        String codePath = path + "code";
+        String createPath = path + "code/code";
         String templatePath = path + "createcode";
         String basePackage = createPath + "/" + dataMap.getString("basePackage").replace(".", "/");
         String javaFilePath = basePackage + "/" + dataMap.getString("upperPackage");
-        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath");
-        String ftlFilePath = createPath + "/templates/" + dataMap.getString("jsPath");
+        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath") + dataMap.getString("upperPackage");
+        String ftlFilePath = createPath + "/templates/" + dataMap.getString("ftlPath") + dataMap.getString("upperPackage");
         String mapperFilePath = createPath + "/mybatis/mapper/" + dataMap.getString("mapperPath") + "/" + dataMap.getString("upperPackage");
 
-        Freemarker.createControllerFile(dataMap, createPath, templatePath);
-        Freemarker.createServiceFile(dataMap, createPath, templatePath);
-        Freemarker.createMapperFile(dataMap, createPath, templatePath);
+        FileUtil.delAllFile(codePath);//清除之前生成的文件
+
+        Freemarker.createControllerFile(dataMap, javaFilePath, templatePath);
+        Freemarker.createServiceFile(dataMap, javaFilePath, templatePath);
+        Freemarker.createMapperFile(dataMap, mapperFilePath, templatePath);
         Freemarker.createSqlFile(dataMap, createPath, templatePath);
-        Freemarker.createFtlFile(dataMap, createPath, templatePath);
-        Freemarker.createJsFile(dataMap, createPath, templatePath);
+        Freemarker.createFtlFile(dataMap, ftlFilePath, templatePath);
+        Freemarker.createJsFile(dataMap, jsFilePath, templatePath);
+
+        FileUtil.zip(createPath, codePath + "/code.zip");
     }
 
     /**

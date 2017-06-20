@@ -5,11 +5,19 @@ import com.cms4j.base.system.menu.service.MenuService;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.JurisdictionUtil;
 import com.cms4j.base.util.LoggerUtil;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -51,5 +59,14 @@ public class CreatecodeController extends PageBaseController {
         this.setJurisdictionInfo(modelAndView, JurisdictionUtil.ADD_QX);
         logger.end();
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/download")
+    public ResponseEntity<byte[]> download(HttpServletResponse response) throws Exception {
+        logger.begin("下载生成代码");
+        File file = new File(ClassUtils.getDefaultClassLoader().getResource("").getPath() + "code/code.zip");
+        HttpHeaders headers = new HttpHeaders(); headers.setContentType(MediaType.APPLICATION_OCTET_STREAM); headers.setContentDispositionFormData("attachment", "code.zip");
+        logger.end();
+        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
     }
 }

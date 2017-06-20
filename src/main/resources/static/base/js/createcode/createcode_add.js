@@ -84,7 +84,8 @@ var save = function () {
     }
 
     if($("#ISSEARCH").val() == "是") {
-        if($("#SEARCHCONDITION") == "无") {
+
+        if($("#SEARCHCONDITION").val() == "无") {
             showError("请选择检索条件");
             return false;
         }
