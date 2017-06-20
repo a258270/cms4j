@@ -7,6 +7,12 @@ $(function () {
                 <#if data.isRequired == '是'>
                 required:true,
                 </#if>
+                <#if data.dataType == 'Integer'>
+                isInteger:true,
+                </#if>
+                <#if data.dataType == 'Double'>
+                isNumber:true,
+                </#if>
             }<#if data_index <= maxIsFrontIndex>,</#if>
             </#if>
         </#list>

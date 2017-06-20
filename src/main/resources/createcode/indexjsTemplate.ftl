@@ -45,7 +45,10 @@ $(function () {
         <#if data.dataType == 'Datetime'>
         {
             "data" : "${data.propertyNameUpper}",
-            "className" : "text-c"
+            "className" : "text-c",
+            "render" : function (data, type, row, meta) {
+                return getLocalTime(data);
+            },
         },
         </#if>
         <#if data.dataType == 'Boolean'>

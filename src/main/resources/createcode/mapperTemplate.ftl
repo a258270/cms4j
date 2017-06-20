@@ -100,7 +100,7 @@
         )
     </insert>
 
-    <!-- 编辑删除${showName} -->
+    <!-- 编辑${showName} -->
     <update id="edit${className}" parameterType="DataMap">
         UPDATE
             ${tableFront}${classNameUpper}

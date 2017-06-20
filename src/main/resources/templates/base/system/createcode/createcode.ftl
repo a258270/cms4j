@@ -56,12 +56,12 @@
                 </#list>
                 </select>
             </td>
-            <td class="text-l"><code class="c-red">数据库表的前缀</code></td>
+            <td class="text-l"><code class="c-red">选择上级菜单，若没有请创建</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>表前缀：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" value="TB_" placeholder="输入表前缀" id="TABLEFRONT" name="TABLEFRONT"></td>
-            <td class="text-l"><code class="c-red">左侧菜单栏处显示</code></td>
+            <td class="text-l"><code class="c-red">数据库表的前缀</code></td>
         </tr>
         </tbody>
     </table>

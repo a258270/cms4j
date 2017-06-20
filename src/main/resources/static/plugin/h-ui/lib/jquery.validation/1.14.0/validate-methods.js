@@ -82,7 +82,7 @@ $(function(){
     // 匹配integer
     jQuery.validator.addMethod("isInteger", function(value, element) {       
          return this.optional(element) || (/^[-\+]?\d+$/.test(value) && parseInt(value)>=0);       
-    }, "匹配integer");  
+    }, "只能为整数");
      
     // 判断数值类型，包括整数和浮点数
     jQuery.validator.addMethod("isNumber", function(value, element) {       
