@@ -104,18 +104,13 @@
     <update id="edit${className}" parameterType="DataMap">
         UPDATE
             ${tableFront}${classNameUpper}
-        SET
+        ${r"<set>"}
             <#list datas as data>
                 <#if data.isFront == '是'>
-                    <#if data.isRequired == '是'>
             ${data.propertyNameUpper} = ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_index <= maxIsFrontIndex>,</#if>
-                    <#else>
-            ${r"<if test='"}${data.propertyNameUpper}${r" != null'>"}
-            ${data.propertyNameUpper} = ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_index <= maxIsFrontIndex>,</#if>
-            ${r"</if>"}
-                    </#if>
                 </#if>
             </#list>
+        ${r"</set>"}
         WHERE
             ${classNameUpper}_ID = ${r"#{"}${classNameUpper}_ID${r"}"}
     </update>
@@ -124,14 +119,13 @@
     <update id="editNotFrontOf${className}" parameterType="DataMap">
         UPDATE
             ${tableFront}${classNameUpper}
-        SET
+        ${r"<set>"}
             <#list datas as data>
                 <#if data.isFront == '否'>
-            ${r"<if test='"}${data.propertyNameUpper}${r" != null'>"}
             ${data.propertyNameUpper} = ${r"#{"}${data.propertyNameUpper}${r"}"}<#if data_index <= maxIsNotFrontIndex>,</#if>
-            ${r"</if>"}
                 </#if>
             </#list>
+        ${r"</set>"}
         WHERE
             ${classNameUpper}_ID = ${r"#{"}${classNameUpper}_ID${r"}"}
     </update>

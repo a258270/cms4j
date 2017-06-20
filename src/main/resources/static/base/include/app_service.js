@@ -72,6 +72,8 @@ var showWindow = function (title, url, width, height) {
 };
 
 var getLocalTime = function (nS) {
+    if(typeof (nS) == "undefined" || nS == null)
+        return "";
     var now = new Date(nS);
     var year=now.getFullYear();
     var month=now.getMonth()+1;

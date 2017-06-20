@@ -71,8 +71,8 @@
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否为搜索项：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <select class="select input-text radius" size="1" id="ISSEARCH" name="ISSEARCH" id="selectbox">
-                    <option value="是" selected>是</option>
-                    <option value="否">否</option>
+                    <option value="是">是</option>
+                    <option value="否" selected>否</option>
                 </select>
             </div>
         </div>
