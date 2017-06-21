@@ -43,7 +43,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                         <input type="text" class="input-text" ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??>"}value="${r"${"}${classNameLower}.${data.propertyNameUpper}${r"}"}"${r"<#else>"}value=""${r"</#if>"} placeholder="请输入${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
                     </#if>
                     <#if data.dataType == 'Integer' || data.dataType == 'Double'>
-                        <input type="text" class="input-text" ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??>"}value="${r"${"}${classNameLower}.${data.propertyNameUpper}${r"}"}"${r"<#else>"}value=""${r"</#if>"} placeholder="请输入${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
+                        <input type="text" class="input-text" ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??>"}value="${r"${"}${classNameLower}.${data.propertyNameUpper}${r"?c}"}"${r"<#else>"}value=""${r"</#if>"} placeholder="请输入${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
                     </#if>
                     <#if data.dataType == 'Date'>
                         <input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd' })" ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??>"}value="${r"${"}${classNameLower}.${data.propertyNameUpper}${r"}"}"${r"<#else>"}value=""${r"</#if>"} placeholder="请选择${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="input-text Wdate" readOnly>
