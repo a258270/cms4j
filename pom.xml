@@ -5,7 +5,7 @@
 
 	<groupId>com.cms4j</groupId>
 	<artifactId>cms4j</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>cms4j</name>
@@ -94,14 +94,14 @@
 		</dependency>
 	</dependencies>
 
-	<build>
+	<!--<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-	</build>
+	</build>-->
 
 
 </project>
