@@ -23,11 +23,10 @@ public class Freemarker {
      * @throws TemplateException
      */
     public static void createCode(DataMap dataMap) throws Exception {
-        String path = Freemarker.class.getResource("").getPath().replaceAll("%20", " ").replaceAll("file:", "");
-        String proPath = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-        String codePath = proPath + "code";
-        String createPath = proPath + "code/code";
-        String templatePath = path + "/createcode";
+        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+        String codePath = path + "code";
+        String createPath = path + "code/code";
+        String templatePath = path + "createcode";
         String basePackage = createPath + "/" + dataMap.getString("basePackage").replace(".", "/");
         String javaFilePath = basePackage + "/" + dataMap.getString("upperPackage");
         String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath") + "/" + dataMap.getString("upperPackage");
