@@ -4,11 +4,12 @@ import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 
 @SpringBootApplication
-public class Cms4jApplication {
+public class Cms4jApplication extends SpringBootServletInitializer {
 
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
