@@ -1,6 +1,7 @@
 package com.cms4j.base.config;
 
 import com.cms4j.base.interceptor.ShiroRealm;
+import com.cms4j.base.util.Const;
 import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -27,7 +28,7 @@ public class ShiroConfig {
         // 必须设置 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(getSecurityManager());
         // 如果不设置默认会自动寻找Web工程根目录下的"/user.jsp"页面
-        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setLoginUrl(Const.LOGIN);
         // 登录成功后要跳转的链接
         shiroFilterFactoryBean.setSuccessUrl("/index");
         //未授权界面;

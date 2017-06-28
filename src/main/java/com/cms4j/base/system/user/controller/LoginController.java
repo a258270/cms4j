@@ -27,7 +27,7 @@ public class LoginController extends PageBaseController {
      * 加载登录页面
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String login() {
         logger.begin("加载登录页面");
         logger.end();

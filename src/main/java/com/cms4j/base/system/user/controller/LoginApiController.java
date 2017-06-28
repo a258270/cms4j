@@ -38,7 +38,7 @@ public class LoginApiController extends ApiBaseController {
      * 用户登录
      * @return
      */
-    @RequestMapping(value = "/tologin", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/tologin", method = RequestMethod.POST)
     public InvokeResult toLogin() throws Exception {
             logger.begin("开始登陆");
             DataMap dataMap = this.getDataMap();
