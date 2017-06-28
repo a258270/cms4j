@@ -25,7 +25,7 @@ $(function () {
                     return false;
                 }
 
-                window.location.href = ctxPath + "/index";
+                window.location.href = ctxPath + "/admin/index";
             });
 
         }

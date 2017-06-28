@@ -16,7 +16,7 @@
 <body>
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
-        <form class="form form-horizontal" action="${ctxPath}/tologin" method="post" id="form">
+        <form class="form form-horizontal" action="${ctxPath}/admin/tologin" method="post" id="form">
             <div class="row cl">
                 <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
                 <div class="formControls col-xs-8">

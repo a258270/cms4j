@@ -26,7 +26,7 @@ public class IndexController extends PageBaseController {
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/admin/index")
     public String index(Model model) {
         try {
             logger.begin("加载首页面");
