@@ -88,7 +88,7 @@ $(function () {
         }
         ],
 
-        "sAjaxSource" : "/${classNameLower}/api/get${classNameLower}s?now=" + new Date().getTime(),
+        "sAjaxSource" : ctxPath + "/admin/${classNameLower}/api/get${classNameLower}s?now=" + new Date().getTime(),
         //服务器端，数据回调处理
         "fnServerData" : function(sSource, aDataSet, fnCallback) {
                 $.ajax({
@@ -125,7 +125,7 @@ var successFn = function (res) {
 
 //新增${showName}
 var add = function () {
-    showWindow("新增${showName}", ctxPath + "/${classNameLower}/add");
+    showWindow("新增${showName}", ctxPath + "/admin/${classNameLower}/add");
 };
 
 //批量删除
@@ -148,7 +148,7 @@ var batchdel = function () {
     }, function(index) {
         layer.close(index);
         batchremoves = batchremoves.substring(0, batchremoves.length - 1);
-        sendRequest(ctxPath + "/${classNameLower}/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/${classNameLower}/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
     });
 };
 
@@ -165,7 +165,7 @@ var onTableQuery = function () {
 
 //编辑${showName}
 var edit = function (id) {
-    showWindow("编辑${showName}", ctxPath + "/${classNameLower}/edit/" + id);
+    showWindow("编辑${showName}", ctxPath + "/admin/${classNameLower}/edit/" + id);
 };
 
 //删除${showName}
@@ -174,6 +174,6 @@ var del = function (id) {
         btn: ["是", "否"]
         }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/${classNameLower}/api/batchremoves", {batchremoves : id}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/${classNameLower}/api/batchremoves", {batchremoves : id}, "POST", successFn);
     });
 };

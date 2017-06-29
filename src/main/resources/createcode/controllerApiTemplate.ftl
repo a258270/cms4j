@@ -15,7 +15,7 @@ import java.util.List;
 * Created by zmj on ${curDate}.
 */
 @RestController
-@RequestMapping(value = "/${classNameLower}/api")
+@RequestMapping(value = "/admin/${classNameLower}/api")
 public class ${className}ApiController extends ApiBaseController {
     public ${className}ApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

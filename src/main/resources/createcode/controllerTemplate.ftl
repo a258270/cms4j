@@ -20,7 +20,7 @@ import java.util.List;
 * Created by zmj on ${curDate}.
 */
 @Controller
-@RequestMapping(value = "/${classNameLower}")
+@RequestMapping(value = "/admin/${classNameLower}")
 public class ${className}Controller extends PageBaseController {
     public ${className}Controller() {
         this.logger = LoggerUtil.getLogger(this.getClass());

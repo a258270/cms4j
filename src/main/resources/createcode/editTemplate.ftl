@@ -8,7 +8,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
 </head>
 <body>
 <article class="page-container">
-    <form action="${r"${ctxPath}"}/${classNameLower}/api/edit" method="post" class="form form-horizontal" id="form">
+    <form action="${r"${ctxPath}"}/admin/${classNameLower}/api/edit" method="post" class="form form-horizontal" id="form">
         <input type="hidden" name="${classNameUpper}_ID" value="${r"${"}${classNameLower}.${classNameUpper}_ID${r"}"}" />
 <#list datas as data>
     <#if data.isFront == '是'>
