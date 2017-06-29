@@ -43,6 +43,10 @@ var showError = function (message) {
     layer.alert(message, {icon: 2});
 };
 
+var showSuccess = function (message) {
+    layer.alert(message, {icon: 1});
+};
+
 var tableQuery = function (obj, params) {
     var url = obj.fnSettings().sAjaxSource;
     var paramInUrl = "";
