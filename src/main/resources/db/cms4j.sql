@@ -1,18 +1,3 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : localhost_3306
-Source Server Version : 50624
-Source Host           : localhost:3306
-Source Database       : cms4j
-
-Target Server Type    : MYSQL
-Target Server Version : 50624
-File Encoding         : 65001
-
-Date: 2017-06-16 18:11:19
-*/
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -54,13 +39,14 @@ CREATE TABLE `sys_menu` (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES ('1', '系统管理', '#', 'xe63c', null, '1');
-INSERT INTO `sys_menu` VALUES ('2', '系统设置', '/setting/index', 'xe62e', '1', '1');
-INSERT INTO `sys_menu` VALUES ('3', '角色管理', '/role/index', 'xe611', '1', '3');
-INSERT INTO `sys_menu` VALUES ('4', '用户管理', '/user/index', 'xe62c', '1', '4');
-INSERT INTO `sys_menu` VALUES ('5', '字典管理', '/dictionary/index', 'xe720', '1', '5');
-INSERT INTO `sys_menu` VALUES ('6', '菜单管理', '/menu/index', 'xe681', '1', '6');
+INSERT INTO `sys_menu` VALUES ('2', '系统设置', '/admin/setting/index', 'xe62e', '1', '1');
+INSERT INTO `sys_menu` VALUES ('3', '角色管理', '/admin/role/index', 'xe611', '1', '3');
+INSERT INTO `sys_menu` VALUES ('4', '用户管理', '/admin/user/index', 'xe62c', '1', '4');
+INSERT INTO `sys_menu` VALUES ('5', '字典管理', '/admin/dictionary/index', 'xe720', '1', '5');
+INSERT INTO `sys_menu` VALUES ('6', '菜单管理', '/admin/menu/index', 'xe681', '1', '6');
 INSERT INTO `sys_menu` VALUES ('7', '系统监控', '/druid/index.html', 'xe725', '1', '2');
-INSERT INTO `sys_menu` VALUES ('8', '在线管理', '/user/online/index', 'xe62b', '1', '7');
+INSERT INTO `sys_menu` VALUES ('8', '在线管理', '/admin/user/online/index', 'xe62b', '1', '7');
+INSERT INTO `sys_menu` VALUES ('9', '代码生成', '/admin/createcode/index', 'xe720', '1', '8');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -104,4 +90,4 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '系统管理员', 'suadmin', '2017-06-16 18:10:33', '0:0:0:0:0:0:0:1', '1', null);
+INSERT INTO `sys_user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '系统管理员', 'suadmin', '2017-06-29 10:03:46', '0:0:0:0:0:0:0:1', '1', null);
