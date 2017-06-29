@@ -30,34 +30,34 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if(path.matches(Const.REG_NOTERCEPTOR_URL))
             return true;
 
-        //url匹配Const.REG_MANAGE_URL
-        if(path.matches(Const.REG_MANAGE_URL)){
-            DataMap user = SessionUtil.getCurAdminUser();
-            if(user == null){
-                //跳转至登录界面
-                PrintWriter out = null;
-                try {
-                    if (request.getParameter("ajax") != null) {
-                        out = response.getWriter();
-                        out.append(new InvokeResult().failure(Const.NOLOGIN_CODE, "please relogin").toString());
-                    } else {
-                        //就算管理员没登陆也最好不要直接redirect至后台登陆页面，所以这里redirect至另外的url
-                        response.sendRedirect(request.getContextPath() + Const.LOGIN);
-                    }
-                }catch (IOException e){
-                    e.printStackTrace();
+        DataMap user = null;
+        if(path.matches(Const.REG_MANAGE_URL)){//url匹配Const.REG_MANAGE_URL
+            user = SessionUtil.getCurAdminUser();
+        }
+        else {
+            user = SessionUtil.getCurUser();
+        }
+        if(user == null){
+            //跳转至登录界面
+            PrintWriter out = null;
+            try {
+                if (request.getParameter("ajax") != null) {
+                    out = response.getWriter();
+                    out.append(new InvokeResult().failure(Const.NOLOGIN_CODE, "please relogin").toString());
+                } else {
+                    //就算管理员没登陆也最好不要直接redirect至后台登陆页面，所以这里redirect至另外的url
+                    response.sendRedirect(request.getContextPath() + Const.LOGIN);
                 }
-                finally {
-                    if(out != null)
-                        out.close();
-                }
-                return false;
+            }catch (IOException e){
+                e.printStackTrace();
             }
-
-            return true;
+            finally {
+                if(out != null)
+                    out.close();
+            }
+            return false;
         }
 
-        //普通url
         return true;
     }
 
