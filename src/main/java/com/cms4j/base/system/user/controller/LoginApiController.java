@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @create: 2017/5/31
  */
 @RestController
+@RequestMapping(value = "/admin")
 public class LoginApiController extends ApiBaseController {
 
     public LoginApiController() {
@@ -38,7 +39,7 @@ public class LoginApiController extends ApiBaseController {
      * 用户登录
      * @return
      */
-    @RequestMapping(value = "/admin/tologin", method = RequestMethod.POST)
+    @RequestMapping(value = "/tologin", method = RequestMethod.POST)
     public InvokeResult toLogin() throws Exception {
             logger.begin("开始登陆");
             DataMap dataMap = this.getDataMap();
@@ -74,7 +75,7 @@ public class LoginApiController extends ApiBaseController {
             UsernamePasswordToken token = new UsernamePasswordToken(dataMap.getString("USERNAME"), dataMap.getString("PASSWORD"));
             subject.login(token);
 
-            SessionUtil.addUser2Session(dataMap);
+            SessionUtil.addAdminUser2Session(dataMap);
 
             DataMap role = roleService.getRoleById(dataMap);
             SessionUtil.addRole2Session(role);

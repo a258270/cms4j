@@ -21,7 +21,7 @@ import java.util.List;
  * Created by zmj on 2017/6/15.
  */
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/admin/user")
 public class UserController extends PageBaseController {
     public UserController() {
         this.logger = LoggerUtil.getLogger(this.getClass());
@@ -103,7 +103,7 @@ public class UserController extends PageBaseController {
         logger.begin("加载编辑个人信息页面");
         ModelAndView modelAndView = this.getModelAndView();
         modelAndView.setViewName("base/system/user/user_editself");
-        DataMap user = SessionUtil.getCurUser();
+        DataMap user = SessionUtil.getCurAdminUser();
         modelAndView.addObject("user", user);
         List<DataMap> roleObjs = roleService.getAllSonRoles();
         modelAndView.addObject("roleObjs", roleObjs);

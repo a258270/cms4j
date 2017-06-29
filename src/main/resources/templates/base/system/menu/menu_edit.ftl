@@ -8,7 +8,7 @@
 </head>
 <body>
 <article class="page-container">
-    <form action="${ctxPath}/menu/api/edit" method="post" class="form form-horizontal" id="form">
+    <form action="${ctxPath}/admin/menu/api/edit" method="post" class="form form-horizontal" id="form">
         <input type="hidden" value="${menu.MENU_ID}" name="MENU_ID">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>父级菜单：</label>

@@ -19,7 +19,7 @@ import java.util.List;
  * @create: 2017/6/8
  */
 @RestController
-@RequestMapping(value = "/menu/api")
+@RequestMapping(value = "/admin/menu/api")
 public class MenuApiController extends ApiBaseController {
     public MenuApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

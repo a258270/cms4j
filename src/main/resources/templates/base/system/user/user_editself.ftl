@@ -7,7 +7,7 @@
 </head>
 <body>
 <article class="page-container">
-    <form action="${ctxPath}/user/api/edit" method="post" class="form form-horizontal" id="form">
+    <form action="${ctxPath}/admin/user/api/editself" method="post" class="form form-horizontal" id="form">
         <input type="hidden" name="USER_ID" value="${user.USER_ID}" />
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>

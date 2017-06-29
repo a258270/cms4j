@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by zmj on 2017/6/16.
  */
 @Controller
-@RequestMapping(value = "/setting")
+@RequestMapping(value = "/admin/setting")
 public class SettingController extends PageBaseController {
     public SettingController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

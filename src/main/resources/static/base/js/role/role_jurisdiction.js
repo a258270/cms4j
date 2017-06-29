@@ -18,7 +18,7 @@ var setSuccessFn = function (res) {
     parent.layer.close(index);
 };
 $(function () {
-    sendRequest(ctxPath + "/role/api/gettrees", {type: type, id: id}, "POST", successFn);
+    sendRequest(ctxPath + "/admin/role/api/gettrees", {type: type, id: id}, "POST", successFn);
 });
 
 var save = function () {
@@ -36,5 +36,5 @@ var save = function () {
         paramStr += params[i] + ",";
     }
     paramStr = paramStr.substring(0, paramStr.length - 1);
-    sendRequest(ctxPath + "/role/api/setjurisdiction", {nodes: paramStr, type: type, id: id}, "POST", setSuccessFn);
+    sendRequest(ctxPath + "/admin/role/api/setjurisdiction", {nodes: paramStr, type: type, id: id}, "POST", setSuccessFn);
 };

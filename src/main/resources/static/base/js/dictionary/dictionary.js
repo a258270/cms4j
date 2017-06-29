@@ -61,7 +61,7 @@ $(function () {
             }
         ],
 
-        "sAjaxSource" : "/dictionary/api/getdictionaries?now=" + new Date().getTime(),
+        "sAjaxSource" : ctxPath + "/admin/dictionary/api/getdictionaries?now=" + new Date().getTime(),
         //服务器端，数据回调处理
         "fnServerData" : function(sSource, aDataSet, fnCallback) {
             $.ajax({
@@ -97,7 +97,7 @@ var successFn = function (res) {
 
 //新增字典
 var add = function () {
-    showWindow("新增字典", ctxPath + "/dictionary/add");
+    showWindow("新增字典", ctxPath + "/admin/dictionary/add");
 };
 
 //批量删除
@@ -120,7 +120,7 @@ var datadel = function () {
     }, function(index) {
         layer.close(index);
         batchremoves = batchremoves.substring(0, batchremoves.length - 1);
-        sendRequest(ctxPath + "/dictionary/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/dictionary/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
     });
 
 
@@ -134,7 +134,7 @@ var onTableQuery = function () {
 }
 
 var dic_edit = function (id) {
-    showWindow("编辑字典", ctxPath + "/dictionary/edit/" + id);
+    showWindow("编辑字典", ctxPath + "/admin/dictionary/edit/" + id);
 };
 
 var dic_del = function (id) {
@@ -142,18 +142,18 @@ var dic_del = function (id) {
         btn: ["是", "否"]
     }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/dictionary/api/batchremoves", {batchremoves : id}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/dictionary/api/batchremoves", {batchremoves : id}, "POST", successFn);
     });
 };
 
 var dic_get = function (id) {
     bDictionaryGetted = true;
-    tab.fnSettings().sAjaxSource = ctxPath + "/dictionary/api/getdictionaries/" + id + "?now=" + Math.random();
+    tab.fnSettings().sAjaxSource = ctxPath + "/admin/dictionary/api/getdictionaries/" + id + "?now=" + Math.random();
     tab.fnDraw();
 };
 
 var back2Top = function () {
     bDictionaryGetted = false;
-    tab.fnSettings().sAjaxSource = ctxPath + "/dictionary/api/getdictionaries?now=" + Math.random();
+    tab.fnSettings().sAjaxSource = ctxPath + "/admin/dictionary/api/getdictionaries?now=" + Math.random();
     tab.fnDraw();
 };

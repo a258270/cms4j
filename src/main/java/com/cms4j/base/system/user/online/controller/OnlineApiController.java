@@ -16,7 +16,7 @@ import java.util.List;
  * Created by zmj on 2017/6/16.
  */
 @RestController
-@RequestMapping(value = "/user/online/api")
+@RequestMapping(value = "/admin/user/online/api")
 public class OnlineApiController extends ApiBaseController {
     public OnlineApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

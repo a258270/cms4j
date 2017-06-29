@@ -84,7 +84,7 @@ $(function () {
             }
         ],
 
-        "sAjaxSource" : "/user/online/api/getonlineusers?now=" + new Date().getTime(),
+        "sAjaxSource" : ctxPath + "/admin/user/online/api/getonlineusers?now=" + new Date().getTime(),
         //服务器端，数据回调处理
         "fnServerData" : function(sSource, aDataSet, fnCallback) {
             $.ajax({
@@ -131,6 +131,6 @@ var online_kick = function (id) {
     layer.confirm("确定要踢出该用户？", {
         btn: ["是", "否"]
     }, function(index) {
-        sendRequest(ctxPath + "/user/online/api/kick", {USER_ID: id}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/user/online/api/kick", {USER_ID: id}, "POST", successFn);
     });
 };

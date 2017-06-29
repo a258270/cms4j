@@ -21,7 +21,7 @@ import java.util.List;
  * @create: 2017/6/6
  */
 @Controller
-@RequestMapping(value = "/dictionary")
+@RequestMapping(value = "/admin/dictionary")
 public class DictionaryController extends PageBaseController {
     public DictionaryController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

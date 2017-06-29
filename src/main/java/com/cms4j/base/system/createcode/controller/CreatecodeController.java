@@ -26,7 +26,7 @@ import java.util.List;
  * @create: 2017/6/17
  */
 @Controller
-@RequestMapping(value = "/createcode")
+@RequestMapping(value = "/admin/createcode")
 public class CreatecodeController extends PageBaseController {
     public CreatecodeController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

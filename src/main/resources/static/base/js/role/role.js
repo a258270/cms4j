@@ -1,6 +1,6 @@
 var curRole;
 $(function () {
-    sendRequest(ctxPath + "/role/api/getroles", null, "POST", successFn);
+    sendRequest(ctxPath + "/admin/role/api/getroles", null, "POST", successFn);
 });
 
 var successFn = function (res) {
@@ -56,11 +56,11 @@ var delSuccessFn = function (res) {
 };
 
 var add = function () {
-    showWindow("新增角色", ctxPath + "/role/add");
+    showWindow("新增角色", ctxPath + "/admin/role/add");
 };
 
 var edit = function () {
-    showWindow("编辑角色", ctxPath + "/role/edit/" + curRole.ROLE_ID);
+    showWindow("编辑角色", ctxPath + "/admin/role/edit/" + curRole.ROLE_ID);
 };
 
 var del = function () {
@@ -68,16 +68,16 @@ var del = function () {
         btn: ["是", "否"]
     }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/role/api/remove", {ROLE_ID : curRole.ROLE_ID}, "POST", delSuccessFn);
+        sendRequest(ctxPath + "/admin/role/api/remove", {ROLE_ID : curRole.ROLE_ID}, "POST", delSuccessFn);
     });
 };
 
 var toGet = function (id) {
-    sendRequest(ctxPath + "/role/api/getroles/" + id, null, "POST", successFn);
+    sendRequest(ctxPath + "/admin/role/api/getroles/" + id, null, "POST", successFn);
 };
 
 var role_edit = function (id) {
-    showWindow("编辑角色", ctxPath + "/role/edit/" + id);
+    showWindow("编辑角色", ctxPath + "/admin/role/edit/" + id);
 };
 
 var role_del = function (id) {
@@ -85,14 +85,14 @@ var role_del = function (id) {
         btn: ["是", "否"]
     }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/role/api/remove", {ROLE_ID : id}, "POST", delSuccessFn);
+        sendRequest(ctxPath + "/admin/role/api/remove", {ROLE_ID : id}, "POST", delSuccessFn);
     });
 };
 
 var setFatherJurisdiction = function () {
-    showWindow("设置权限", ctxPath + "/role/jurisdiction/QUERY_QX/" + curRole.ROLE_ID, $(window).width() / 5);
+    showWindow("设置权限", ctxPath + "/admin/role/jurisdiction/QUERY_QX/" + curRole.ROLE_ID, $(window).width() / 5);
 };
 
 var setJurisdiction = function (id, type) {
-    showWindow("设置权限", ctxPath + "/role/jurisdiction/" + type + "/" + id, $(window).width() / 5);
+    showWindow("设置权限", ctxPath + "/admin/role/jurisdiction/" + type + "/" + id, $(window).width() / 5);
 }

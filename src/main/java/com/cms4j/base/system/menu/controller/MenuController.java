@@ -18,7 +18,7 @@ import java.util.List;
  * Created by my on 2017/6/13.
  */
 @Controller
-@RequestMapping(value = "/menu")
+@RequestMapping(value = "/admin/menu")
 public class MenuController extends PageBaseController {
     @Autowired
     private MenuService menuService;

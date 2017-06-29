@@ -14,6 +14,10 @@ import java.io.PrintWriter;
 
 /**
  * description: 登陆Interceptor
+ * 由于考虑到系统不只是会有后台管理界面，可能会有提供给用户使用的界面
+ * 特把登陆检测拆分开，后台管理的url会统一格式，当url匹配Const.REG_MANAGE_URL时
+ * 则为后台管理页面的url
+ * @see Const
  *
  * @author: zmj
  * @create: 2017/5/7
@@ -26,27 +30,34 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if(path.matches(Const.REG_NOTERCEPTOR_URL))
             return true;
 
-        DataMap user = SessionUtil.getCurUser();
-        if(user == null){
-            //跳转至登录界面
-            PrintWriter out = null;
-            try {
-                if (request.getParameter("ajax") != null) {
-                    out = response.getWriter();
-                    out.append(new InvokeResult().failure(Const.NOLOGIN_CODE, "please relogin").toString());
-                } else {
-                    response.sendRedirect(request.getContextPath() + Const.LOGIN);
+        //url匹配Const.REG_MANAGE_URL
+        if(path.matches(Const.REG_MANAGE_URL)){
+            DataMap user = SessionUtil.getCurAdminUser();
+            if(user == null){
+                //跳转至登录界面
+                PrintWriter out = null;
+                try {
+                    if (request.getParameter("ajax") != null) {
+                        out = response.getWriter();
+                        out.append(new InvokeResult().failure(Const.NOLOGIN_CODE, "please relogin").toString());
+                    } else {
+                        //就算管理员没登陆也最好不要直接redirect至后台登陆页面，所以这里redirect至另外的url
+                        response.sendRedirect(request.getContextPath() + Const.LOGIN);
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
                 }
-            }catch (IOException e){
-                e.printStackTrace();
+                finally {
+                    if(out != null)
+                        out.close();
+                }
+                return false;
             }
-            finally {
-                if(out != null)
-                    out.close();
-            }
-            return false;
+
+            return true;
         }
 
+        //普通url
         return true;
     }
 

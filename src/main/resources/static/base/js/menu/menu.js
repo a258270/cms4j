@@ -61,7 +61,7 @@ $(function () {
             }
         ],
 
-        "sAjaxSource" : "/menu/api/getmenus?now=" + new Date().getTime(),
+        "sAjaxSource" : ctxPath + "/admin/menu/api/getmenus?now=" + new Date().getTime(),
         //服务器端，数据回调处理
         "fnServerData" : function(sSource, aDataSet, fnCallback) {
             $.ajax({
@@ -97,7 +97,7 @@ var successFn = function (res) {
 
 //新增字典
 var add = function () {
-    showWindow("新增菜单", ctxPath + "/menu/add");
+    showWindow("新增菜单", ctxPath + "/admin/menu/add");
 };
 
 //批量删除
@@ -120,7 +120,7 @@ var datadel = function () {
     }, function(index) {
         layer.close(index);
         batchremoves = batchremoves.substring(0, batchremoves.length - 1);
-        sendRequest(ctxPath + "/menu/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/menu/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
     });
 
 
@@ -134,7 +134,7 @@ var onTableQuery = function () {
 }
 
 var menu_edit = function (id) {
-    showWindow("编辑字典", ctxPath + "/menu/edit/" + id);
+    showWindow("编辑字典", ctxPath + "/admin/menu/edit/" + id);
 };
 
 var menu_del = function (id) {
@@ -142,18 +142,18 @@ var menu_del = function (id) {
         btn: ["是", "否"]
     }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/menu/api/batchremoves", {batchremoves : id}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/menu/api/batchremoves", {batchremoves : id}, "POST", successFn);
     });
 };
 
 var menu_get = function (id) {
     bMenuGetted = true;
-    tab.fnSettings().sAjaxSource = ctxPath + "/menu/api/getmenus/" + id + "?now=" + Math.random();
+    tab.fnSettings().sAjaxSource = ctxPath + "/admin/menu/api/getmenus/" + id + "?now=" + Math.random();
     tab.fnDraw();
 };
 
 var back2Top = function () {
     bMenuGetted = false;
-    tab.fnSettings().sAjaxSource = ctxPath + "/menu/api/getmenus?now=" + Math.random();
+    tab.fnSettings().sAjaxSource = ctxPath + "/admin/menu/api/getmenus?now=" + Math.random();
     tab.fnDraw();
 };

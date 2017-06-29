@@ -19,7 +19,7 @@ import java.util.List;
  * @create: 2017/6/7
  */
 @RestController
-@RequestMapping(value = "/dictionary/api")
+@RequestMapping(value = "/admin/dictionary/api")
 public class DictionaryApiController extends ApiBaseController {
 
     public DictionaryApiController() {

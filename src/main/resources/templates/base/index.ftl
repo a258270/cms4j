@@ -17,7 +17,7 @@ if (window.top !== window.self) {
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
-                    <li><#if Session.session_user_key??>${Session.session_user_key.NAME}</#if></li>
+                    <li><#if Session.session_admin_user_key??>${Session.session_admin_user_key.NAME}</#if></li>
                     <li class="dropDown dropDown_hover">
                         <a href="#" class="dropDown_A">操作中心 <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
@@ -83,7 +83,7 @@ if (window.top !== window.self) {
 </body>
 <script language="JavaScript">
     var myselfinfo = function () {
-        showWindow("编辑个人信息", ctxPath + "/user/editself")
+        showWindow("编辑个人信息", ctxPath + "/admin/user/editself")
     };
 </script>
 </html>

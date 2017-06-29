@@ -8,7 +8,7 @@
 </head>
 <body>
 <article class="page-container">
-    <form action="${ctxPath}/user/api/editself" method="post" class="form form-horizontal" id="form">
+    <form action="${ctxPath}/admin/user/api/edit" method="post" class="form form-horizontal" id="form">
         <input type="hidden" name="USER_ID" value="${user.USER_ID}" />
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
@@ -37,7 +37,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属角色：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" name="ROLE_ID" id="ROLE_ID" disabled>
+				<select class="select" size="1" name="ROLE_ID" id="ROLE_ID">
                     <#list roleObjs as roleObj>
                         <#if roleObj.ROLE_ID == user.ROLE_ID>
                         <option value="${roleObj.ROLE_ID}" selected>${roleObj.ROLENAME}</option>

@@ -19,7 +19,7 @@ import java.util.List;
  * Created by zmj on 2017/6/14.
  */
 @Controller
-@RequestMapping(value = "/role")
+@RequestMapping(value = "/admin/role")
 public class RoleController extends PageBaseController {
     @Autowired
     private RoleService roleService;

@@ -34,5 +34,5 @@ $(function () {
 
 var getCode = function () {
     var random = Math.random();
-    $("#randomcode").attr("src", ctxPath + "/getcode?r=" + random);
+    $("#randomcode").attr("src", ctxPath + "/admin/getcode?r=" + random);
 };

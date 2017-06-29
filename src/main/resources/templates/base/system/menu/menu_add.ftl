@@ -8,7 +8,7 @@
 </head>
 <body>
 <article class="page-container">
-    <form action="${ctxPath}/menu/api/add" method="post" class="form form-horizontal" id="form">
+    <form action="${ctxPath}/admin/menu/api/add" method="post" class="form form-horizontal" id="form">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>父级菜单：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">

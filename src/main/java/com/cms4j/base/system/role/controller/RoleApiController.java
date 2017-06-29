@@ -19,7 +19,7 @@ import java.util.List;
  * Created by zmj on 2017/6/14.
  */
 @RestController
-@RequestMapping(value = "/role/api")
+@RequestMapping(value = "/admin/role/api")
 public class RoleApiController extends ApiBaseController {
     public RoleApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

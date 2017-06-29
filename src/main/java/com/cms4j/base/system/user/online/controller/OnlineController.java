@@ -19,7 +19,7 @@ import java.util.List;
  * Created by zmj on 2017/6/16.
  */
 @Controller
-@RequestMapping(value = "/user/online")
+@RequestMapping(value = "/admin/user/online")
 public class OnlineController extends PageBaseController {
     public OnlineController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

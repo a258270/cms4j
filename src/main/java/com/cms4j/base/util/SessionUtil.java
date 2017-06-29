@@ -13,6 +13,10 @@ import org.apache.shiro.subject.Subject;
 public class SessionUtil {
 
     /**
+     * session中管理员user信息存放的key值
+     */
+    public static final String SESSION_ADMIN_USER_KEY = "session_admin_user_key";
+    /**
      * session中user信息存放的key值
      */
     public static final String SESSION_USER_KEY = "session_user_key";
@@ -53,6 +57,29 @@ public class SessionUtil {
      */
     public static void removeUserFromSession() {
         SessionUtil.removeInfoFromSession(SessionUtil.SESSION_USER_KEY);
+    }
+
+    /**
+     * 获取session中的管理员user信息
+     * @return
+     */
+    public static DataMap getCurAdminUser() {
+        return (DataMap) SessionUtil.getSession().getAttribute(SessionUtil.SESSION_ADMIN_USER_KEY);
+    }
+
+    /**
+     * 将管理员用户信息存入session
+     * @param user
+     */
+    public static void addAdminUser2Session(DataMap user) {
+        SessionUtil.addInfo2Session(SessionUtil.SESSION_ADMIN_USER_KEY, user);
+    }
+
+    /**
+     * 将管理员用户信息从session中移除
+     */
+    public static void removeAdminUserFromSession() {
+        SessionUtil.removeInfoFromSession(SessionUtil.SESSION_ADMIN_USER_KEY);
     }
 
     /**

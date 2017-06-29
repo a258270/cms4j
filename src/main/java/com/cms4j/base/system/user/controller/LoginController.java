@@ -19,6 +19,7 @@ import java.io.IOException;
  * @create: 2017/5/31
  */
 @Controller
+@RequestMapping(value = "/admin")
 public class LoginController extends PageBaseController {
     public LoginController() {
         this.logger = LoggerUtil.getLogger(this.getClass());
@@ -27,7 +28,7 @@ public class LoginController extends PageBaseController {
      * 加载登录页面
      * @return
      */
-    @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         logger.begin("加载登录页面");
         logger.end();

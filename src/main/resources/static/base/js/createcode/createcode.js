@@ -2,7 +2,7 @@ var dataRows = [];
 var selectEdit = "";
 
 var add = function () {
-    showWindow("新增属性", ctxPath + "/createcode/add");
+    showWindow("新增属性", ctxPath + "/admin/createcode/add");
 };
 
 var save = function () {
@@ -15,7 +15,7 @@ var save = function () {
 };
 
 var successFn = function (res) {
-    window.open(ctxPath + "/createcode/download");
+    window.open(ctxPath + "/admin/createcode/download");
 };
 
 var toCreate = function () {
@@ -91,12 +91,12 @@ var toCreate = function () {
     param.TABLEFRONT = $("#TABLEFRONT").val();
     param.PARAMS = dataRows;
 
-    sendRequest(ctxPath + "/createcode/api/create", param, "POST", successFn);
+    sendRequest(ctxPath + "/admin/createcode/api/create", param, "POST", successFn);
 };
 
 var edit = function (id) {
     selectEdit = id;
-    showWindow("编辑属性", ctxPath + "/createcode/add");
+    showWindow("编辑属性", ctxPath + "/admin/createcode/add");
 };
 
 var del = function (id) {

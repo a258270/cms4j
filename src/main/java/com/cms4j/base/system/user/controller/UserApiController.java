@@ -16,7 +16,7 @@ import java.util.List;
  * Created by zmj on 2017/6/15.
  */
 @RestController
-@RequestMapping(value = "/user/api")
+@RequestMapping(value = "/admin/user/api")
 public class UserApiController extends ApiBaseController {
     public UserApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());
@@ -125,7 +125,7 @@ public class UserApiController extends ApiBaseController {
         logger.begin("编辑用户");
         DataMap dataMap = this.getDataMap();
 
-        if(userService.editUser(dataMap, true).equals(0))
+        if(userService.editUser(dataMap, false).equals(0))
             return InvokeResult.failure("两次密码输入不一致");
 
         userService.editUser(dataMap, false);
@@ -137,7 +137,7 @@ public class UserApiController extends ApiBaseController {
     public InvokeResult editSelf() throws Exception {
         logger.begin("编辑个人信息");
         DataMap dataMap = this.getDataMap();
-        DataMap curUser = SessionUtil.getCurUser();
+        DataMap curUser = SessionUtil.getCurAdminUser();
 
         dataMap.put("USER_ID", curUser.getString("USER_ID"));
 

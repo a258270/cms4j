@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @create: 2017/6/17
  */
 @RestController
-@RequestMapping(value = "/createcode/api")
+@RequestMapping(value = "/admin/createcode/api")
 public class CreatecodeApiController extends ApiBaseController {
     public CreatecodeApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());

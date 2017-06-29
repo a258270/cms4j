@@ -30,12 +30,12 @@ public class SessionService {
     public void kickUser(String userId) {
         Collection<Session> sessions = memorySessionDAO.getActiveSessions();
         for(Session session : sessions) {
-            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
+            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_ADMIN_USER_KEY);
             if(user == null)
                 continue;
             if(userId.equals(user.getString("USER_ID"))){
                 //session.setTimeout(0);
-                SessionUtil.removeUserFromSession();
+                SessionUtil.removeAdminUserFromSession();
                 SessionUtil.removeRoleFromSession();
                 break;
             }
@@ -53,7 +53,7 @@ public class SessionService {
         List<DataMap> users = new ArrayList<DataMap>();
         List<DataMap> usersOut = new ArrayList<DataMap>();
         for(Session session : sessions) {
-            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
+            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_ADMIN_USER_KEY);
             if(user == null)
                 continue;
 
@@ -121,12 +121,12 @@ public class SessionService {
         Collection<Session> sessions = memorySessionDAO.getActiveSessions();
 
         for(Session session : sessions) {
-            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_USER_KEY);
+            DataMap user = (DataMap) session.getAttribute(SessionUtil.SESSION_ADMIN_USER_KEY);
             if(user == null)
                 continue;
             if(userId.equals(user.getString("USER_ID"))){
                 user = userService.getUserById(user);
-                SessionUtil.addUser2Session(user);
+                SessionUtil.addAdminUser2Session(user);
                 break;
             }
         }

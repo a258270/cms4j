@@ -91,7 +91,7 @@ $(function () {
             }
         ],
 
-        "sAjaxSource" : "/user/api/getusers?now=" + new Date().getTime(),
+        "sAjaxSource" : ctxPath + "/admin/user/api/getusers?now=" + new Date().getTime(),
         //服务器端，数据回调处理
         "fnServerData" : function(sSource, aDataSet, fnCallback) {
             $.ajax({
@@ -127,7 +127,7 @@ var successFn = function (res) {
 
 //新增用户
 var add = function () {
-    showWindow("新增用户", ctxPath + "/user/add");
+    showWindow("新增用户", ctxPath + "/admin/user/add");
 };
 
 //批量冻结
@@ -150,7 +150,7 @@ var datadel = function () {
     }, function(index) {
         layer.close(index);
         batchremoves = batchremoves.substring(0, batchremoves.length - 1);
-        sendRequest(ctxPath + "/user/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/user/api/batchremoves", {batchremoves : batchremoves}, "POST", successFn);
     });
 
 
@@ -166,7 +166,7 @@ var onTableQuery = function () {
 };
 
 var user_edit = function (id) {
-    showWindow("编辑用户", ctxPath + "/user/edit/" + id);
+    showWindow("编辑用户", ctxPath + "/admin/user/edit/" + id);
 };
 
 var user_del = function (id) {
@@ -174,7 +174,7 @@ var user_del = function (id) {
         btn: ["是", "否"]
     }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/user/api/batchremoves", {batchremoves : id}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/user/api/batchremoves", {batchremoves : id}, "POST", successFn);
     });
 };
 
@@ -183,6 +183,6 @@ var user_undel = function (id) {
         btn: ["是", "否"]
     }, function(index) {
         layer.close(index);
-        sendRequest(ctxPath + "/user/api/unremove", {USER_ID : id}, "POST", successFn);
+        sendRequest(ctxPath + "/admin/user/api/unremove", {USER_ID : id}, "POST", successFn);
     });
 };

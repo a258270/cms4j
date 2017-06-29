@@ -21,7 +21,7 @@ import java.util.Properties;
  * Created by zmj on 2017/6/16.
  */
 @RestController
-@RequestMapping(value = "/setting/api")
+@RequestMapping(value = "/admin/setting/api")
 public class SettingApiController extends ApiBaseController {
     public SettingApiController() {
         this.logger = LoggerUtil.getLogger(this.getClass());
