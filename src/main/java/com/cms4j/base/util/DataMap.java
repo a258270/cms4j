@@ -1,5 +1,7 @@
 package com.cms4j.base.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -38,7 +40,7 @@ public class DataMap extends HashMap implements Serializable {
                 String value = "";
                 Object valueObj = entry.getValue();
                 if(valueObj == null)
-                    value= "";
+                    value= null;
                 else if(valueObj instanceof String[]){
                     String[] values = (String[])valueObj;
                     for(int i=0;i<values.length;i++){
@@ -50,6 +52,9 @@ public class DataMap extends HashMap implements Serializable {
                     value = valueObj.toString();
                 }
 
+                if(StringUtils.isBlank(value))
+                    value = null;
+                
                 key = key.replace("[]", "");
                 this.put(key, value);
             }
