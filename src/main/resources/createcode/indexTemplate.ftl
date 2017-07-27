@@ -17,8 +17,8 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
         <#if data.isDic == '是'>
             <select class="select" style="width:150px;height: 31px;" size="1" id="${data.propertyNameUpper}">
                 <option value="" selected>不限</option>
-                ${r"<#list"} ${dicCode}s as ${dicCode}${r">"}
-                <option value="${r"${"}${dicCode}.DIC_ID${r"}"}">${r"${"}${dicCode}.NAME${r"}"}</option>
+                ${r"<#list"} ${data.dicCode}s as ${data.dicCode}${r">"}
+                <option value="${r"${"}${data.dicCode}.DIC_ID${r"}"}">${r"${"}${data.dicCode}.NAME${r"}"}</option>
                 ${r"<#/list>"}
             </select>
         <#else>

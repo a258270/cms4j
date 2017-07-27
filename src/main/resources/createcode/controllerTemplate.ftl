@@ -47,8 +47,8 @@ public class ${className}Controller extends PageBaseController {
         <#list datas as data>
             <#if data.isDic == '是'>
         DataMap ${data.dicCode} = new DataMap();
-        dataMap.put("CODE", "${data.dicCode}");
-        List<DataMap> ${data.dicCode}s = dictionaryService.getDictionaryByCode(${data.dicCode});
+        ${data.dicCode}.put("CODE", "${data.dicCode}");
+        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
         </#list>
@@ -72,8 +72,8 @@ public class ${className}Controller extends PageBaseController {
         <#list datas as data>
             <#if data.isDic == '是'>
         DataMap ${data.dicCode} = new DataMap();
-        dataMap.put("CODE", "${data.dicCode}");
-        List<DataMap> ${data.dicCode}s = dictionaryService.getDictionaryByCode(${data.dicCode});
+        ${data.dicCode}.put("CODE", "${data.dicCode}");
+        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
         </#list>
@@ -102,8 +102,8 @@ public class ${className}Controller extends PageBaseController {
         <#list datas as data>
             <#if data.isDic == '是'>
         DataMap ${data.dicCode} = new DataMap();
-        dataMap.put("CODE", "${data.dicCode}");
-        List<DataMap> ${data.dicCode}s = dictionaryService.getDictionaryByCode(${data.dicCode});
+        ${data.dicCode}.put("CODE", "${data.dicCode}");
+        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
         </#list>
