@@ -19,7 +19,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                 <option value="" selected>不限</option>
                 ${r"<#list"} ${data.dicCode}s as ${data.dicCode}${r">"}
                 <option value="${r"${"}${data.dicCode}.DIC_ID${r"}"}">${r"${"}${data.dicCode}.NAME${r"}"}</option>
-                ${r"<#/list>"}
+                ${r"</#list>"}
             </select>
         <#else>
             <#if data.dataType == 'String' || data.dataType == 'Integer' || data.dataType == 'Double'><input type="text" class="input-text" style="width:150px" placeholder="请输入${data.remark}" id="${data.propertyNameUpper}"></#if>
