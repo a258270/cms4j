@@ -49,7 +49,7 @@ public class ${className}Controller extends PageBaseController {
         DataMap ${data.dicCode} = new DataMap();
         ${data.dicCode}.put("CODE", "${data.dicCode}");
         ${data.dicCode} = dictionaryService.getDictionaryByCode(${data.dicCode});
-        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
+        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionariesByFatherId(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
         </#list>
@@ -75,7 +75,7 @@ public class ${className}Controller extends PageBaseController {
         DataMap ${data.dicCode} = new DataMap();
         ${data.dicCode}.put("CODE", "${data.dicCode}");
         ${data.dicCode} = dictionaryService.getDictionaryByCode(${data.dicCode});
-        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
+        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionariesByFatherId(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
         </#list>
@@ -106,7 +106,7 @@ public class ${className}Controller extends PageBaseController {
         DataMap ${data.dicCode} = new DataMap();
         ${data.dicCode}.put("CODE", "${data.dicCode}");
         ${data.dicCode} = dictionaryService.getDictionaryByCode(${data.dicCode});
-        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
+        List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionariesByFatherId(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
         </#list>
