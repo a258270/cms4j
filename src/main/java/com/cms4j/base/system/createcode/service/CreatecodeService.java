@@ -59,7 +59,7 @@ public class CreatecodeService {
 
         DataMap menu = new DataMap();
         menu.put("NAME", menuName);
-        menu.put("URL", "/" + classNameLower + "/index");
+        menu.put("URL", "/admin/" + classNameLower + "/index");
         menu.put("ICON", "");
         menu.put("PARENT_ID", fatherMenuId);
         menu.put("SORT", 1);
