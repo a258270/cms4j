@@ -48,6 +48,7 @@ public class ${className}Controller extends PageBaseController {
             <#if data.isDic == '是'>
         DataMap ${data.dicCode} = new DataMap();
         ${data.dicCode}.put("CODE", "${data.dicCode}");
+        ${data.dicCode} = dictionaryService.getDictionaryByCode(${data.dicCode});
         List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
@@ -73,6 +74,7 @@ public class ${className}Controller extends PageBaseController {
             <#if data.isDic == '是'>
         DataMap ${data.dicCode} = new DataMap();
         ${data.dicCode}.put("CODE", "${data.dicCode}");
+        ${data.dicCode} = dictionaryService.getDictionaryByCode(${data.dicCode});
         List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
@@ -103,6 +105,7 @@ public class ${className}Controller extends PageBaseController {
             <#if data.isDic == '是'>
         DataMap ${data.dicCode} = new DataMap();
         ${data.dicCode}.put("CODE", "${data.dicCode}");
+        ${data.dicCode} = dictionaryService.getDictionaryByCode(${data.dicCode});
         List<DataMap> ${data.dicCode}s = (List<DataMap>) dictionaryService.getDictionaryByCode(${data.dicCode});
         modelAndView.addObject("${data.dicCode}s", ${data.dicCode}s);
             </#if>
