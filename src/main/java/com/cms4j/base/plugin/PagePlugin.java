@@ -85,7 +85,7 @@ public class PagePlugin implements Interceptor {
             prepareAndCheckDatabaseType(connection); // 准备数据库类型
 
             if (page.getTotalPage() > -1) {
-                    logger.trace("已经设置了总页数, 不需要再查询总数.");
+                logger.trace("已经设置了总页数, 不需要再查询总数.");
             } else {
                 Object parameterObj = boundSql.getParameterObject();
                 MappedStatement mappedStatement = (MappedStatement) ReflectUtil.getFieldValue(delegate, "mappedStatement");
@@ -277,12 +277,11 @@ public class PagePlugin implements Interceptor {
             pstmt = connection.prepareStatement(countSql);
             parameterHandler.setParameters(pstmt);
             rs = pstmt.executeQuery();
-            int rsLength = 0;
+            long totalRecord = 0;
             if (rs.next()) {
-                long totalRecord = rs.getLong(1);
-                rsLength++;
+                totalRecord = rs.getLong(1);
             }
-            page.setTotalRecord(rsLength);
+            page.setTotalRecord(totalRecord);
         } finally {
             if (rs != null)
                 try {

@@ -47,7 +47,7 @@ public class OnlineApiController extends ApiBaseController {
 
         Page page = new Page();
         page.setParams(dataMap);
-        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")));
+        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")) / Integer.valueOf(dataMap.getString("iDisplayLength")));
         page.setPageSize(Integer.valueOf(dataMap.getString("iDisplayLength")));
 
         List<DataMap> users = sessionService.getOnlineUsers(page);

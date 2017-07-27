@@ -45,7 +45,7 @@ public class MenuApiController extends ApiBaseController {
         dataMap.put("PARENT_ID", parentid);
         Page page = new Page();
         page.setParams(dataMap);
-        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")));
+        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")) / Integer.valueOf(dataMap.getString("iDisplayLength")));
         page.setPageSize(Integer.valueOf(dataMap.getString("iDisplayLength")));
         List<DataMap> list = menuService.getMenus(page);
 

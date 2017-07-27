@@ -44,7 +44,7 @@ public class ${className}ApiController extends ApiBaseController {
         </#list>
         Page page = new Page();
         page.setParams(dataMap);
-        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")));
+page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")) / Integer.valueOf(dataMap.getString("iDisplayLength")));
         page.setPageSize(Integer.valueOf(dataMap.getString("iDisplayLength")));
         List<DataMap> ${classNameLower}s = ${classNameLower}Service.get${className}s(page);
         page.setResults(${classNameLower}s);

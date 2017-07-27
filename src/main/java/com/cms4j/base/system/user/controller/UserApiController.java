@@ -43,7 +43,7 @@ public class UserApiController extends ApiBaseController {
             dataMap.put("ROLE_ID", null);
         Page page = new Page();
         page.setParams(dataMap);
-        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")));
+        page.setPageNumber(Integer.valueOf(dataMap.getString("iDisplayStart")) / Integer.valueOf(dataMap.getString("iDisplayLength")));
         page.setPageSize(Integer.valueOf(dataMap.getString("iDisplayLength")));
         List<DataMap> users = userService.getUsers(page);
         page.setResults(users);
