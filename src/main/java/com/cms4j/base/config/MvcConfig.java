@@ -21,9 +21,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private BaseSetting baseSetting;
-    @Value("spring.profiles.active")
+    @Value("${spring.profiles.active}")
     private String active;
-    @Value("spring.profiles.version")
+    @Value("${spring.profiles.version}")
     private String version;
 
     @Override
