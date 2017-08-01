@@ -1,5 +1,5 @@
 var tab;
-var bDictionaryGetted = false;
+var parentIdBack = new Array(0);
 $(function () {
     tab = $("#tab").dataTable({
         "bProcessing" : true, //DataTables载入数据时，是否显示‘进度’提示
@@ -46,7 +46,7 @@ $(function () {
                 "className" : "text-c",
                 "render" : function (data, type, row, meta) {
                     var innerStr = "";
-                    if(QUERY_QX && !bDictionaryGetted) {
+                    if(QUERY_QX) {
                         innerStr += "<a title='查看子项' href='javascript:;' onclick='dic_get(\"" + row.DIC_ID + "\")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe695;</i></a>";
                     }
                     if(EDIT_QX) {
@@ -97,7 +97,12 @@ var successFn = function (res) {
 
 //新增字典
 var add = function () {
-    showWindow("新增字典", ctxPath + "/admin/dictionary/add");
+    if(parentIdBack.length == 0){
+        showWindow("新增字典", ctxPath + "/admin/dictionary/add");
+    }
+    else{
+        showWindow("新增字典", ctxPath + "/admin/dictionary/add?pId=" + parentIdBack[parentIdBack.length - 1]);
+    }
 };
 
 //批量删除
@@ -134,7 +139,13 @@ var onTableQuery = function () {
 }
 
 var dic_edit = function (id) {
-    showWindow("编辑字典", ctxPath + "/admin/dictionary/edit/" + id);
+    if(parentIdBack.length == 0){
+        showWindow("编辑字典", ctxPath + "/admin/dictionary/edit/" + id);
+    }
+    else{
+        showWindow("编辑字典", ctxPath + "/admin/dictionary/edit/" + id + "?pId=" + parentIdBack[parentIdBack.length - 1]);
+    }
+
 };
 
 var dic_del = function (id) {
@@ -147,13 +158,18 @@ var dic_del = function (id) {
 };
 
 var dic_get = function (id) {
-    bDictionaryGetted = true;
+    parentIdBack.push(id);
     tab.fnSettings().sAjaxSource = ctxPath + "/admin/dictionary/api/getdictionaries/" + id + "?now=" + Math.random();
     tab.fnDraw();
 };
 
 var back2Top = function () {
-    bDictionaryGetted = false;
-    tab.fnSettings().sAjaxSource = ctxPath + "/admin/dictionary/api/getdictionaries?now=" + Math.random();
+    parentIdBack.pop();
+    if(parentIdBack.length == 0){
+        tab.fnSettings().sAjaxSource = ctxPath + "/admin/dictionary/api/getdictionaries?now=" + Math.random();
+    }
+    else{
+        tab.fnSettings().sAjaxSource = ctxPath + "/admin/dictionary/api/getdictionaries/" + parentIdBack[parentIdBack.length - 1] + "?now=" + Math.random();
+    }
     tab.fnDraw();
 };

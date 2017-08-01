@@ -5,13 +5,16 @@ import com.cms4j.base.system.dictionary.service.DictionaryService;
 import com.cms4j.base.util.DataMap;
 import com.cms4j.base.util.JurisdictionUtil;
 import com.cms4j.base.util.LoggerUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,11 +55,22 @@ public class DictionaryController extends PageBaseController {
      * @throws Exception
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView add() throws Exception {
+    public ModelAndView add(@RequestParam(required = false) String pId) throws Exception {
         ModelAndView modelAndView = this.getModelAndView();
         logger.begin("加载新增字典页面");
-        List<DataMap> dictionaries = dictionaryService.getAllFatherDictionaries();
-        modelAndView.addObject("dictionaries", dictionaries);
+
+        if(StringUtils.isBlank(pId)){
+            List<DataMap> dictionaries = dictionaryService.getAllFatherDictionaries();
+            modelAndView.addObject("dictionaries", dictionaries);
+        }
+        else{
+            DataMap dictionary = new DataMap();
+            dictionary.put("DIC_ID", pId);
+            dictionary = dictionaryService.getDictionaryById(dictionary);
+            List<DataMap> dictionaries = new ArrayList<DataMap>();
+            dictionaries.add(dictionary);
+            modelAndView.addObject("dictionaries", dictionaries);
+        }
 
         modelAndView.setViewName("base/system/dictionary/dictionary_add");
         this.setJurisdictionInfo(modelAndView, JurisdictionUtil.ADD_QX);
@@ -72,7 +86,7 @@ public class DictionaryController extends PageBaseController {
      * @throws Exception
      */
     @RequestMapping(value = "/edit/{DIC_ID}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable String DIC_ID) throws Exception {
+    public ModelAndView edit(@PathVariable String DIC_ID, @RequestParam(required = false) String pId) throws Exception {
         ModelAndView modelAndView = this.getModelAndView();
 
         logger.begin("加载编辑字典页面");
@@ -82,8 +96,20 @@ public class DictionaryController extends PageBaseController {
 
         modelAndView.addObject("dictionary", dataMap);
 
-        List<DataMap> dictionaries = dictionaryService.getAllFatherDictionaries();
-        modelAndView.addObject("dictionarieObjs", dictionaries);
+        if(StringUtils.isBlank(pId)){
+            List<DataMap> dictionaries = dictionaryService.getAllFatherDictionaries();
+            modelAndView.addObject("dictionarieObjs", dictionaries);
+        }
+        else{
+            DataMap dictionary = new DataMap();
+            dictionary.put("DIC_ID", pId);
+            dictionary = dictionaryService.getDictionaryById(dictionary);
+            List<DataMap> dictionaries = new ArrayList<DataMap>();
+            dictionaries.add(dictionary);
+            modelAndView.addObject("dictionarieObjs", dictionaries);
+        }
+
+
 
         modelAndView.setViewName("base/system/dictionary/dictionary_edit");
         this.setJurisdictionInfo(modelAndView, JurisdictionUtil.EDIT_QX);
