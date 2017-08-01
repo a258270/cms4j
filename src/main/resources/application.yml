@@ -1,6 +1,8 @@
 server:
   port: 8080
   basepackage: com.cms4j
+  session:
+    timeout: 43200
 
 spring:
     datasource:
@@ -24,9 +26,9 @@ spring:
       testOnReturn: false
       poolPreparedStatements: true
       maxOpenPreparedStatements: 20
-      profiles:
-        active: dev
-        version: 1.0.0
+    profiles:
+      active: dev
+      version: 1.0.0
     http:
       encoding:
         force: true
