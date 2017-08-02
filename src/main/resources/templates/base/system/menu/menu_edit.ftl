@@ -13,7 +13,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>父级菜单：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" disabled>
+				<select class="chosen-select select" size="1" disabled>
                     <#if !menu.PARENT_ID??>
                         <option value="" selected>无</option>
                         <#list menuObjs as menuObj>

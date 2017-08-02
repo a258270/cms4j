@@ -15,7 +15,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><#if data.isRequired == '是'><span class="c-red">*</span></#if>${data.remark}：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select class="select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
+                <select class="chosen-select select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
                     <option value="" selected>无</option>
                 ${r"<#list"} ${data.dicCode}s as ${data.dicCode}${r">"}
                     <option value="${r"${"}${data.dicCode}.DIC_ID${r"}"}">${r"${"}${data.dicCode}.NAME${r"}"}</option>
@@ -37,7 +37,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                 <input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })" placeholder="请选择${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="input-text Wdate" readOnly>
                 </#if>
                 <#if data.dataType == 'Boolean'>
-                <select class="select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
+                <select class="chosen-select select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
                     <option value="" selected>无</option>
                     <option value="1">是</option>
                     <option value="0">否</option>

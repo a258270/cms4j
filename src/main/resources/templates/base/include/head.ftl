@@ -9,6 +9,8 @@
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/jquery.validation/1.14.0/validate-methods.js?v=${v}"></script>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/jquery.validation/1.14.0/messages_zh.js?v=${v}"></script>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/My97DatePicker/4.8/WdatePicker.js?v=${v}"></script>
+<script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/chosen.jquery/chosen.jquery.min.js?v=${v}"></script>
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/plugin/h-ui/lib/chosen.jquery/chosen.min.css?v=${v}" />
 <!-- 公共引入end -->
 <!--[if lt IE 9]>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/html5shiv.js?v=${v}"></script>

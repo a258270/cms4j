@@ -12,7 +12,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>父级菜单：</label>
             <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" name="PARENT_ID" id="selectbox">
+				<select class="chosen-select select" size="1" name="PARENT_ID" id="selectbox">
 					<option value="" selected>无</option>
                     <#list fatherMenus as fatherMenu>
                     <option value="${fatherMenu.MENU_ID}">${fatherMenu.NAME}</option>

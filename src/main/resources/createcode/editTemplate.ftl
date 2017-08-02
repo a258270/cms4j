@@ -16,8 +16,8 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-3"><#if data.isRequired == '是'><span class="c-red">*</span></#if>${data.remark}：</label>
                 <div class="formControls col-xs-8 col-sm-9">
-                    <select class="select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
-                        ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??>"}
+                    <select class="chosen-select select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
+                        ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??"}
                         <option value="">无</option>
                         ${r"<#list"} ${data.dicCode}s as ${data.dicCode}${r">"}
                         ${r"<#if"} ${data.dicCode}.DIC_ID == ${classNameLower}.${data.propertyNameUpper}${r">"}
@@ -52,7 +52,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                         <input type="text" onClick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' })" ${r"<#if "}${classNameLower}.${data.propertyNameUpper}${r"??>"}value="${r"${"}${classNameLower}.${data.propertyNameUpper}${r"}"}"${r"<#else>"}value=""${r"</#if>"} placeholder="请选择${data.remark}" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="input-text Wdate" readOnly>
                     </#if>
                     <#if data.dataType == 'Boolean'>
-                        <select class="select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
+                        <select class="chosen-select select" size="1" id="${data.propertyNameUpper}" name="${data.propertyNameUpper}">
                             ${r"<#if"} ${classNameLower}.${data.propertyNameUpper}${r"??>"}
                                 <option value="">无</option>
                                 ${r"<#if"} ${classNameLower}.${data.propertyNameUpper}${r">"}

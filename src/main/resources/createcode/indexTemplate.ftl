@@ -15,7 +15,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
     <#if data.isSearch == '是'>
         ${data.remark}：
         <#if data.isDic == '是'>
-            <select class="select" style="width:150px;height: 31px;" size="1" id="${data.propertyNameUpper}">
+            <select class="chosen-select select" style="width:150px;height: 31px;" size="1" id="${data.propertyNameUpper}">
                 <option value="" selected>不限</option>
                 ${r"<#list"} ${data.dicCode}s as ${data.dicCode}${r">"}
                 <option value="${r"${"}${data.dicCode}.DIC_ID${r"}"}">${r"${"}${data.dicCode}.NAME${r"}"}</option>
@@ -24,7 +24,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
         <#else>
             <#if data.dataType == 'String' || data.dataType == 'Integer' || data.dataType == 'Double'><input type="text" class="input-text" style="width:150px" placeholder="请输入${data.remark}" id="${data.propertyNameUpper}"></#if>
             <#if data.dataType == 'boolean'>
-                <select class="select" style="width:150px;height: 31px;" size="1" id="STATUS">
+                <select class="chosen-select select" style="width:150px;height: 31px;" size="1" id="STATUS">
                     <option value="" selected>不限</option>
                     <option value="1">是</option>
                     <option value="0">否</option>

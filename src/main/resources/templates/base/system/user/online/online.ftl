@@ -13,13 +13,13 @@
     <div class="text-c">
         用户名：<input type="text" class="input-text" style="width:150px" placeholder="输入用户名" id="USERNAME">
         姓名：<input type="text" class="input-text" style="width:150px" placeholder="输入姓名" id="NAME">
-        角色：<select class="select" style="width:150px;height: 31px;" size="1" id="ROLE_ID">
+        角色：<select class="chosen-select select" style="width:150px;height: 31px;" size="1" id="ROLE_ID">
                 <option value="" selected>不限</option>
                 <#list roleObjs as roleObj>
                 <option value="${roleObj.ROLE_ID}">${roleObj.ROLENAME}</option>
                 </#list>
         </select>
-        状态： <select class="select" style="width:150px;height: 31px;" size="1" id="STATUS">
+        状态： <select class="chosen-select select" style="width:150px;height: 31px;" size="1" id="STATUS">
         <option value="" selected>不限</option>
         <option value="false">冻结</option>
         <option value="true">正常</option>

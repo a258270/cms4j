@@ -53,6 +53,9 @@ public class LoginController extends PageBaseController {
         ImageIO.write(VerifyCodeUtil.createImage(strCode), "JPEG", response.getOutputStream());
 
         SessionUtil.addCode2Session(strCode);
+        while(SessionUtil.getCodeFromSession() == null){
+            SessionUtil.addCode2Session(strCode);
+        }
 
         response.getOutputStream().flush();
     }
