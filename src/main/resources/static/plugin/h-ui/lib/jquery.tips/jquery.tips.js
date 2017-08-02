@@ -4,7 +4,7 @@
  * 使用方法
  * $(selector).tips({   //selector 为jquery选择器
 *  msg:'your messages!',    //你的提示消息  必填
-*  side:1,  //提示窗显示位置  1，2，3，4 分别代表 上右下左 默认为2（右） 可选
+*  side:1,  //提示窗显示位置  1，2，3，4 分别代表 上右下左 默认为3（下） 可选
 *  color:'#fff', //提示文字色 默认为白色 可选
 *  bg:'#b000ff',//提示窗背景色 默认为紫色 可选
 *  time:1,//自动关闭时间 默认1秒 设置0则不自动关闭 可选
@@ -17,7 +17,7 @@
 (function ($) {
     $.fn.tips = function(options){
         var defaults = {
-            side:2,
+            side:3,
             msg:'',
             color:'#FFF',
             bg:'#b000ff',
