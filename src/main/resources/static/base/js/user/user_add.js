@@ -31,6 +31,14 @@ $(function () {
         focusCleanup:true,
         success:"valid",
         submitHandler:function(form){
+            if($("#ROLE_ID").val() == "" || $("#ROLE_ID").val() == null){
+                showError("所属角色不能为空！");
+                return false;
+            }
+            if($("#STATUS").val() == "" || $("#STATUS").val() == null){
+                showError("状态不能为空！");
+                return false;
+            }
             $(form).ajaxSubmit(function (res) {
                 if(res.hasErrors){
                     showError(res.errorMessage);
