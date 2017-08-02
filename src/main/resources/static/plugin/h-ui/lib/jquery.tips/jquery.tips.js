@@ -1,19 +1,19 @@
 /**
-* jquery tips 提示插件 jquery.tips.js v0.1beta
-*
-* 使用方法
-* $(selector).tips({   //selector 为jquery选择器
+ * jquery tips 提示插件 jquery.tips.js v0.1beta
+ *
+ * 使用方法
+ * $(selector).tips({   //selector 为jquery选择器
 *  msg:'your messages!',    //你的提示消息  必填
 *  side:1,  //提示窗显示位置  1，2，3，4 分别代表 上右下左 默认为2（右） 可选
 *  color:'#fff', //提示文字色 默认为白色 可选
 *  bg:'#b000ff',//提示窗背景色 默认为紫色 可选
-*  time:2,//自动关闭时间 默认2秒 设置0则不自动关闭 可选
+*  time:1,//自动关闭时间 默认1秒 设置0则不自动关闭 可选
 *  x:0,//横向偏移  正数向右偏移 负数向左偏移 默认为0 可选
 *  y:0,//纵向偏移  正数向下偏移 负数向上偏移 默认为0 可选
 * })
-*
-*
-*/
+ *
+ *
+ */
 (function ($) {
     $.fn.tips = function(options){
         var defaults = {
@@ -27,20 +27,20 @@
         }
         var options = $.extend(defaults, options);
         if (!options.msg||isNaN(options.side)) {
-        throw new Error('params error');
-    }
-    if(!$('#jquery_tips_style').length){
-        var style='<style id="jquery_tips_style" type="text/css">';
-        style+='.jq_tips_box{padding:10px;position:absolute;overflow:hidden;display:inline;display:none;z-index:10176523;}';
-        style+='.jq_tips_arrow{display:block;width:0px;height:0px;position:absolute;}';
-        style+='.jq_tips_top{border-left:10px solid transparent;left:20px;bottom:0px;}';
-        style+='.jq_tips_left{border-top:10px solid transparent;right:0px;top:18px;}';
-        style+='.jq_tips_bottom{border-left:10px solid transparent;left:20px;top:0px;}';
-        style+='.jq_tips_right{border-top:10px solid transparent;left:0px;top:18px;}';
-        style+='.jq_tips_info{word-wrap: break-word;word-break:normal;border-radius:4px;padding:5px 8px;max-width:130px;overflow:hidden;box-shadow:1px 1px 1px #999;font-size:12px;cursor:pointer;}';
-        style+='</style>';
-        $(document.body).append(style);
-    }
+            throw new Error('params error');
+        }
+        if(!$('#jquery_tips_style').length){
+            var style='<style id="jquery_tips_style" type="text/css">';
+            style+='.jq_tips_box{padding:10px;position:absolute;overflow:hidden;display:inline;display:none;z-index:10176523;}';
+            style+='.jq_tips_arrow{display:block;width:0px;height:0px;position:absolute;}';
+            style+='.jq_tips_top{border-left:10px solid transparent;left:20px;bottom:0px;}';
+            style+='.jq_tips_left{border-top:10px solid transparent;right:0px;top:18px;}';
+            style+='.jq_tips_bottom{border-left:10px solid transparent;left:20px;top:0px;}';
+            style+='.jq_tips_right{border-top:10px solid transparent;left:0px;top:18px;}';
+            style+='.jq_tips_info{word-wrap: break-word;word-break:normal;border-radius:4px;padding:5px 8px;max-width:130px;overflow:hidden;box-shadow:1px 1px 1px #999;font-size:12px;cursor:pointer;}';
+            style+='</style>';
+            $(document.body).append(style);
+        }
         this.each(function(){
             var element=$(this);
             var element_top=element.offset().top,element_left=element.offset().left,element_height=element.outerHeight(),element_width=element.outerWidth();
