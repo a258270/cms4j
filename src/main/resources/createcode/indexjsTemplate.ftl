@@ -120,16 +120,16 @@ $(function () {
     <#if data.isFront == '是'>
         <#if data.isDic == '是'>
         ${r"$('#"}${data.propertyNameUpper}${r"')"}.chosen({
-        no_results_text: "没有找到结果！",//搜索无结果时显示的提示
-        search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
-        allow_single_deselect:true
+            no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+            search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+            allow_single_deselect:true
         });
         <#else>
             <#if data.dataType == 'Boolean'>
             ${r"$('#"}${data.propertyNameUpper}${r"')"}.chosen({
-            no_results_text: "没有找到结果！",//搜索无结果时显示的提示
-            search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
-            allow_single_deselect:true
+                no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+                search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+                allow_single_deselect:true
             });
             </#if>
         </#if>

@@ -21,6 +21,25 @@ $(function () {
             focusCleanup:true,
             success:"valid",
             submitHandler:function(form){
+<#list datas as data>
+    <#if data.isFront == '是'>
+        <#if data.isRequired == '是'>
+            <#if data.isDic == '是'>
+                if(${r"$('#"}${data.propertyNameUpper}${r"')"}.val() == "" || ${r"$('#"}${data.propertyNameUpper}${r"')"}.val() == null){
+                    showError("${data.remark}不能为空！");
+                    return false;
+                }
+            <#else>
+                <#if data.dataType == 'Boolean'>
+                if(${r"$('#"}${data.propertyNameUpper}${r"')"}.val() == "" || ${r"$('#"}${data.propertyNameUpper}${r"')"}.val() == null){
+                    showError("${data.remark}不能为空！");
+                    return false;
+                }
+                </#if>
+            </#if>
+        </#if>
+    </#if>
+</#list>
                 $(form).ajaxSubmit(function (res) {
                     if(res.hasErrors){
                         showError(res.errorMessage);
