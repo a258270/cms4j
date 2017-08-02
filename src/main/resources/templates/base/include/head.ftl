@@ -5,6 +5,7 @@
 
 <!-- 公共引入start -->
 <script type="text/javascript" src="${ctxPath}/static/plugin/jquery/jquery-1.11.1.min.js?v=${v}"></script>
+<script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/jquery.tips/jquery.tips.js?v=${v}"></script>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/jquery.validation/1.14.0/jquery.validate.js?v=${v}"></script>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/jquery.validation/1.14.0/validate-methods.js?v=${v}"></script>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/jquery.validation/1.14.0/messages_zh.js?v=${v}"></script>
