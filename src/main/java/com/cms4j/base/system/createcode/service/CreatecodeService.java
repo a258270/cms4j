@@ -35,7 +35,7 @@ public class CreatecodeService {
          * 生成页面参数
          */
         String upperPackage = dataMap.getString("UPPERPACKAGE");//上级包名
-        String compeletePackage = basePackage + "." + upperPackage;//完整报名
+        String compeletePackage = basePackage + "." + upperPackage + "." + dataMap.getString("CLASSNAME").toLowerCase();;//完整报名
         String jsPath = dataMap.getString("JSPATH");//js文件存放路径
         String ftlPath = dataMap.getString("FTLPATH");//ftl文件存放路径
         String mapperPath = dataMap.getString("MAPPERPATH");//mapper文件存放路径

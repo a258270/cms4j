@@ -42,7 +42,7 @@ public class ${className}Controller extends PageBaseController {
     public ModelAndView index() throws Exception {
         logger.begin("加载${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("${ftlPath}/${upperPackage}/index");
+        modelAndView.setViewName("${ftlPath}/${upperPackage}/${classNameLower}/index");
 
         <#list datas as data>
             <#if data.isDic == '是'>
@@ -68,7 +68,7 @@ public class ${className}Controller extends PageBaseController {
     public ModelAndView add() throws Exception {
         logger.begin("加载新增${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("${ftlPath}/${upperPackage}/add");
+        modelAndView.setViewName("${ftlPath}/${upperPackage}/${classNameLower}/add");
 
         <#list datas as data>
             <#if data.isDic == '是'>
@@ -95,7 +95,7 @@ public class ${className}Controller extends PageBaseController {
     public ModelAndView edit(@PathVariable String id) throws Exception {
         logger.begin("加载编辑${showName}页面");
         ModelAndView modelAndView = this.getModelAndView();
-        modelAndView.setViewName("${ftlPath}/${upperPackage}/edit");
+        modelAndView.setViewName("${ftlPath}/${upperPackage}/${classNameLower}/edit");
         DataMap dataMap = new DataMap();
         dataMap.put("${classNameUpper}_ID", id);
         dataMap = ${classNameLower}Service.get${className}ById(dataMap);

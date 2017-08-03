@@ -28,10 +28,10 @@ public class Freemarker {
         String createPath = path + "code/code";
         String templatePath = path + "createcode";
         String basePackage = createPath + "/" + dataMap.getString("basePackage").replace(".", "/");
-        String javaFilePath = basePackage + "/" + dataMap.getString("upperPackage");
-        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath") + "/" + dataMap.getString("upperPackage");
-        String ftlFilePath = createPath + "/templates/" + dataMap.getString("ftlPath") + "/" + dataMap.getString("upperPackage");
-        String mapperFilePath = createPath + "/mybatis/mapper/" + dataMap.getString("mapperPath") + "/" + dataMap.getString("upperPackage");
+        String javaFilePath = basePackage + "/" + dataMap.getString("upperPackage") + "/" + dataMap.getString("classNameLower");
+        String jsFilePath = createPath + "/static/" + dataMap.getString("jsPath") + "/" + dataMap.getString("upperPackage") + "/" + dataMap.getString("classNameLower");
+        String ftlFilePath = createPath + "/templates/" + dataMap.getString("ftlPath") + "/" + dataMap.getString("upperPackage") + "/" + dataMap.getString("classNameLower");
+        String mapperFilePath = createPath + "/mybatis/mapper/" + dataMap.getString("mapperPath") + "/" + dataMap.getString("upperPackage") + "/" + dataMap.getString("classNameLower");
 
         FileUtil.delAllFile(codePath);//清除之前生成的文件
 

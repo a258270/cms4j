@@ -5,7 +5,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/head.ftl" />
 ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
     <!-- 页面独有文件 -->
     <script type="text/javascript" src="${r"${ctxPath}"}/static/plugin/h-ui/lib/datatables/1.10.0/jquery.dataTables.min.js?v=${r"${v}"}"></script>
-    <script type="text/javascript" src="${r"${ctxPath}"}/static/${jsPath}/${upperPackage}/index.js?v=${r"${v}"}"></script>
+    <script type="text/javascript" src="${r"${ctxPath}"}/static/${jsPath}/${upperPackage}/${classNameLower}/index.js?v=${r"${v}"}"></script>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> ${fatherMenuName} <span class="c-gray en">&gt;</span> ${menuName} <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>

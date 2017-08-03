@@ -4,7 +4,7 @@
 ${r"<#include"} "${r"${ctxPath}"}/base/include/head.ftl" />
 ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
     <!-- 页面独有文件 -->
-    <script type="text/javascript" src="${r"${ctxPath}"}/static/${jsPath}/${upperPackage}/edit.js?v=${r"${v}"}"></script>
+    <script type="text/javascript" src="${r"${ctxPath}"}/static/${jsPath}/${upperPackage}/${classNameLower}/edit.js?v=${r"${v}"}"></script>
 </head>
 <body>
 <article class="page-container">

@@ -14,22 +14,22 @@
         <tr>
             <td class="text-r"><code>上级包名：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入上级包名" id="UPPERPACKAGE" name="UPPERPACKAGE"></td>
-            <td class="text-l"><code class="c-red">基础包名+上级包名组成完整报名，基础包名(basepackage)请见application.yml文件</code></td>
+            <td class="text-l"><code class="c-red">基础包名+上级包名+类名组成完整包名，基础包名(basepackage)请见application.yml文件</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>js存放路径：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入js存放路径" id="JSPATH" name="JSPATH"></td>
-            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/static，即：若输入base/test，则该路径实际为项目中的resources/static/base/test/上级包名</code></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/static，即：若输入base/test，则该路径实际为项目中的resources/static/base/test/上级包名/类名</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>ftl存放路径：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入ftl存放路径" id="FTLPATH" name="FTLPATH"></td>
-            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/templates，即：若输入base/test，则该路径实际为项目中的resources/templates/base/test/上级包名</code></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/templates，即：若输入base/test，则该路径实际为项目中的resources/templates/base/test/上级包名/类名</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>mapper存放路径：<span class="c-red">*</span></code></td>
             <td><input type="text" class="input-text radius" placeholder="输入mapper存放路径" id="MAPPERPATH" name="MAPPERPATH"></td>
-            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/mybatis/mapper，即：若输入base/test，则该路径实际为项目中的resources/mybatis/mapper/base/test/上级包名</code></td>
+            <td class="text-l"><code class="c-red">默认该路径的父级路径为：resources/mybatis/mapper，即：若输入base/test，则该路径实际为项目中的resources/mybatis/mapper/base/test/上级包名/类名</code></td>
         </tr>
         <tr>
             <td class="text-r"><code>类名：<span class="c-red">*</span></code></td>
