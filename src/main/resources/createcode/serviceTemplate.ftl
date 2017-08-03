@@ -51,7 +51,7 @@ public class ${className}Service {
     public void batchRemoves(String objs) throws Exception {
         String[] objArr = objs.split(",");
         List<String> objList = Arrays.asList(objArr);
-        daoSupport.update("${className}Mapper.batchRemoves", objList);
+        daoSupport.batchDelete("${className}Mapper.batchRemoves", objList);
     }
 
     /**
