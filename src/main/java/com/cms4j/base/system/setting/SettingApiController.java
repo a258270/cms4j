@@ -47,6 +47,7 @@ public class SettingApiController extends ApiBaseController {
         OutputStream outputStream = new FileOutputStream(path+"/setting/base.properties");
         properties.setProperty("base.title", dataMap.getString("title"));
         properties.setProperty("base.pageNumber", dataMap.getString("pageNumber"));
+        properties.setProperty("base.kindfile_path", dataMap.getString("kindfile_path"));
         properties.store(outputStream, "Base Settings)");
         logger.end();
         return InvokeResult.success();

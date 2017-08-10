@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class BaseSetting {
     private String title;
     private Integer pageNumber;
+    private String kindfile_path;
 
     public String getTitle() {
         return title;
@@ -31,5 +32,13 @@ public class BaseSetting {
 
     public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
+    }
+
+    public String getKindfile_path() {
+        return kindfile_path;
+    }
+
+    public void setKindfile_path(String kindfile_path) {
+        this.kindfile_path = kindfile_path;
     }
 }

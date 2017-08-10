@@ -7,6 +7,9 @@ $(function () {
             pageNumber:{
                 required:true,
                 isIntGtZero:true,
+            },
+            kindfile_path:{
+                required:true,
             }
         },
         onkeyup:false,

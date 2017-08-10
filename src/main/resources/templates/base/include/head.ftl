@@ -14,6 +14,12 @@
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/chosen.jquery/chosen.jquery.min.js?v=${v}"></script>
 <link rel="stylesheet" type="text/css" href="${ctxPath}/static/plugin/h-ui/lib/chosen.jquery/chosen.min.css?v=${v}" />
 <link rel="stylesheet" type="text/css" href="${ctxPath}/static/plugin/h-ui/lib/simpleuploader/simpleuploader.css?v=${v}" />
+
+<script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/kindeditor/kindeditor-all-min.js?v=${v}"></script>
+<script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/kindeditor/lang/zh-CN.js?v=${v}"></script>
+<script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/kindeditor/plugins/code/prettify.js?v=${v}"></script>
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/plugin/h-ui/lib/kindeditor/themes/default/default.css?v=${v}" />
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/plugin/h-ui/lib/kindeditor/plugins/code/prettify.css?v=${v}" />
 <!-- 公共引入end -->
 <!--[if lt IE 9]>
 <script type="text/javascript" src="${ctxPath}/static/plugin/h-ui/lib/html5shiv.js?v=${v}"></script>
