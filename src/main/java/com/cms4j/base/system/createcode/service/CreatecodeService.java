@@ -74,6 +74,7 @@ public class CreatecodeService {
         /**
          * 属性参数
          */
+        String hasRichtext = "否";
         String[] params = dataMap.getString("PARAMS").split(",");
         for(int i = 0, len = params.length, j = 0; i < len; j++, i = j * numberOfProperty) {
             DataMap data = new DataMap();
@@ -89,6 +90,14 @@ public class CreatecodeService {
             data.put("searchCondition", params[i + 8]);//检索条件
             data.put("isDic", params[i + 9]);//是否为数据字典
             data.put("dicCode", params[i + 10]);//字典内码
+            if(data.getString("dataType").equals("Richtext")){
+                hasRichtext = "是";
+                data.put("isList", "否");
+                data.put("isSearch", "否");
+                data.put("searchCondition", "无");
+                data.put("isDic", "否");
+                data.put("dicCode", "无");
+            }
             datas.add(data);
             if(params[i + 4].equals("是"))
                 maxIsFrontIndex = j;
@@ -132,12 +141,12 @@ public class CreatecodeService {
         templateParam.put("maxIsNotFrontIndex", maxIsNotFrontIndex);
         templateParam.put("maxIsDicIndex", maxIsDicIndex);
         templateParam.put("maxIsNotDicIndex", maxIsNotDicIndex);
-
         templateParam.put("maxIsListIndex", maxIsListIndex);
         templateParam.put("maxIsNotListIndex", maxIsNotListIndex);
         templateParam.put("maxIsSearchIndex", maxIsSearchIndex);
         templateParam.put("maxIsNotSearchIndex", maxIsNotSearchIndex);
 
+        templateParam.put("hasRichtext", hasRichtext);
         templateParam.put("datas", datas);
 
         Freemarker.createCode(templateParam);

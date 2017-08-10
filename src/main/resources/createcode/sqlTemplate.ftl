@@ -25,6 +25,9 @@ ${r"`"}${data.propertyNameUpper}${r"`"} datetime <#if data.isRequired == '是'>N
     <#if data.dataType == 'Boolean'>
 ${r"`"}${data.propertyNameUpper}${r"`"} tinyint(1) <#if data.isRequired == '是'>NOT<#else>DEFAULT</#if> NULL COMMENT '${data.remark}',
     </#if>
+    <#if data.dataType == 'Richtext'>
+${r"`"}${data.propertyNameUpper}${r"`"} mediumtext <#if data.isRequired == '是'>NOT<#else>DEFAULT</#if> NULL COMMENT '${data.remark}',
+    </#if>
 </#list>
 PRIMARY KEY (${r"`"}${classNameUpper}_ID${r"`"})
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

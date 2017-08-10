@@ -22,6 +22,12 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3 c-red">注意事项②：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <label class="c-red">当数据类型为富文本时，是否列表可见、是否为搜索项、检索条件、是否为字典、字典内码均无意义</label>
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>属性名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="" placeholder="请输入属性名称" id="NAME" name="NAME">
@@ -43,6 +49,7 @@
                     <option value="Date">Date</option>
                     <option value="Datetime">Datetime</option>
                     <option value="Boolean">Boolean</option>
+                    <option value="Richtext">富文本</option>
                 </select>
             </div>
         </div>

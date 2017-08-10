@@ -69,6 +69,9 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
                             ${r"</#if>"}
                         </select>
                     </#if>
+                    <#if dataType == 'Richtext'>
+                        <textarea id="${data.propertyNameUpper}" name="${data.propertyNameUpper}" class="textarea" cols="100" rows="8"></textarea>
+                    </#if>
                 </div>
             </div>
         </#if>
