@@ -46,7 +46,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/401*","anon");
         filterChainDefinitionMap.put("/404*","anon");
         filterChainDefinitionMap.put("/500*","anon");
-
+        filterChainDefinitionMap.put("/admin/kindfile/down/**","anon");
 
         filterChainDefinitionMap.put("/**","authc");
 
