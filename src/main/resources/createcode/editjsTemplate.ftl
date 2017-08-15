@@ -6,7 +6,7 @@
         </#if>
     </#if>
 </#list>
-<#if data.hasRichtext == '是'>
+<#if hasRichtext == '是'>
 KindEditor.ready(function(K) {
     <#list datas as data>
         <#if data.dataType == 'Richtext'>
