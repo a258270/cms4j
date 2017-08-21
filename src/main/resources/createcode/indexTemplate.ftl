@@ -23,7 +23,7 @@ ${r"<#include"} "${r"${ctxPath}"}/base/include/jurisdiction.ftl" />
             </select>
         <#else>
             <#if data.dataType == 'String' || data.dataType == 'Integer' || data.dataType == 'Double'><input type="text" class="input-text" style="width:150px" placeholder="请输入${data.remark}" id="${data.propertyNameUpper}"></#if>
-            <#if data.dataType == 'boolean'>
+            <#if data.dataType == 'Boolean'>
                 <select class="chosen-select select" style="width:150px;height: 31px;" size="1" id="STATUS">
                     <option value="" selected>不限</option>
                     <option value="1">是</option>
