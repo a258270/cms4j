@@ -21,7 +21,7 @@ KindEditor.ready(function(K) {
         </#if>
     </#list>
     prettyPrint();
-    <#list .datas as data>
+    <#list datas as data>
         <#if data.dataType == 'Richtext'>
     KE.text("${data.propertyNameUpper}", editorContent${data.propertyNameUpper});
         </#if>
